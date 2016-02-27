@@ -103,7 +103,7 @@ GameObject:
   - 114: {fileID: 346818854}
   - 114: {fileID: 346818856}
   - 114: {fileID: 346818865}
-  - 114: {fileID: 346818864}
+  - 114: {fileID: 346818866}
   m_Layer: 0
   m_Name: Husband&Knife Camera
   m_TagString: MainCamera
@@ -118,7 +118,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 346818853}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f632eba4bffe9b4aa08ae0f457f91dc, type: 3}
   m_Name: 
@@ -164,14 +164,14 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 346818853}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d4639a608b579aa458b99ad328165d44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   shader: {fileID: 4800000, guid: f996675e0fecfc74d8d4c4ba58f93f38, type: 3}
-  textureRamp: {fileID: 2800000, guid: f5508238c122f094296f9071ab9476f7, type: 3}
-  offset: {x: 0, y: 0, z: 0, w: 0}
+  textureRamp: {fileID: 2800000, guid: dae15c6330f9c7047809be114b01661f, type: 3}
+  offset: {x: 1, y: 1, z: 1, w: 0}
 --- !u!114 &346818857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,19 +185,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shader: {fileID: 4800000, guid: f229ff9b78883fd41b3689b146921a9d, type: 3}
-  merge: 1
+  merge: 0
   lastFrame: {fileID: 0}
   flow:
     texture: {fileID: 2800000, guid: 8113b85c2ec54fc48816f4cd1f546025, type: 3}
     scaleTranslate: {x: 1, y: 1, z: 0, w: 0}
     scaleTranslatePerSecond: {x: 0, y: 0, z: 0, w: 0}
-  offset: {x: 0.1, y: 0.2}
-  fade: 0.9
+  offset: {x: 0.1, y: 0.05}
+  fade: 0.95
   radial: 1
   angle: 1
   anglePerSecond: 0
   center: {fileID: 2134696824}
-  invertY: 0
+  invertY: 1
 --- !u!114 &346818858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,7 +308,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &346818864
+--- !u!114 &346818865
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -316,10 +316,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 346818853}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23af4b75642593344b9bd8ebf957e064, type: 3}
+  m_Script: {fileID: 11500000, guid: 2821a693b15b3c546983bcd33c241b2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  output:
+  keys: 31000000320000003300000034000000
+--- !u!114 &346818866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 346818853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1565c479409362746a1217ae326176d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  top:
     type: 0
     types:
     - System.Single
@@ -331,22 +343,21 @@ MonoBehaviour:
     isMat: 0
     isVector: 0
     index: 0
-  min: 0
-  max: 0.1
-  xAxis: 1
-  mouseDown: 1
---- !u!114 &346818865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 346818853}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23af4b75642593344b9bd8ebf957e064, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  output:
+  minMaxTop: {x: -0.1, y: 0.1}
+  middle:
+    type: 0
+    types:
+    - System.Single
+    - UnityEngine.Vector2
+    - UnityEngine.Vector3
+    - UnityEngine.Vector4
+    obj: {fileID: 346818857}
+    varName: offset-y
+    isMat: 0
+    isVector: 0
+    index: 0
+  minMaxMiddle: {x: -0.1, y: 0.1}
+  bottom:
     type: 0
     types:
     - System.Single
@@ -358,10 +369,7 @@ MonoBehaviour:
     isMat: 0
     isVector: 0
     index: 0
-  min: 0.8
-  max: 1
-  xAxis: 0
-  mouseDown: 1
+  minMaxBottom: {x: 0.8, y: 1}
 --- !u!1 &1494515390
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,6 +379,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1494515392}
   - 114: {fileID: 1494515391}
+  - 114: {fileID: 1494515393}
   m_Layer: 0
   m_Name: Audio
   m_TagString: Untagged
@@ -398,14 +407,14 @@ MonoBehaviour:
   numSamples: 0
   channel: 0
   FFTWindow: 0
-  lerp: 0.05
+  lerp: 0.8
   spectrumCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
+    - time: -0.0029629627
+      value: 0.019687504
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
     - time: 1
       value: 1
@@ -428,34 +437,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
---- !u!1 &1639036312
-GameObject:
+--- !u!114 &1494515393
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1639036313}
-  m_Layer: 0
-  m_Name: GameObject (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1639036313
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1639036312}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1970258251}
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_GameObject: {fileID: 1494515390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23af4b75642593344b9bd8ebf957e064, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  output:
+    type: 0
+    types:
+    - System.Single
+    - UnityEngine.Vector2
+    - UnityEngine.Vector3
+    - UnityEngine.Vector4
+    obj: {fileID: 1494515391}
+    varName: spectrumMul
+    isMat: 0
+    isVector: 0
+    index: 0
+  min: 0.001
+  max: 0.1
+  xAxis: 0
+  mouseDown: 1
 --- !u!1 &1970258248
 GameObject:
   m_ObjectHideFlags: 0
@@ -517,8 +525,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1639036313}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
 --- !u!114 &1970258252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -530,51 +538,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a90ff5f928d018046aa37127192401a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseSpeed: 0
+  baseSpeed: 0.1
   randomSpeed: 0.2
-  gradient:
-    key0:
-      serializedVersion: 2
-      rgba: 4294967295
-    key1:
-      serializedVersion: 2
-      rgba: 4294572543
-    key2:
-      serializedVersion: 2
-      rgba: 255
-    key3:
-      serializedVersion: 2
-      rgba: 7471345
-    key4:
-      serializedVersion: 2
-      rgba: 7471598
-    key5:
-      serializedVersion: 2
-      rgba: 0
-    key6:
-      serializedVersion: 2
-      rgba: 0
-    key7:
-      serializedVersion: 2
-      rgba: 0
-    ctime0: 0
-    ctime1: 54934
-    ctime2: 55705
-    ctime3: 65535
-    ctime4: 65535
-    ctime5: 0
-    ctime6: 0
-    ctime7: 0
-    atime0: 0
-    atime1: 65535
-    atime2: 0
-    atime3: 0
-    atime4: 0
-    atime5: 0
-    atime6: 0
-    atime7: 0
-    m_NumColorKeys: 3
-    m_NumAlphaKeys: 2
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &2134696822
 GameObject:
   m_ObjectHideFlags: 0
@@ -585,6 +551,7 @@ GameObject:
   - 4: {fileID: 2134696824}
   - 114: {fileID: 2134696825}
   - 114: {fileID: 2134696823}
+  - 114: {fileID: 2134696826}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -598,7 +565,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2134696822}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 73aa22fcfc6bf3949ab08d6e7ffcb76e, type: 3}
   m_Name: 
@@ -618,7 +585,7 @@ MonoBehaviour:
   minFFT: 0
   maxFFT: 64
   minValue: 1
-  maxValue: 20
+  maxValue: 3
 --- !u!4 &2134696824
 Transform:
   m_ObjectHideFlags: 0
@@ -643,10 +610,73 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obj:
-  - {fileID: 1639036312}
+  - {fileID: 1970258248}
   spawnType: 1
   count: 300
   debug: 0
   all: []
   distance: {x: 3.5, y: 0.5, z: 0.1}
   center: 1
+--- !u!114 &2134696826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2134696822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b79938ca59d24947a8af574bd0ce554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  output:
+    type: {r: 0, g: 0, b: 0, a: 0}
+    types:
+    - UnityEngine.Color
+    obj: {fileID: 1970258252}
+    varName: color
+    isMat: 0
+  minFFT: 4
+  maxFFT: 64
+  gradient:
+    key0:
+      serializedVersion: 2
+      rgba: 4294964224
+    key1:
+      serializedVersion: 2
+      rgba: 4278386432
+    key2:
+      serializedVersion: 2
+      rgba: 65531
+    key3:
+      serializedVersion: 2
+      rgba: 427519
+    key4:
+      serializedVersion: 2
+      rgba: 7471598
+    key5:
+      serializedVersion: 2
+      rgba: 0
+    key6:
+      serializedVersion: 2
+      rgba: 0
+    key7:
+      serializedVersion: 2
+      rgba: 0
+    ctime0: 0
+    ctime1: 15420
+    ctime2: 27756
+    ctime3: 43947
+    ctime4: 65535
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_NumColorKeys: 5
+    m_NumAlphaKeys: 2

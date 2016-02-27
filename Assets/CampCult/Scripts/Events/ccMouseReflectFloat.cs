@@ -16,7 +16,7 @@ public class ccMouseReflectFloat : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Cursor.visible = false;
+		//Cursor.visible = false;
         if (!mouseDown || (mouseDown && Input.GetMouseButton(0)))
         {
             if (xAxis)

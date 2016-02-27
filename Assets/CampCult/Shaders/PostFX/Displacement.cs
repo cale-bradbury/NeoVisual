@@ -9,9 +9,12 @@ public class Displacement : ImageEffectBase {
 	public enum MergeType{
 		Lerp,
 		Add,
-		Mul
+		Mul, 
+        Wtf
 	}
 	public MergeType merge;
+    MergeType _merge;
+    string[] enums;
 
 	public Texture lastFrame;
 	public CCTexture flow;
@@ -22,6 +25,11 @@ public class Displacement : ImageEffectBase {
 	public float anglePerSecond = 0;
 	public Transform center;
 	public bool invertY = true;
+
+    void OnEnable()
+    {
+        enums = System.Enum.GetNames(typeof(MergeType));
+    }
 
 	// Called by camera to apply image effect
 	void OnRenderImage (RenderTexture source, RenderTexture destination) {
@@ -53,19 +61,17 @@ public class Displacement : ImageEffectBase {
 			Shader.DisableKeyword ("invert");
 		}
 		
-		if (merge == MergeType.Add) {
-			Shader.EnableKeyword ("madd");
-			Shader.DisableKeyword ("mmul");
-			Shader.DisableKeyword ("mlerp");
-		} else if (merge == MergeType.Mul) {
-			Shader.EnableKeyword ("mmul");
-			Shader.DisableKeyword ("madd");
-			Shader.DisableKeyword ("mlerp");
-		} else {
-			Shader.EnableKeyword ("mlerp");
-			Shader.DisableKeyword ("mmul");
-			Shader.DisableKeyword ("madd");
-		}
+        if(_merge != merge)
+        {
+            _merge = merge;
+            foreach (string s in enums)
+            {
+                material.DisableKeyword(s);
+            }
+            material.EnableKeyword(merge.ToString());            
+        }
+
+		
 
 		Graphics.Blit (source, destination, material);
 	}

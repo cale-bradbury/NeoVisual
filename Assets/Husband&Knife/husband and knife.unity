@@ -399,6 +399,13 @@ GameObject:
   - 4: {fileID: 1494515392}
   - 114: {fileID: 1494515391}
   - 114: {fileID: 1494515393}
+  - 114: {fileID: 1494515394}
+  - 114: {fileID: 1494515400}
+  - 114: {fileID: 1494515399}
+  - 114: {fileID: 1494515398}
+  - 114: {fileID: 1494515397}
+  - 114: {fileID: 1494515396}
+  - 114: {fileID: 1494515395}
   m_Layer: 0
   m_Name: Audio
   m_TagString: Untagged
@@ -483,6 +490,168 @@ MonoBehaviour:
   max: 0.1
   xAxis: 0
   mouseDown: 1
+--- !u!114 &1494515394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1494515390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1966141d8c3c2c244b4feb14746acaec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data:
+  - key: 122
+    eventName: c1
+  - key: 120
+    eventName: c2
+  - key: 99
+    eventName: c3
+  - key: 118
+    eventName: c4
+  - key: 98
+    eventName: c5
+  - key: 110
+    eventName: c6
+--- !u!114 &1494515395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1494515390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6a429d168a0c7d4b8cf58ded83356de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: c6
+  tex: {fileID: 2800000, guid: f5508238c122f094296f9071ab9476f7, type: 3}
+  outTexture:
+    type: {fileID: 0}
+    types:
+    - UnityEngine.Texture
+    - UnityEngine.Texture2D
+    - CCTexture
+    - UnityEngine.RenderTexture
+    obj: {fileID: 346818856}
+    varName: textureRamp
+    isMat: 0
+--- !u!114 &1494515396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1494515390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6a429d168a0c7d4b8cf58ded83356de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: c5
+  tex: {fileID: 2800000, guid: dd5d497a4da127c4da978dd97a481d6f, type: 3}
+  outTexture:
+    type: {fileID: 0}
+    types:
+    - UnityEngine.Texture
+    - UnityEngine.Texture2D
+    - CCTexture
+    - UnityEngine.RenderTexture
+    obj: {fileID: 346818856}
+    varName: textureRamp
+    isMat: 0
+--- !u!114 &1494515397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1494515390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6a429d168a0c7d4b8cf58ded83356de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: c4
+  tex: {fileID: 2800000, guid: dae15c6330f9c7047809be114b01661f, type: 3}
+  outTexture:
+    type: {fileID: 0}
+    types:
+    - UnityEngine.Texture
+    - UnityEngine.Texture2D
+    - CCTexture
+    - UnityEngine.RenderTexture
+    obj: {fileID: 346818856}
+    varName: textureRamp
+    isMat: 0
+--- !u!114 &1494515398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1494515390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6a429d168a0c7d4b8cf58ded83356de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: c3
+  tex: {fileID: 2800000, guid: 8ea2376053a13a347bf5a1d42204bc7f, type: 3}
+  outTexture:
+    type: {fileID: 0}
+    types:
+    - UnityEngine.Texture
+    - UnityEngine.Texture2D
+    - CCTexture
+    - UnityEngine.RenderTexture
+    obj: {fileID: 346818856}
+    varName: textureRamp
+    isMat: 0
+--- !u!114 &1494515399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1494515390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6a429d168a0c7d4b8cf58ded83356de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: c2
+  tex: {fileID: 2800000, guid: 827282950fe7dd042996641a507dea66, type: 3}
+  outTexture:
+    type: {fileID: 0}
+    types:
+    - UnityEngine.Texture
+    - UnityEngine.Texture2D
+    - CCTexture
+    - UnityEngine.RenderTexture
+    obj: {fileID: 346818856}
+    varName: textureRamp
+    isMat: 0
+--- !u!114 &1494515400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1494515390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6a429d168a0c7d4b8cf58ded83356de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: c1
+  tex: {fileID: 2800000, guid: 57bc302b9b6517a4aae86c71a2ba404e, type: 3}
+  outTexture:
+    type: {fileID: 0}
+    types:
+    - UnityEngine.Texture
+    - UnityEngine.Texture2D
+    - CCTexture
+    - UnityEngine.RenderTexture
+    obj: {fileID: 346818856}
+    varName: textureRamp
+    isMat: 0
 --- !u!1 &1970258248
 GameObject:
   m_ObjectHideFlags: 0

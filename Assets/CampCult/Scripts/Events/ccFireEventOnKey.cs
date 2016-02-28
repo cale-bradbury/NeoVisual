@@ -3,14 +3,23 @@ using System.Collections;
 
 public class ccFireEventOnKey : MonoBehaviour {
 
-	public KeyCode[] key;
-	public string[] eventName;
+    [System.Serializable]
+    public struct KeyEventPair
+    {
+        public KeyCode key;
+        public string eventName;
+    }
+
+    public KeyEventPair[] data;
 
 	// Update is called once per frame
 	void Update () {
-		for (int i = 0; i<key.Length; i++) {
-			if (Input.GetKeyDown (key[i]))
-				Messenger.Broadcast (eventName[i]);
+		for (int i = 0; i<data.Length; i++) {
+			if (Input.GetKeyDown (data[i].key))
+				Messenger.Broadcast (data[i].eventName);
 		}
 	}
+
 }
+
+

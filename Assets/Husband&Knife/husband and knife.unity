@@ -98,6 +98,7 @@ GameObject:
   - 124: {fileID: 346818860}
   - 81: {fileID: 346818859}
   - 114: {fileID: 346818858}
+  - 114: {fileID: 346818864}
   - 114: {fileID: 346818857}
   - 114: {fileID: 346818855}
   - 114: {fileID: 346818854}
@@ -197,7 +198,7 @@ MonoBehaviour:
   angle: 1
   anglePerSecond: 0
   center: {fileID: 2134696824}
-  invertY: 1
+  invertY: 0
 --- !u!114 &346818858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,6 +309,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &346818864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 346818853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 621aedf7bdc5d4926945fa9903db62f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shader: {fileID: 4800000, guid: 7d83a7fbea73549a483d6e9d6c952315, type: 3}
+  shape: 0
+  sminval: 0.25
+  shapeSize: 0.25
+  gradient: 0.05
+  speed: 1
+  shapeCount: 4
 --- !u!114 &346818865
 MonoBehaviour:
   m_ObjectHideFlags: 0

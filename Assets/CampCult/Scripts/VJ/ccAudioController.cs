@@ -57,7 +57,7 @@ public class ccAudioController : MonoBehaviour {
 			}
 		}
 		for(int i = 0; i<FFT.Length;i++){
-			FFT[i] = Mathf.Lerp(FFT[i],spectrumCurve.Evaluate((float)i/FFT.Length)*(float)msg.Values[i]*spectrumMul,lerp);
+			FFT[i] = Mathf.Lerp(FFT[i],spectrumCurve.Evaluate((float)i/FFT.Length)*((float)msg.Values[i])*spectrumMul,lerp);
 		}
 
 	}

@@ -18,10 +18,6 @@ public class ccMouseReflectFloat : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-<<<<<<< HEAD
-=======
-		Cursor.visible = false;
->>>>>>> e4a8008a65d320339ca22684d618c5abb72f3f7b
         if (!mouseDown || (mouseDown && Input.GetMouseButton(0)))
         {
 			pos = Vector3.Lerp(Input.mousePosition, pos, smoothing);

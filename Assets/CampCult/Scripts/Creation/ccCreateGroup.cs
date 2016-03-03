@@ -71,7 +71,7 @@ public class ccCreateGroup : MonoBehaviour {
 			g = Instantiate(obj[(int)Random.Range(0,obj.Length)]) as GameObject;
 		}
 		g.transform.parent = transform;
-		g.transform.localScale = Vector3.one;
+		//g.transform.localScale = Vector3.one;
 		if(onCreate!=null)onCreate(g);
 		return g;
 	}

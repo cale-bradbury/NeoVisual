@@ -15,6 +15,7 @@ public class SDFLavaLamp : ImageEffectBase {
 
 	void Start() {
 		material.SetInt("_ShapeCount", shapeCount);
+        base.Start();
 	}
 
 	// Called by camera to apply image effect

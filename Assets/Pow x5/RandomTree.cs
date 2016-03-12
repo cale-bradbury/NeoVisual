@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class RandomTree : MonoBehaviour {
+public class RandomTree : ccEventBase {
 
     public GameObject trunk;
     public GameObject[] branches;
@@ -10,23 +10,29 @@ public class RandomTree : MonoBehaviour {
     GameObject[] b;
     GameObject t;
 
-	// Use this for initialization
-	void OnEnable () {
+    // Use this for initialization
+    protected override void OnEnable()
+    {
+        base.OnEnable();
         Create();
+    }
+
+    void Start()
+    {
         t = Instantiate<GameObject>(trunk);
         t.transform.parent = transform;
         t.transform.localPosition = Vector3.zero;
-	}
-    int c = 0;
-    void Update()
-    {
-        c++;
-        if(c%100==0)
-            Create();
     }
-	
-	// Update is called once per frame
-	void Create () {
+
+    protected override void OnEvent()
+    {
+        base.OnEvent();
+        Create();
+    }
+
+
+    // Update is called once per frame
+    void Create () {
         if (b != null)
             OnDestroy();
         int num = Random.Range(minBranches, maxBranches);

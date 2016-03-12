@@ -147,6 +147,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 104856097}
   - 114: {fileID: 104856098}
+  - 114: {fileID: 104856099}
   m_Layer: 0
   m_Name: TreeRing (4)
   m_TagString: Untagged
@@ -186,6 +187,31 @@ MonoBehaviour:
   direction: 1
   radius: 20
   phase: 0
+--- !u!114 &104856099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 104856096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7c6792a04cef3145887364d5c3f7b01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  output:
+    type: 0
+    types:
+    - System.Single
+    - System.Int32
+    - UnityEngine.Vector2
+    - UnityEngine.Vector3
+    - UnityEngine.Vector4
+    obj: {fileID: 1725236888}
+    varName: phase
+    isMat: 0
+    isVector: 0
+    index: 0
+  speed: 0.5
 --- !u!1 &729461181
 GameObject:
   m_ObjectHideFlags: 0
@@ -2166,6 +2192,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1014114882}
   - 114: {fileID: 1014114883}
+  - 114: {fileID: 1014114884}
   m_Layer: 0
   m_Name: TreeRing (3)
   m_TagString: Untagged
@@ -2205,6 +2232,31 @@ MonoBehaviour:
   direction: 1
   radius: 18
   phase: 0
+--- !u!114 &1014114884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1014114881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7c6792a04cef3145887364d5c3f7b01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  output:
+    type: 0
+    types:
+    - System.Single
+    - System.Int32
+    - UnityEngine.Vector2
+    - UnityEngine.Vector3
+    - UnityEngine.Vector4
+    obj: {fileID: 1725236888}
+    varName: phase
+    isMat: 0
+    isVector: 0
+    index: 0
+  speed: 0.5
 --- !u!1 &1349503475
 GameObject:
   m_ObjectHideFlags: 0
@@ -2271,6 +2323,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1375880356}
   - 114: {fileID: 1375880355}
+  - 114: {fileID: 1375880357}
   m_Layer: 0
   m_Name: TreeRing
   m_TagString: Untagged
@@ -2310,6 +2363,31 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1728823186}
   m_RootOrder: 0
+--- !u!114 &1375880357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1375880354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7c6792a04cef3145887364d5c3f7b01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  output:
+    type: 0
+    types:
+    - System.Single
+    - System.Int32
+    - UnityEngine.Vector2
+    - UnityEngine.Vector3
+    - UnityEngine.Vector4
+    obj: {fileID: 1725236888}
+    varName: phase
+    isMat: 0
+    isVector: 0
+    index: 0
+  speed: 0.5
 --- !u!1 &1455050683
 GameObject:
   m_ObjectHideFlags: 0
@@ -2380,6 +2458,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1705791841}
   - 114: {fileID: 1705791842}
+  - 114: {fileID: 1705791843}
   m_Layer: 0
   m_Name: TreeRing (5)
   m_TagString: Untagged
@@ -2419,6 +2498,31 @@ MonoBehaviour:
   direction: 1
   radius: 22
   phase: 0
+--- !u!114 &1705791843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1705791840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7c6792a04cef3145887364d5c3f7b01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  output:
+    type: 0
+    types:
+    - System.Single
+    - System.Int32
+    - UnityEngine.Vector2
+    - UnityEngine.Vector3
+    - UnityEngine.Vector4
+    obj: {fileID: 1725236888}
+    varName: phase
+    isMat: 0
+    isVector: 0
+    index: 0
+  speed: 0.5
 --- !u!1 &1725236886
 GameObject:
   m_ObjectHideFlags: 0
@@ -2428,6 +2532,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1725236887}
   - 114: {fileID: 1725236888}
+  - 114: {fileID: 1725236889}
   m_Layer: 0
   m_Name: TreeRing (6)
   m_TagString: Untagged
@@ -2467,6 +2572,31 @@ MonoBehaviour:
   direction: 1
   radius: 24
   phase: 0
+--- !u!114 &1725236889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1725236886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7c6792a04cef3145887364d5c3f7b01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  output:
+    type: 0
+    types:
+    - System.Single
+    - System.Int32
+    - UnityEngine.Vector2
+    - UnityEngine.Vector3
+    - UnityEngine.Vector4
+    obj: {fileID: 1725236888}
+    varName: phase
+    isMat: 0
+    isVector: 0
+    index: 0
+  speed: 0.5
 --- !u!1 &1728823185
 GameObject:
   m_ObjectHideFlags: 0
@@ -2859,6 +2989,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1918728944}
   - 114: {fileID: 1918728945}
+  - 114: {fileID: 1918728946}
   m_Layer: 0
   m_Name: TreeRing (2)
   m_TagString: Untagged
@@ -2898,6 +3029,31 @@ MonoBehaviour:
   direction: 1
   radius: 16
   phase: 0
+--- !u!114 &1918728946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1918728943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7c6792a04cef3145887364d5c3f7b01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  output:
+    type: 0
+    types:
+    - System.Single
+    - System.Int32
+    - UnityEngine.Vector2
+    - UnityEngine.Vector3
+    - UnityEngine.Vector4
+    obj: {fileID: 1725236888}
+    varName: phase
+    isMat: 0
+    isVector: 0
+    index: 0
+  speed: 0.5
 --- !u!1 &1971131029
 GameObject:
   m_ObjectHideFlags: 0
@@ -2907,6 +3063,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1971131030}
   - 114: {fileID: 1971131031}
+  - 114: {fileID: 1971131032}
   m_Layer: 0
   m_Name: TreeRing (1)
   m_TagString: Untagged
@@ -2946,3 +3103,28 @@ MonoBehaviour:
   direction: 1
   radius: 14
   phase: 0
+--- !u!114 &1971131032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1971131029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7c6792a04cef3145887364d5c3f7b01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  output:
+    type: 0
+    types:
+    - System.Single
+    - System.Int32
+    - UnityEngine.Vector2
+    - UnityEngine.Vector3
+    - UnityEngine.Vector4
+    obj: {fileID: 1725236888}
+    varName: phase
+    isMat: 0
+    isVector: 0
+    index: 0
+  speed: 0.5

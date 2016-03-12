@@ -10,8 +10,9 @@ public class Displacement : ImageEffectBase {
 		Lerp,
 		Add,
 		Mul, 
-        Wtf
-	}
+        Wtf,
+        ColorDodge
+    }
 	public MergeType merge;
     MergeType _merge;
     string[] enums;

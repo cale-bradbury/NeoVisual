@@ -12,7 +12,7 @@ Shader "Camp Cult/Displacement/Displacement" {
 				Fog { Mode off }
 
 		CGPROGRAM
-		#pragma multi_compile Lerp Add Mul Wtf
+		#pragma multi_compile Lerp Add Mul Wtf ColorDodge
 		#pragma multi_compile radial nradial
 		#pragma multi_compile invert ninvert
 		#pragma vertex vert_img
@@ -20,6 +20,7 @@ Shader "Camp Cult/Displacement/Displacement" {
 		#pragma fragmentoption ARB_precision_hint_fastest 
 		#pragma target 3.0
 		#include "UnityCG.cginc"
+		#include "blend.cginc"
 		#define pi 3.14159265359
 
 		uniform sampler2D _MainTex;	//the screen texture
@@ -53,7 +54,10 @@ Shader "Camp Cult/Displacement/Displacement" {
 			float2 t = uv;
 			t.x = cos(angle)*f.r*_x.x;
 			t.y = sin(angle)*f.r*_x.y;
-			float4 s = tex2D(_Last,uv - t);
+			float4 s = tex2D(_Last,uv - t); 
+#ifdef ColorDodge
+			return lerp(c, float4(colorDodge(c, s), 1.), _x.w);
+#endif
 			#ifdef Add
 				return max(c,s - (1.0 - _x.w));
 			#endif

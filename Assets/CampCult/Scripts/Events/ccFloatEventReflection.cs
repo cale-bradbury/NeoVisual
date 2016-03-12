@@ -23,7 +23,7 @@ public class ccFloatEventReflection : ccFloatEventBase {
 		if (round) {
 			t = Mathf.Round(f);
 		} else {
-			t = Mathf.Round(f);
+			t = f;
 		}
 	}
 

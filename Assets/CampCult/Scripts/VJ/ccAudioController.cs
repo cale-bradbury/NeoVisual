@@ -60,7 +60,6 @@ public class ccAudioController : MonoBehaviour {
 		}
         float f = 0;
         max = Mathf.Max(1, max*.99f);
-        Debug.Log(max);
         for (int i = 0; i<FFT.Length;i++){
             f = spectrumCurve.Evaluate((float)i / FFT.Length)*(float)msg.Values[i];
             max = Mathf.Max(f, max);

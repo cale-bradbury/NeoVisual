@@ -32,9 +32,9 @@ void draw(){
     float f = fft.getBand(i*4);
    // f+=fft.getBand((i+1)*4);
    // f*=.5;
-    f*=(i*.8+1);
+    f*=i*.8;
     msg.add( f);
-    line( i, 256, i, 256 - f*8 );     
+    line( i, 256, i, 256 - f );     
   }
   
   osc.send(msg,net);

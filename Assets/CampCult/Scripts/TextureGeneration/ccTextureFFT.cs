@@ -18,13 +18,13 @@ public class ccTextureFFT : MonoBehaviour{
 	// Update is called once per frame
 	void Update (){
 		float[] f = ccAudioController.FFT;
-		float max = getMax (f);
+		//float max = getMax (f);
 		if (tex.width != f.Length||tex.height!=height)
 			OnEnable ();
 		Color[] c = tex.GetPixels (0, 0, tex.width, tex.height - 1); 
 		tex.SetPixels (0, 1, tex.width, tex.height - 1, c);
 		for(int i = 0; i< tex.width; i++){
-			float j = f[i]/max;
+            float j = f[i];//max;
 			tex.SetPixel(i,0,new Color(j,j,j));
 		}
 		tex.Apply ();

@@ -11,6 +11,7 @@ public class ccAudioController : MonoBehaviour {
 	public int SendToPort = 12000;
 	public int ListenerPort = 32000;
 	public string address = "/vj";
+    float max = 1;
 	
 	public AudioSource source;
 	public int numSamples;
@@ -19,6 +20,7 @@ public class ccAudioController : MonoBehaviour {
 	public float lerp = .5f;
 	public AnimationCurve spectrumCurve;
 	public float spectrumMul = 1;
+    public float spectrumPow = 2;
 
 	UDPPacketIO udp;
 	Osc handler;
@@ -43,7 +45,7 @@ public class ccAudioController : MonoBehaviour {
 			float[] n = new float[FFT.Length];
 			source.GetSpectrumData (n, channel, FFTWindow);
 			for(int i = 0; i< FFT.Length;i++){
-				FFT[i] = Mathf.Lerp(FFT[i],spectrumCurve.Evaluate((float)i/FFT.Length)*n[i]*spectrumMul,lerp);
+				FFT[i] = Mathf.Lerp(FFT[i],spectrumCurve.Evaluate((float)i/FFT.Length)*(n[i]) *spectrumMul,lerp);
 			}
 		}
 	}
@@ -56,8 +58,13 @@ public class ccAudioController : MonoBehaviour {
 				FFT[i] = 0;
 			}
 		}
-		for(int i = 0; i<FFT.Length;i++){
-			FFT[i] = Mathf.Lerp(FFT[i],spectrumCurve.Evaluate((float)i/FFT.Length)*((float)msg.Values[i])*spectrumMul,lerp);
+        float f = 0;
+        max = Mathf.Max(1, max*.99f);
+        Debug.Log(max);
+        for (int i = 0; i<FFT.Length;i++){
+            f = spectrumCurve.Evaluate((float)i / FFT.Length)*(float)msg.Values[i];
+            max = Mathf.Max(f, max);
+            FFT[i] = Mathf.Lerp(FFT[i],Mathf.Pow((f/max)*spectrumMul, spectrumPow),lerp);
 		}
 
 	}

@@ -9,7 +9,7 @@ public class CCReflectFloat : CCReflector<float>
 	string[] s;
 
 	public CCReflectFloat(){
-		types = new string[]{typeof(float).ToString(),typeof(Vector2).ToString(),typeof(Vector3).ToString(),typeof(Vector4).ToString()};
+		types = new string[]{ typeof(float).ToString(), typeof(System.Int32).ToString(), typeof(Vector2).ToString(),typeof(Vector3).ToString(),typeof(Vector4).ToString()};
 	}
 
 	public override void ReloadField (){
@@ -58,8 +58,15 @@ public class CCReflectFloat : CCReflector<float>
 			if (isMat) {
 				((Material)obj).SetFloat(varName,(float)value);
 				return;
-			}else
-				base.SetValue (value);
+            }
+            else
+            {
+                if (GetValue().GetType() == typeof(System.Int32))
+                    base.SetValue(System.Int32.Parse("" + value));
+                else
+                    base.SetValue(value);
+            }
+				
 		}else {
 			string t = varName;
 			_varName = varName = s[0];

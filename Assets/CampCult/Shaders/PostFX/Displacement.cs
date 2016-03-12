@@ -11,7 +11,13 @@ public class Displacement : ImageEffectBase {
 		Add,
 		Mul, 
         Wtf,
-        ColorDodge
+        ColorDodge,
+        LighterColor,
+        VividLight,
+        HardMix,
+        Difference,
+        Subtract,
+        Divide
     }
 	public MergeType merge;
     MergeType _merge;

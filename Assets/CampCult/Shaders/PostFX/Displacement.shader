@@ -12,9 +12,9 @@ Shader "Camp Cult/Displacement/Displacement" {
 				Fog { Mode off }
 
 		CGPROGRAM
-		#pragma multi_compile Lerp Add Mul Wtf ColorDodge
 		#pragma multi_compile radial nradial
 		#pragma multi_compile invert ninvert
+#pragma multi_compile Lerp Add Mul Wtf ColorDodge LighterColor VividLight HardMix Difference Subtract Divide
 		#pragma vertex vert_img
 		#pragma fragment frag
 		#pragma fragmentoption ARB_precision_hint_fastest 
@@ -54,9 +54,28 @@ Shader "Camp Cult/Displacement/Displacement" {
 			float2 t = uv;
 			t.x = cos(angle)*f.r*_x.x;
 			t.y = sin(angle)*f.r*_x.y;
-			float4 s = tex2D(_Last,uv - t); 
+			float4 s = tex2D(_Last,uv - t);
+
 #ifdef ColorDodge
 			return lerp(c, float4(colorDodge(c, s), 1.), _x.w);
+#endif
+#ifdef Divide
+			return lerp(c, float4(divide(c.rgb, s.rgb), 1.), _x.w); return lerp(c, float4(colorDodge(c, s), 1.), _x.w);
+#endif
+#ifdef Subtract
+			return lerp(c, float4(subtract(c.rgb, s.rgb), 1.), _x.w); return lerp(c, float4(colorDodge(c, s), 1.), _x.w);
+#endif
+#ifdef Difference
+			return lerp(c, float4(difference(c.rgb, s.rgb), 1.), _x.w); return lerp(c, float4(colorDodge(c, s), 1.), _x.w);
+#endif
+#ifdef HardMix
+			return lerp(c, float4(hardMix(c.rgb, s.rgb), 1.), _x.w); return lerp(c, float4(colorDodge(c, s), 1.), _x.w);
+#endif
+#ifdef VividLight
+			return lerp(c, float4(vividLight(c.rgb, s.rgb), 1.), _x.w); return lerp(c, float4(colorDodge(c, s), 1.), _x.w);
+#endif
+#ifdef LighterColor
+			return lerp(c, float4(lighterColor(c, s), 1.), _x.w); return lerp(c, float4(colorDodge(c, s), 1.), _x.w);
 #endif
 			#ifdef Add
 				return max(c,s - (1.0 - _x.w));

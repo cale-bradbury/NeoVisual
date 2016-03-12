@@ -2,7 +2,7 @@
 	Properties {
 		_Color ("Color", Color) = (1,1,1,1)
 		_MainTex ("Albedo (RGB)", 2D) = "white" {}
-		_Vert("Vertex Displacement Tex", 2D) = "white"{}
+		_Vert("Vertex Displacement Tex", 2D) = "black"{}
 		_Glossiness ("Smoothness", Range(0,1)) = 0.5
 		_Metallic ("Metallic", Range(0,1)) = 0.0
 		_VertDisplacement("Vert Displacement Amnt", Float) = 0.0
@@ -35,7 +35,7 @@
 			float4 world = mul(_Object2World, v.vertex);
 			float2 uv = float2(
 				abs(fmod(atan2(world.x, world.z) / 3.1415 + 1., 2.) - 1.),
-				 1.-abs(fmod(abs(world.y*.5), 2.) - 1.)
+				0.// abs(fmod(abs(world.y*.5), 2.) - 1.)
 			);
 			float4 val = tex2Dlod(_Vert,  float4(uv.xy, 1., 1.));
 			v.vertex.xyz += v.normal * val.r*_VertDisplacement;

@@ -21,6 +21,7 @@ public class ccAudioController : MonoBehaviour {
 	public AnimationCurve spectrumCurve;
 	public float spectrumMul = 1;
     public float spectrumPow = 2;
+    public float falloffRate = .01f;
 
 	UDPPacketIO udp;
 	Osc handler;
@@ -59,12 +60,12 @@ public class ccAudioController : MonoBehaviour {
 			}
 		}
         float f = 0;
-        max = Mathf.Max(1, max*.99f);
+        max = Mathf.Max(10, max-falloffRate);
         for (int i = 0; i<FFT.Length;i++){
             f = spectrumCurve.Evaluate((float)i / FFT.Length)*(float)msg.Values[i];
             max = Mathf.Max(f, max);
-            FFT[i] = Mathf.Lerp(FFT[i],Mathf.Pow((f/max)*spectrumMul, spectrumPow),lerp);
-		}
+            FFT[i] = Mathf.Lerp(FFT[i], Mathf.Pow((f / max) * spectrumMul, spectrumPow), lerp);
+        }
 
 	}
 

@@ -29,10 +29,10 @@ void draw(){
   fft.forward(in.mix);
   OscMessage msg = new OscMessage ("/vj");
   for(int i = 0; i< fft.specSize()/4-4;i++){
-    float f = fft.getBand(i*4);
+    float f = fft.getBand((i+2)*2);
    // f+=fft.getBand((i+1)*4);
    // f*=.5;
-    f*=i*.8;
+    //f*=i*.8;
     msg.add( f);
     line( i, 256, i, 256 - f );     
   }

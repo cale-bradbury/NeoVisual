@@ -25,7 +25,7 @@ RenderSettings:
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 0
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 3ab90dfe2dd9b5447a6a50c2455ad20f, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -94,6 +94,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 70742996}
   - 114: {fileID: 70742995}
+  - 114: {fileID: 70742998}
+  - 114: {fileID: 70742997}
   m_Layer: 0
   m_Name: Camera Holder
   m_TagString: Untagged
@@ -138,6 +140,62 @@ Transform:
   - {fileID: 1803719721}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &70742997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 70742994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe8716b9ae00d324cbf42f9908773816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: k4
+  minValue: 0.1
+  maxValue: 4
+  obj:
+    type: 0
+    types:
+    - System.Single
+    - System.Int32
+    - UnityEngine.Vector2
+    - UnityEngine.Vector3
+    - UnityEngine.Vector4
+    obj: {fileID: 70742996}
+    varName: position-y
+    isMat: 0
+    isVector: 0
+    index: 0
+  round: 0
+--- !u!114 &70742998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 70742994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe8716b9ae00d324cbf42f9908773816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: k3
+  minValue: -60
+  maxValue: 60
+  obj:
+    type: 0
+    types:
+    - System.Single
+    - System.Int32
+    - UnityEngine.Vector2
+    - UnityEngine.Vector3
+    - UnityEngine.Vector4
+    obj: {fileID: 70742995}
+    varName: speed
+    isMat: 0
+    isVector: 0
+    index: 0
+  round: 0
 --- !u!1 &104856096
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,6 +244,48 @@ MonoBehaviour:
   direction: 1
   radius: 20
   phase: 0
+--- !u!1001 &710837858
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: d52a1bcfe4f990d4ea55454b7426cdbd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d52a1bcfe4f990d4ea55454b7426cdbd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d52a1bcfe4f990d4ea55454b7426cdbd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d52a1bcfe4f990d4ea55454b7426cdbd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d52a1bcfe4f990d4ea55454b7426cdbd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d52a1bcfe4f990d4ea55454b7426cdbd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d52a1bcfe4f990d4ea55454b7426cdbd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d52a1bcfe4f990d4ea55454b7426cdbd, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: d52a1bcfe4f990d4ea55454b7426cdbd, type: 3}
+  m_IsPrefabParent: 0
 --- !u!1 &729461181
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,6 +295,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 729461183}
   - 114: {fileID: 729461182}
+  - 114: {fileID: 729461184}
+  - 114: {fileID: 729461185}
   m_Layer: 0
   m_Name: SoundBoy
   m_TagString: Untagged
@@ -222,7 +324,7 @@ MonoBehaviour:
   numSamples: 0
   channel: 0
   FFTWindow: 0
-  lerp: 0.5
+  lerp: 0.3
   spectrumCurve:
     serializedVersion: 2
     m_Curve:
@@ -254,6 +356,283 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1803719721}
   m_RootOrder: 0
+--- !u!114 &729461184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 729461181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe8716b9ae00d324cbf42f9908773816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: k1
+  minValue: 0
+  maxValue: 5
+  obj:
+    type: 0
+    types:
+    - System.Single
+    - System.Int32
+    - UnityEngine.Vector2
+    - UnityEngine.Vector3
+    - UnityEngine.Vector4
+    obj: {fileID: 729461182}
+    varName: spectrumMul
+    isMat: 0
+    isVector: 0
+    index: 0
+  round: 0
+--- !u!114 &729461185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 729461181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe8716b9ae00d324cbf42f9908773816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: k2
+  minValue: 0.5
+  maxValue: 3
+  obj:
+    type: 0
+    types:
+    - System.Single
+    - System.Int32
+    - UnityEngine.Vector2
+    - UnityEngine.Vector3
+    - UnityEngine.Vector4
+    obj: {fileID: 729461182}
+    varName: spectrumPow
+    isMat: 0
+    isVector: 0
+    index: 0
+  round: 0
+--- !u!1 &858910537
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 858910541}
+  - 33: {fileID: 858910540}
+  - 23: {fileID: 858910538}
+  - 114: {fileID: 858910542}
+  - 114: {fileID: 858910539}
+  - 114: {fileID: 858910543}
+  m_Layer: 0
+  m_Name: SkySphere
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!23 &858910538
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 858910537}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 3ab90dfe2dd9b5447a6a50c2455ad20f, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!114 &858910539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 858910537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe8716b9ae00d324cbf42f9908773816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: k16
+  minValue: -1
+  maxValue: 1
+  obj:
+    type: 0
+    types:
+    - System.Single
+    - System.Int32
+    - UnityEngine.Vector2
+    - UnityEngine.Vector3
+    - UnityEngine.Vector4
+    obj: {fileID: 858910542}
+    varName: speed
+    isMat: 0
+    isVector: 0
+    index: 0
+  round: 0
+--- !u!33 &858910540
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 858910537}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &858910541
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 858910537}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071067}
+  m_LocalPosition: {x: 0, y: -54.21, z: 0}
+  m_LocalScale: {x: 200, y: 200, z: 200}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+--- !u!114 &858910542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 858910537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7c6792a04cef3145887364d5c3f7b01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  output:
+    type: 0
+    types:
+    - System.Single
+    - System.Int32
+    - UnityEngine.Vector2
+    - UnityEngine.Vector3
+    - UnityEngine.Vector4
+    obj: {fileID: 2100000, guid: 3ab90dfe2dd9b5447a6a50c2455ad20f, type: 2}
+    varName: _Phase
+    isMat: 1
+    isVector: 0
+    index: 0
+  speed: 0
+--- !u!114 &858910543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 858910537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe8716b9ae00d324cbf42f9908773816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: k15
+  minValue: 0
+  maxValue: 0.5
+  obj:
+    type: 0
+    types:
+    - System.Single
+    - System.Int32
+    - UnityEngine.Vector2
+    - UnityEngine.Vector3
+    - UnityEngine.Vector4
+    obj: {fileID: 2100000, guid: 3ab90dfe2dd9b5447a6a50c2455ad20f, type: 2}
+    varName: _Strength
+    isMat: 1
+    isVector: 0
+    index: 0
+  round: 0
+--- !u!1 &961414961
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 961414965}
+  - 33: {fileID: 961414964}
+  - 64: {fileID: 961414963}
+  - 23: {fileID: 961414962}
+  m_Layer: 0
+  m_Name: Plane
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!23 &961414962
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 961414961}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!64 &961414963
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 961414961}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!33 &961414964
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 961414961}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &961414965
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 961414961}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 500, y: 500, z: 500}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
 --- !u!1 &1014114881
 GameObject:
   m_ObjectHideFlags: 0
@@ -2212,6 +2591,10 @@ MonoBehaviour:
     varName: _Vert
     isMat: 1
   height: 128
+--- !u!4 &1157781359 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400000, guid: e3a61237e4303384c8d815a18118a3f6, type: 3}
+  m_PrefabInternal: {fileID: 1157781154}
 --- !u!1 &1349503475
 GameObject:
   m_ObjectHideFlags: 0
@@ -2266,7 +2649,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonCount: 17
-  knobCount: 16
+  knobCount: 17
   buttonEventPrefix: b
   knobEventPrefix: k
 --- !u!1 &1375880354
@@ -2517,10 +2900,12 @@ GameObject:
   m_Component:
   - 4: {fileID: 1782776505}
   - 114: {fileID: 1782776509}
-  - 114: {fileID: 1782776508}
   - 114: {fileID: 1782776507}
   - 114: {fileID: 1782776506}
+  - 114: {fileID: 1782776512}
+  - 114: {fileID: 1782776511}
   - 114: {fileID: 1782776510}
+  - 114: {fileID: 1782776508}
   m_Layer: 0
   m_Name: midiDisplacement
   m_TagString: Untagged
@@ -2539,7 +2924,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1803719721}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!114 &1782776506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2551,7 +2936,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe8716b9ae00d324cbf42f9908773816, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventName: k8
+  eventName: k6
   minValue: -0.1
   maxValue: 0.1
   obj:
@@ -2579,7 +2964,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe8716b9ae00d324cbf42f9908773816, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventName: k7
+  eventName: k6
   minValue: -0.1
   maxValue: 0.1
   obj:
@@ -2602,28 +2987,13 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1782776504}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe8716b9ae00d324cbf42f9908773816, type: 3}
+  m_Script: {fileID: 11500000, guid: 37b5e9175d2f6e9498e24c6eb64dc11d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventName: k6
-  minValue: 0
-  maxValue: 2
-  obj:
-    type: 0
-    types:
-    - System.Single
-    - System.Int32
-    - UnityEngine.Vector2
-    - UnityEngine.Vector3
-    - UnityEngine.Vector4
-    obj: {fileID: 1803719724}
-    varName: angle
-    isMat: 0
-    isVector: 0
-    index: 0
-  round: 0
+  eventName: b10
+  blendMode: 8
 --- !u!114 &1782776509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2660,26 +3030,37 @@ MonoBehaviour:
   m_GameObject: {fileID: 1782776504}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe8716b9ae00d324cbf42f9908773816, type: 3}
+  m_Script: {fileID: 11500000, guid: 37b5e9175d2f6e9498e24c6eb64dc11d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventName: k13
-  minValue: 0
-  maxValue: 1
-  obj:
-    type: 0
-    types:
-    - System.Single
-    - System.Int32
-    - UnityEngine.Vector2
-    - UnityEngine.Vector3
-    - UnityEngine.Vector4
-    obj: {fileID: 1803719725}
-    varName: hue
-    isMat: 0
-    isVector: 0
-    index: 0
-  round: 0
+  eventName: b9
+  blendMode: 9
+--- !u!114 &1782776511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1782776504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37b5e9175d2f6e9498e24c6eb64dc11d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: b2
+  blendMode: 1
+--- !u!114 &1782776512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1782776504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37b5e9175d2f6e9498e24c6eb64dc11d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: b1
+  blendMode: 0
 --- !u!1 &1803719716
 GameObject:
   m_ObjectHideFlags: 0
@@ -2696,6 +3077,7 @@ GameObject:
   - 114: {fileID: 1803719724}
   - 114: {fileID: 1803719725}
   - 114: {fileID: 1803719723}
+  - 114: {fileID: 1803719726}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2770,6 +3152,7 @@ Transform:
   m_Children:
   - {fileID: 729461183}
   - {fileID: 1349503476}
+  - {fileID: 1840677455}
   - {fileID: 1782776505}
   m_Father: {fileID: 70742996}
   m_RootOrder: 0
@@ -2857,6 +3240,74 @@ MonoBehaviour:
   hue: 0
   sat: 1
   val: 1
+--- !u!114 &1803719726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1803719716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a46be0a23ae9bd469642eb2b7e657b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lookAt: {fileID: 1157781359}
+--- !u!1 &1840677454
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1840677455}
+  - 114: {fileID: 1840677456}
+  m_Layer: 0
+  m_Name: midiColor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1840677455
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1840677454}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.07661915, y: 1.2014613, z: 7.211954}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1803719721}
+  m_RootOrder: 2
+--- !u!114 &1840677456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1840677454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe8716b9ae00d324cbf42f9908773816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: k13
+  minValue: 0
+  maxValue: 1
+  obj:
+    type: 0
+    types:
+    - System.Single
+    - System.Int32
+    - UnityEngine.Vector2
+    - UnityEngine.Vector3
+    - UnityEngine.Vector4
+    obj: {fileID: 1803719725}
+    varName: hue
+    isMat: 0
+    isVector: 0
+    index: 0
+  round: 0
 --- !u!1 &1918728943
 GameObject:
   m_ObjectHideFlags: 0

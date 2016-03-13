@@ -6,11 +6,11 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: No Name
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Name: SkySphere
+  m_Shader: {fileID: 4800000, guid: 852ec29b312249844bfdfbdaced77054, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2000
   stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
@@ -19,8 +19,8 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
+          m_Texture: {fileID: 2800000, guid: 45a45fdcd8ea5de49ab5f210ea539623, type: 3}
+          m_Scale: {x: 2, y: 2}
           m_Offset: {x: 0, y: 0}
       data:
         first:
@@ -93,6 +93,18 @@ Material:
         second: 0.5
       data:
         first:
+          name: _Strength
+        second: 0.29921266
+      data:
+        first:
+          name: _Phase
+        second: 97.24065
+      data:
+        first:
+          name: _Taps
+        second: 6
+      data:
+        first:
           name: _Parallax
         second: 0.02
       data:
@@ -135,4 +147,16 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: 1, g: 0, b: 0, a: 1}
+        second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _Color1
+        second: {r: 0.25118947, g: 0.74264705, b: 0.55962145, a: 1}
+      data:
+        first:
+          name: _Color2
+        second: {r: 1, g: 0, b: 0.47586203, a: 1}
+      data:
+        first:
+          name: _ColorData
+        second: {r: 0, g: 31.7, b: 0, a: 0}

@@ -22,7 +22,7 @@ public class MidiToEvent : MonoBehaviour {
 	void CheckButton(){
 		for (int i = 0; i< buttonCount; i++) {
 			if(MidiInput.GetKeyDown(i)){
-				Messenger.Broadcast(buttonEventPrefix+i);
+				Messenger.Broadcast(buttonEventPrefix+(i+1));
 			}
 		}
 	}

@@ -25,9 +25,10 @@ public class ccAudioController : MonoBehaviour {
 
 	UDPPacketIO udp;
 	Osc handler;
-	public static float[] FFT = new float[1];
+    public static float[] FFT = new float[1];
+    static float[] temp = new float[1];
 
-	void OnEnable(){
+    void OnEnable(){
 		if (oscMode) {
 			udp = gameObject.AddComponent<UDPPacketIO> ();
 			handler = gameObject.AddComponent<Osc> ();
@@ -36,9 +37,11 @@ public class ccAudioController : MonoBehaviour {
 			handler.init (udp);
 			handler.SetAddressHandler (address, vjValue);
 			FFT = new float[1];
-		} else {
-			FFT = new float[numSamples];
-		}
+            temp = new float[1];
+		} else
+        {
+            FFT = new float[numSamples];
+        }
 	}
 
 	void Update(){
@@ -53,10 +56,13 @@ public class ccAudioController : MonoBehaviour {
 
 	void vjValue(OscMessage msg){
 
-		if (FFT.Length != msg.Values.Count) {
-			FFT = new float[msg.Values.Count];
-			for(int i = 0; i<FFT.Length;i++){
+		if (FFT.Length != msg.Values.Count)
+        {
+            FFT = new float[msg.Values.Count];
+            temp = new float[msg.Values.Count];
+            for (int i = 0; i<FFT.Length;i++){
 				FFT[i] = 0;
+                temp[i] = 0;
 			}
 		}
         float f = 0;
@@ -64,10 +70,14 @@ public class ccAudioController : MonoBehaviour {
         for (int i = 0; i<FFT.Length;i++){
             f = spectrumCurve.Evaluate((float)i / FFT.Length)*(float)msg.Values[i];
             max = Mathf.Max(f, max);
-            FFT[i] = Mathf.Lerp(FFT[i], Mathf.Pow((f / max) * spectrumMul, spectrumPow), lerp);
+            temp[i] = f;
         }
 
-	}
+        for (int i = 0; i < FFT.Length; i++)
+        {
+            FFT[i] = Mathf.Lerp(FFT[i], Mathf.Pow((temp[i] / max) * spectrumMul, spectrumPow), lerp);
+        }
+    }
 
 
 	

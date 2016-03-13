@@ -25,6 +25,7 @@ CGPROGRAM
 #define TAU 6.283
 
 uniform sampler2D _MainTex;
+uniform float4 _MainTex_ST;
 uniform float _Strength;
 uniform float _Phase;
 uniform float _Taps;
@@ -37,12 +38,16 @@ fixed4 frag (v2f_img j) : COLOR
 	float4 c = float(0.).xxxx;
 	#endif
 	float k = 0.;
-	for(float i = 0.; i<TAU;i+=_Taps){
+	j.uv *= _MainTex_ST.xy;
+	j.uv += _MainTex_ST.zw;
+	float t = max(_Taps, .01);
+	for(float i = 0.; i<TAU;i+=t){
 		k++;
+		float4 f = tex2D(_MainTex, abs(fmod(j.uv + float2(cos(i + _Phase), sin(i + _Phase))*_Strength + 4., 2.) - 1.));
 		#ifdef FLYEYE_MIN
-		c = min(c,tex2D(_MainTex,j.uv+float2(cos(i+_Phase),sin(i+_Phase))*_Strength));
+		c = min(c,f);
 		#else
-		c = max(c,tex2D(_MainTex,j.uv+float2(cos(i+_Phase),sin(i+_Phase))*_Strength));
+		c = max(c,f);
 		#endif
 	}
 	

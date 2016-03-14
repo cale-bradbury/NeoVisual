@@ -38,8 +38,7 @@ fixed4 frag (v2f_img j) : COLOR
 	float4 c = float(0.).xxxx;
 	#endif
 	float k = 0.;
-	j.uv *= _MainTex_ST.xy;
-	j.uv += _MainTex_ST.zw;
+	j.uv = 1.0 - j.uv;
 	float t = max(_Taps, .01);
 	for(float i = 0.; i<TAU;i+=t){
 		k++;

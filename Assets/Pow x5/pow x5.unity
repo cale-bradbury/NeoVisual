@@ -196,6 +196,138 @@ MonoBehaviour:
     isVector: 0
     index: 0
   round: 0
+--- !u!1001 &466401884
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 404852, guid: cd9fc636efd20074ba26d65f5db46f40, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 404852, guid: cd9fc636efd20074ba26d65f5db46f40, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 404852, guid: cd9fc636efd20074ba26d65f5db46f40, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 404852, guid: cd9fc636efd20074ba26d65f5db46f40, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 404852, guid: cd9fc636efd20074ba26d65f5db46f40, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 404852, guid: cd9fc636efd20074ba26d65f5db46f40, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 404852, guid: cd9fc636efd20074ba26d65f5db46f40, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: 404852, guid: cd9fc636efd20074ba26d65f5db46f40, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444646, guid: cd9fc636efd20074ba26d65f5db46f40, type: 2}
+      propertyPath: obj.Array.data[0]
+      value: 
+      objectReference: {fileID: 173066, guid: 00bbcf9803f467e42bbccd151d9ced23, type: 2}
+    - target: {fileID: 11421356, guid: cd9fc636efd20074ba26d65f5db46f40, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444646, guid: cd9fc636efd20074ba26d65f5db46f40, type: 2}
+      propertyPath: distance.x
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444646, guid: cd9fc636efd20074ba26d65f5db46f40, type: 2}
+      propertyPath: distance.y
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444646, guid: cd9fc636efd20074ba26d65f5db46f40, type: 2}
+      propertyPath: distance.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11421356, guid: cd9fc636efd20074ba26d65f5db46f40, type: 2}
+      propertyPath: output.obj
+      value: 
+      objectReference: {fileID: 596402648}
+    - target: {fileID: 11421356, guid: cd9fc636efd20074ba26d65f5db46f40, type: 2}
+      propertyPath: gradient.key0.rgba
+      value: 2164260863
+      objectReference: {fileID: 0}
+    - target: {fileID: 11421356, guid: cd9fc636efd20074ba26d65f5db46f40, type: 2}
+      propertyPath: gradient.key1.rgba
+      value: 2147549179
+      objectReference: {fileID: 0}
+    - target: {fileID: 11421356, guid: cd9fc636efd20074ba26d65f5db46f40, type: 2}
+      propertyPath: gradient.key2.rgba
+      value: 427519
+      objectReference: {fileID: 0}
+    - target: {fileID: 11421356, guid: cd9fc636efd20074ba26d65f5db46f40, type: 2}
+      propertyPath: gradient.key3.rgba
+      value: 7471598
+      objectReference: {fileID: 0}
+    - target: {fileID: 11421356, guid: cd9fc636efd20074ba26d65f5db46f40, type: 2}
+      propertyPath: gradient.ctime1
+      value: 27756
+      objectReference: {fileID: 0}
+    - target: {fileID: 11421356, guid: cd9fc636efd20074ba26d65f5db46f40, type: 2}
+      propertyPath: gradient.ctime2
+      value: 43947
+      objectReference: {fileID: 0}
+    - target: {fileID: 11421356, guid: cd9fc636efd20074ba26d65f5db46f40, type: 2}
+      propertyPath: gradient.ctime3
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 11421356, guid: cd9fc636efd20074ba26d65f5db46f40, type: 2}
+      propertyPath: gradient.m_NumColorKeys
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444646, guid: cd9fc636efd20074ba26d65f5db46f40, type: 2}
+      propertyPath: count
+      value: 100
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: cd9fc636efd20074ba26d65f5db46f40, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1 &596402643 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 172448, guid: cd9fc636efd20074ba26d65f5db46f40, type: 2}
+  m_PrefabInternal: {fileID: 466401884}
+--- !u!114 &596402648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 596402643}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a90ff5f928d018046aa37127192401a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseSpeed: 0.1
+  randomSpeed: 0.2
+  color: {r: 0.61379313, g: 1, b: 0, a: 0}
+--- !u!114 &596402649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 596402643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7966f79f944f9f46b243876cd4a9813, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  angle: 1.5707
 --- !u!1001 &710837858
 Prefab:
   m_ObjectHideFlags: 0
@@ -559,7 +691,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 38f137d55c67b0e4a9744d14d451b9d9, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -2742,6 +2874,8 @@ GameObject:
   - 114: {fileID: 1782776511}
   - 114: {fileID: 1782776510}
   - 114: {fileID: 1782776508}
+  - 114: {fileID: 1782776513}
+  - 114: {fileID: 1782776514}
   m_Layer: 0
   m_Name: midiDisplacement
   m_TagString: Untagged
@@ -2897,6 +3031,62 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eventName: b1
   blendMode: 0
+--- !u!114 &1782776513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1782776504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe8716b9ae00d324cbf42f9908773816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: k7
+  minValue: 0
+  maxValue: 0.1
+  obj:
+    type: 0
+    types:
+    - System.Single
+    - System.Int32
+    - UnityEngine.Vector2
+    - UnityEngine.Vector3
+    - UnityEngine.Vector4
+    obj: {fileID: 1803719728}
+    varName: strength
+    isMat: 0
+    isVector: 0
+    index: 0
+  round: 0
+--- !u!114 &1782776514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1782776504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe8716b9ae00d324cbf42f9908773816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: k8
+  minValue: -1
+  maxValue: 1
+  obj:
+    type: 0
+    types:
+    - System.Single
+    - System.Int32
+    - UnityEngine.Vector2
+    - UnityEngine.Vector3
+    - UnityEngine.Vector4
+    obj: {fileID: 1803719728}
+    varName: phasePerSecond
+    isMat: 0
+    isVector: 0
+    index: 0
+  round: 0
 --- !u!1 &1803719716
 GameObject:
   m_ObjectHideFlags: 0
@@ -2912,6 +3102,7 @@ GameObject:
   - 114: {fileID: 1803719722}
   - 114: {fileID: 1803719724}
   - 114: {fileID: 1803719725}
+  - 114: {fileID: 1803719728}
   - 114: {fileID: 1803719723}
   - 114: {fileID: 1803719726}
   - 114: {fileID: 1803719727}
@@ -3101,8 +3292,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shader: {fileID: 4800000, guid: f996675e0fecfc74d8d4c4ba58f93f38, type: 3}
-  textureRamp: {fileID: 0}
+  textureRamp: {fileID: 2800000, guid: f5508238c122f094296f9071ab9476f7, type: 3}
   offset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1803719728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1803719716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44540f2d61a1b1f4fa6115e6e519236e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shader: {fileID: 4800000, guid: fb168e632a70c1f4da307b5c58b6d511, type: 3}
+  strength: 0
+  phase: 40.525627
+  phasePerSecond: 1
+  taps: 6
+  min: 0
 --- !u!1 &1840677454
 GameObject:
   m_ObjectHideFlags: 0
@@ -3112,13 +3320,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 1840677455}
   - 114: {fileID: 1840677456}
-  - 114: {fileID: 1840677460}
-  - 114: {fileID: 1840677459}
-  - 114: {fileID: 1840677458}
-  - 114: {fileID: 1840677457}
   - 114: {fileID: 1840677463}
   - 114: {fileID: 1840677462}
   - 114: {fileID: 1840677461}
+  - 114: {fileID: 1840677457}
   m_Layer: 0
   m_Name: midiColor
   m_TagString: Untagged
@@ -3174,90 +3379,44 @@ MonoBehaviour:
   m_GameObject: {fileID: 1840677454}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6a429d168a0c7d4b8cf58ded83356de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventName: b12
-  tex: {fileID: 2800000, guid: c9a8c2e8a4639e44396e4e3b1264ff9b, type: 3}
-  outTexture:
-    type: {fileID: 0}
-    types:
-    - UnityEngine.Texture
-    - UnityEngine.Texture2D
-    - CCTexture
-    - UnityEngine.RenderTexture
-    obj: {fileID: 1803719727}
-    varName: textureRamp
-    isMat: 0
---- !u!114 &1840677458
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1840677454}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6a429d168a0c7d4b8cf58ded83356de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventName: b11
-  tex: {fileID: 2800000, guid: f5508238c122f094296f9071ab9476f7, type: 3}
-  outTexture:
-    type: {fileID: 0}
-    types:
-    - UnityEngine.Texture
-    - UnityEngine.Texture2D
-    - CCTexture
-    - UnityEngine.RenderTexture
-    obj: {fileID: 1803719727}
-    varName: textureRamp
-    isMat: 0
---- !u!114 &1840677459
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1840677454}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6a429d168a0c7d4b8cf58ded83356de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventName: b4
-  tex: {fileID: 2800000, guid: c0ddd58ff3f212947ad8b28f8764c5b0, type: 3}
-  outTexture:
-    type: {fileID: 0}
-    types:
-    - UnityEngine.Texture
-    - UnityEngine.Texture2D
-    - CCTexture
-    - UnityEngine.RenderTexture
-    obj: {fileID: 1803719727}
-    varName: textureRamp
-    isMat: 0
---- !u!114 &1840677460
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1840677454}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6a429d168a0c7d4b8cf58ded83356de, type: 3}
+  m_Script: {fileID: 11500000, guid: 9649c2bb71f98bd49a7baede39882a16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   eventName: b3
-  tex: {fileID: 0}
-  outTexture:
-    type: {fileID: 0}
+  field:
+    type: 0
     types:
-    - UnityEngine.Texture
-    - UnityEngine.Texture2D
-    - CCTexture
-    - UnityEngine.RenderTexture
+    - System.Single
+    - System.Int32
+    - UnityEngine.Vector2
+    - UnityEngine.Vector3
+    - UnityEngine.Vector4
     obj: {fileID: 1803719727}
-    varName: textureRamp
+    varName: offset-w
     isMat: 0
+    isVector: 0
+    index: 0
+  animation:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  min: 0
+  max: 1
+  time: 0.3
+  toggle: 1
+  firePostAnimation: 
 --- !u!114 &1840677461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3266,13 +3425,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1840677454}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe8716b9ae00d324cbf42f9908773816, type: 3}
+  m_Script: {fileID: 11500000, guid: 9649c2bb71f98bd49a7baede39882a16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventName: k11
-  minValue: 0
-  maxValue: 1
-  obj:
+  eventName: b12
+  field:
     type: 0
     types:
     - System.Single
@@ -3285,7 +3442,27 @@ MonoBehaviour:
     isMat: 0
     isVector: 0
     index: 0
-  round: 0
+  animation:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  min: 0
+  max: 1
+  time: 0.3
+  toggle: 1
+  firePostAnimation: 
 --- !u!114 &1840677462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3294,13 +3471,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1840677454}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe8716b9ae00d324cbf42f9908773816, type: 3}
+  m_Script: {fileID: 11500000, guid: 9649c2bb71f98bd49a7baede39882a16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventName: k10
-  minValue: 0
-  maxValue: 1
-  obj:
+  eventName: b11
+  field:
     type: 0
     types:
     - System.Single
@@ -3313,7 +3488,27 @@ MonoBehaviour:
     isMat: 0
     isVector: 0
     index: 0
-  round: 0
+  animation:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  min: 0
+  max: 1
+  time: 0.3
+  toggle: 1
+  firePostAnimation: 
 --- !u!114 &1840677463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3322,13 +3517,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1840677454}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe8716b9ae00d324cbf42f9908773816, type: 3}
+  m_Script: {fileID: 11500000, guid: 9649c2bb71f98bd49a7baede39882a16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventName: k9
-  minValue: 0
-  maxValue: 1
-  obj:
+  eventName: b4
+  field:
     type: 0
     types:
     - System.Single
@@ -3341,4 +3534,66 @@ MonoBehaviour:
     isMat: 0
     isVector: 0
     index: 0
-  round: 0
+  animation:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  min: 0
+  max: 1
+  time: 0.3
+  toggle: 1
+  firePostAnimation: 
+--- !u!1001 &2016579869
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 469760, guid: 00bbcf9803f467e42bbccd151d9ced23, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 469760, guid: 00bbcf9803f467e42bbccd151d9ced23, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 469760, guid: 00bbcf9803f467e42bbccd151d9ced23, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 469760, guid: 00bbcf9803f467e42bbccd151d9ced23, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 469760, guid: 00bbcf9803f467e42bbccd151d9ced23, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 469760, guid: 00bbcf9803f467e42bbccd151d9ced23, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 469760, guid: 00bbcf9803f467e42bbccd151d9ced23, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 469760, guid: 00bbcf9803f467e42bbccd151d9ced23, type: 2}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 00bbcf9803f467e42bbccd151d9ced23, type: 2}
+  m_IsPrefabParent: 0

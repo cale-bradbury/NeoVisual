@@ -22,6 +22,7 @@ public class RandomTree : ccEventBase {
         t = Instantiate<GameObject>(trunk);
         t.transform.parent = transform;
         t.transform.localPosition = Vector3.zero;
+        t.transform.localScale = Vector3.one;
     }
 
     protected override void OnEvent()
@@ -41,8 +42,9 @@ public class RandomTree : ccEventBase {
         {
             GameObject g = Instantiate(branches[Mathf.FloorToInt(Random.value * branches.Length)]);
             g.transform.parent = transform;
-            g.transform.localPosition = Vector3.zero;
-            g.transform.localEulerAngles = Vector3.up * Random.value * 360;
+            g.transform.localPosition = new Vector3(0,g.transform.localPosition.y,0);
+            g.transform.eulerAngles = new Vector3(270, Random.value * 360,0);
+            g.transform.localScale = Vector3.one;
             b[i] = g;
         }
 	}

@@ -62,7 +62,7 @@ public class CCReflectFloat : CCReflector<float>
             else
             {
                 if (GetValue().GetType() == typeof(System.Int32))
-                    base.SetValue(System.Int32.Parse("" + value));
+                    base.SetValue(Mathf.FloorToInt((float)value));
                 else
                     base.SetValue(value);
             }

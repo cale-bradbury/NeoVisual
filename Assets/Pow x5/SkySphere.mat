@@ -94,11 +94,11 @@ Material:
       data:
         first:
           name: _Strength
-        second: 0.25196856
+        second: 0.49999994
       data:
         first:
           name: _Phase
-        second: -268.43195
+        second: -468.6647
       data:
         first:
           name: _Taps

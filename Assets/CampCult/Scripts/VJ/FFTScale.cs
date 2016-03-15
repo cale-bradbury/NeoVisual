@@ -10,6 +10,6 @@ public class FFTScale : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        transform.localScale = Vector3.one*(min + (max - min) * ccAudioController.FFT[fft]);
+        transform.localScale = Vector3.one* Mathf.Lerp(min, max, ccAudioController.FFT[fft]);
     }
 }

@@ -45,13 +45,6 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _Vert
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
           name: _OcclusionMap
         second:
           m_Texture: {fileID: 2800000, guid: f216473bb25cb6e4e861551e4ff3cc85, type: 3}
@@ -85,6 +78,13 @@ Material:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Vert
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
@@ -112,10 +112,6 @@ Material:
         second: 0
       data:
         first:
-          name: _VertDisplacement
-        second: 0
-      data:
-        first:
           name: _ZWrite
         second: 1
       data:
@@ -137,6 +133,10 @@ Material:
       data:
         first:
           name: _Mode
+        second: 0
+      data:
+        first:
+          name: _VertDisplacement
         second: 0
     m_Colors:
       data:

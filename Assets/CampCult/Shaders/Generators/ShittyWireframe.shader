@@ -1,4 +1,6 @@
-﻿Shader "Camp Cult/Generators/Shitty Wireframe" {
+﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
+Shader "Camp Cult/Generators/Shitty Wireframe" {
     Properties {
 	    _Color("Color",Color)=(1.0,1.0,1.0,1.0)
 	    _FaceColor("FaceColor",Color)=(0.0,0.0,0.0,0.0)
@@ -41,7 +43,7 @@
 					v2f o;
 					o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
 					o.vert = v.tex;//v.vertex;
-					float4 world = mul(_Object2World, v.vertex);
+					float4 world = mul(unity_ObjectToWorld, v.vertex);
 					o.fog = world.z/_FogEnd;
 					return o;
 				};

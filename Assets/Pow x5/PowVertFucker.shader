@@ -1,4 +1,6 @@
-﻿Shader "Custom/PowVertFucker" {
+﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
+Shader "Custom/PowVertFucker" {
 	Properties {
 		_Color ("Color", Color) = (1,1,1,1)
 		_MainTex ("Albedo (RGB)", 2D) = "white" {}
@@ -32,7 +34,7 @@
 
 
 		void vert(inout appdata_full v) {
-			float4 world = mul(_Object2World, v.vertex);
+			float4 world = mul(unity_ObjectToWorld, v.vertex);
 			float2 uv = float2(
 				abs(fmod(atan2(world.x, world.z) / 3.1415 + 1., 2.) - 1.),
 				0.// abs(fmod(abs(world.y*.5), 2.) - 1.)

@@ -1,4 +1,6 @@
-﻿Shader "Camp Cult/Color/Gradient - World Space Radial" {
+﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
+Shader "Camp Cult/Color/Gradient - World Space Radial" {
 	Properties {
 		_color1 ("Color 1", Color) = (1,.5,.5,1)
 		_color2 ("Color 2", Color) = (.5,1,1,1)
@@ -39,7 +41,7 @@
 				v2f vert(appdata v) {
 					v2f o;
 					o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
-					o.world = mul(_Object2World,v.vertex);
+					o.world = mul(unity_ObjectToWorld,v.vertex);
 					o.uv = v.uv;
 					return o;
 				};

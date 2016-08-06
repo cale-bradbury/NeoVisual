@@ -1,4 +1,6 @@
-﻿Shader "Camp Cult/Color/Vertical Gradient" {
+﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
+Shader "Camp Cult/Color/Vertical Gradient" {
 	Properties{
 		_Color1("Color 1", Color) = (1,.5,.5,1)
 		_Color2("Color 2", Color) = (.5,1,1,1)
@@ -30,7 +32,7 @@
 	v2f vert(appdata v) {
 		v2f o;
 		o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
-		o.f = mul(_Object2World, v.vertex).y;
+		o.f = mul(unity_ObjectToWorld, v.vertex).y;
 		o.f = (o.f-_Shape.x)/(_Shape.y-_Shape.x);
 		return o;
 	};

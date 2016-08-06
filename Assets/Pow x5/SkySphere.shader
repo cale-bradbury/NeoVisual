@@ -1,4 +1,6 @@
-﻿Shader "Camp Cult/Powx5/SkySphere" {
+﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
+Shader "Camp Cult/Powx5/SkySphere" {
 	Properties{
 		_MainTex("Base (RGB)", 2D) = "white" {}
 	_Strength("Strength",float) = 0
@@ -51,7 +53,7 @@
 
 	v2f vert(appdata v) {
 		v2f o;
-		o.world = mul(_Object2World, v.vertex);
+		o.world = mul(unity_ObjectToWorld, v.vertex);
 		o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
 		o.taps = TAU / max(_Taps,.1);
 		o.uv = TRANSFORM_TEX(v.uv, _MainTex);

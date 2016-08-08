@@ -7,6 +7,7 @@ public class ccTextureFFT : MonoBehaviour{
 	Texture2D tex;
 	public CCReflectTexture output;
 	public int height = 128;
+    public float minimumValue = 0;
 
 	// Use this for initialization
 	void OnEnable (){
@@ -24,7 +25,7 @@ public class ccTextureFFT : MonoBehaviour{
 		Color[] c = tex.GetPixels (0, 0, tex.width, tex.height - 1); 
 		tex.SetPixels (0, 1, tex.width, tex.height - 1, c);
 		for(int i = 0; i< tex.width; i++){
-            float j = f[i];//max;
+            float j = Mathf.Lerp(minimumValue, 1,f[i]);//max;
 			tex.SetPixel(i,0,new Color(j,j,j));
 		}
 		tex.Apply ();

@@ -90,102 +90,46 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &345172054
+--- !u!1 &100483561
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 345172060}
-  - 33: {fileID: 345172059}
-  - 23: {fileID: 345172058}
-  - 114: {fileID: 345172057}
-  - 135: {fileID: 345172056}
+  - 4: {fileID: 100483563}
+  - 114: {fileID: 100483562}
   m_Layer: 0
-  m_Name: B
+  m_Name: BoidStalker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!135 &345172056
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 345172054}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &345172057
+--- !u!114 &100483562
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 345172054}
+  m_GameObject: {fileID: 100483561}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0facdbc7c5bf167478e45ea37456e257, type: 3}
+  m_Script: {fileID: 11500000, guid: 428386e156cc1d34cbc0dc6a717db50f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boids: []
-  vel: {x: 0, y: 0, z: 0}
-  index: 0
-  maxForce: 0.03
-  maxSpeed: 0.3
-  neighborDist: 3
-  smoothing: 0.98
-  size: {x: 0, y: 0, z: 0}
-  lastVel: {x: 0, y: 0, z: 0}
---- !u!23 &345172058
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 345172054}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_SelectedWireframeHidden: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
---- !u!33 &345172059
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 345172054}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &345172060
+  smoothing: 0.5
+  beatAdd: 0.25
+  beatSub: 0.01
+  beatMin: 0.5
+--- !u!4 &100483563
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 345172054}
+  m_GameObject: {fileID: 100483561}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 100, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalPosition: {x: 1.0009245, y: 1.2651176, z: -6.586869}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -292,9 +236,12 @@ GameObject:
   - 92: {fileID: 841379619}
   - 124: {fileID: 841379618}
   - 81: {fileID: 841379617}
+  - 114: {fileID: 841379627}
   - 114: {fileID: 841379623}
+  - 114: {fileID: 841379624}
   - 114: {fileID: 841379625}
   - 114: {fileID: 841379622}
+  - 114: {fileID: 841379626}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -407,8 +354,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shader: {fileID: 4800000, guid: f996675e0fecfc74d8d4c4ba58f93f38, type: 3}
-  textureRamp: {fileID: 2800000, guid: dd5d497a4da127c4da978dd97a481d6f, type: 3}
+  textureRamp: {fileID: 2800000, guid: c9a8c2e8a4639e44396e4e3b1264ff9b, type: 3}
   offset: {x: 0, y: 0, z: 0, w: 1}
+--- !u!114 &841379624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 841379616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f83f7bf89938a3d418b002771fa469a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frameCount: 25
 --- !u!114 &841379625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -425,15 +384,55 @@ MonoBehaviour:
   lastFrame: {fileID: 0}
   flow:
     texture: {fileID: 2800000, guid: 898f8897edd2c7c46b05ea4f2142a933, type: 3}
-    scaleTranslate: {x: 1, y: 1, z: 0, w: 0}
-    scaleTranslatePerSecond: {x: 0, y: 0, z: 0, w: 0}
+    scaleTranslate: {x: 1, y: 1, z: 11.9727545, w: 23.845509}
+    scaleTranslatePerSecond: {x: 0, y: 0, z: 0.1, w: 0.2}
   offset: {x: 0.01, y: 0.01}
   fade: 0.9
   radial: 1
   angle: 0
   anglePerSecond: 0
-  center: {fileID: 1410302642}
-  invertY: 1
+  center: {fileID: 100483563}
+  invertY: 0
+--- !u!114 &841379626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 841379616}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f632eba4bffe9b4aa08ae0f457f91dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  output:
+    type: {fileID: 0}
+    types:
+    - UnityEngine.Texture
+    - UnityEngine.Texture2D
+    - CCTexture
+    - UnityEngine.RenderTexture
+    obj: {fileID: 841379625}
+    varName: flow
+    isMat: 0
+    componentName: 
+    go: {fileID: 0}
+  height: 128
+  minimumValue: 0.2
+--- !u!114 &841379627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 841379616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9acf697fc842d44c84ba4d7f7a70c21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shader: {fileID: 4800000, guid: 98d00c2b55117cf439b7a950f8289519, type: 3}
+  intensity: 0
+  freq: 10
+  phase: 0.6
 --- !u!1 &917053268
 GameObject:
   m_ObjectHideFlags: 0
@@ -517,7 +516,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eventName: k8
   minValue: 0
-  maxValue: 5
+  maxValue: 10
   obj:
     type: 0
     types:
@@ -545,6 +544,7 @@ GameObject:
   - 114: {fileID: 1410302641}
   - 114: {fileID: 1410302643}
   - 114: {fileID: 1410302644}
+  - 114: {fileID: 1410302645}
   m_Layer: 0
   m_Name: Boids
   m_TagString: Untagged
@@ -563,9 +563,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11131e5c0cefc0549ac5bef63851264d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boidPrefab: {fileID: 345172057}
+  boidPrefab: {fileID: 114000011637151466, guid: 97a056ef00d187e4da78ff5a4ec7ad1e,
+    type: 2}
   count: 128
   size: {x: 5, y: 5, z: 5}
+  all: []
   neighborDist: 0.5
   maxSpeed: 0.5
   smoothing: 0.9
@@ -627,6 +629,21 @@ MonoBehaviour:
   output:
     obj: {fileID: 1410302641}
     methodName: VelcoityFuck
+--- !u!114 &1410302645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1410302640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe348aa8923f4364886515344b3880ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: b15
+  output:
+    obj: {fileID: 1410302641}
+    methodName: VelcoitySuck
 --- !u!1 &1609308833
 GameObject:
   m_ObjectHideFlags: 0
@@ -644,6 +661,9 @@ GameObject:
   - 114: {fileID: 1609308835}
   - 114: {fileID: 1609308843}
   - 114: {fileID: 1609308842}
+  - 114: {fileID: 1609308844}
+  - 114: {fileID: 1609308845}
+  - 114: {fileID: 1609308846}
   m_Layer: 0
   m_Name: Post Effect Controllers
   m_TagString: Untagged
@@ -893,6 +913,81 @@ MonoBehaviour:
     isMat: 0
     componentName: 
     go: {fileID: 0}
+--- !u!114 &1609308844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1609308833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe8716b9ae00d324cbf42f9908773816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: k0
+  minValue: 3
+  maxValue: 25
+  obj:
+    type: 0
+    types:
+    - System.Single
+    - System.Int32
+    - UnityEngine.Vector2
+    - UnityEngine.Vector3
+    - UnityEngine.Vector4
+    obj: {fileID: 841379624}
+    varName: frameCount
+    isMat: 0
+    componentName: 
+    go: {fileID: 0}
+    isVector: 0
+    index: 0
+  round: 1
+--- !u!114 &1609308845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1609308833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe348aa8923f4364886515344b3880ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: b0
+  output:
+    obj: {fileID: 841379624}
+    methodName: ToggleStutter
+--- !u!114 &1609308846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1609308833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe8716b9ae00d324cbf42f9908773816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: k10
+  minValue: 0
+  maxValue: 1
+  obj:
+    type: 0
+    types:
+    - System.Single
+    - System.Int32
+    - UnityEngine.Vector2
+    - UnityEngine.Vector3
+    - UnityEngine.Vector4
+    obj: {fileID: 841379627}
+    varName: intensity
+    isMat: 0
+    componentName: 
+    go: {fileID: 0}
+    isVector: 0
+    index: 0
+  round: 0
 --- !u!1 &1808488341
 GameObject:
   m_ObjectHideFlags: 0

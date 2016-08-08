@@ -11,7 +11,7 @@ public class ccAudioController : MonoBehaviour {
 	public int SendToPort = 12000;
 	public int ListenerPort = 32000;
 	public string address = "/vj";
-    float max = 1;
+    public static float max = 1;
 	
 	public AudioSource source;
 	public int numSamples;
@@ -27,6 +27,9 @@ public class ccAudioController : MonoBehaviour {
 	Osc handler;
     public static float[] FFT = new float[1];
     static float[] temp = new float[1];
+    public static int largestIndex;
+    public static float largestValue;
+
 
     void OnEnable(){
 		if (oscMode) {
@@ -67,10 +70,17 @@ public class ccAudioController : MonoBehaviour {
 		}
         float f = 0;
         max = Mathf.Max(10, max-falloffRate);
+        largestIndex = 0;
+        largestValue = 0;
         for (int i = 0; i<FFT.Length;i++){
             f = spectrumCurve.Evaluate((float)i / FFT.Length)*(float)msg.Values[i];
             max = Mathf.Max(f, max);
             temp[i] = f;
+            if (f > largestValue)
+            {
+                largestValue = f;
+                largestIndex = i;
+            }
         }
 
         for (int i = 0; i < FFT.Length; i++)

@@ -15,11 +15,10 @@ public class ccTextureLastFrame : MonoBehaviour {
 			DestroyImmediate(lastTexture);
 			lastTexture = new RenderTexture(source.width, source.height, 0,RenderTextureFormat.ARGB32);
 			lastTexture.hideFlags = HideFlags.HideAndDontSave;
-			Graphics.Blit( source, lastTexture );
 		}
 		lastTexture.MarkRestoreExpected();
 		Graphics.Blit(source,destination);
-		Graphics.Blit(destination,lastTexture);
+		Graphics.Blit(source, lastTexture);
 		textureOut.SetValue (lastTexture);
 	}
 }

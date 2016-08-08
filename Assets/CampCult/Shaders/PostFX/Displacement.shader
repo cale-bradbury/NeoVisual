@@ -45,7 +45,7 @@ Shader "Camp Cult/Displacement/Displacement" {
 				angle += _x.z*pi;
 				float d = length(uv.xy - _center.xy);
 				float2 u = (float2(an,1.));//d - .5));
-				float4 f = tex2D(_Flow,fmod(u, float2(1.0,1.0)));
+				float4 f = tex2D(_Flow,fmod(u, float2(1.0,1.0))*_Flow_ST.xy + _Flow_ST.zw);
 			#else
 				float4 f = tex2D(_Flow,uv*_Flow_ST.xy + _Flow_ST.zw);
 				float angle = _x.z;

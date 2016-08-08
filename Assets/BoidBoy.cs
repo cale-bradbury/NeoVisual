@@ -6,7 +6,8 @@ public class BoidBoy : MonoBehaviour {
     public Boid boidPrefab;
     public int count = 64;
     public Vector3 size;
-    Boid[] all;
+    [HideInInspector]
+    public Boid[] all;
     public float neighborDist;
     public float maxSpeed;
     public float smoothing;
@@ -28,9 +29,16 @@ public class BoidBoy : MonoBehaviour {
 
     public void VelcoityFuck()
     {
-        for(int i = 0; i< count; i++)
+        for (int i = 0; i < count; i++)
         {
-            all[i].lastVel = Random.onUnitSphere*maxSpeed;
+            all[i].lastVel = Random.onUnitSphere * maxSpeed;
+        }
+    }
+    public void VelcoitySuck()
+    {
+        for (int i = 0; i < count; i++)
+        {
+            all[i].lastVel = -Vector3.ClampMagnitude(all[i].transform.position, 1)*maxSpeed;
         }
     }
 

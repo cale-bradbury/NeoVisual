@@ -295,11 +295,6 @@ GameObject:
   - 114: {fileID: 841379623}
   - 114: {fileID: 841379625}
   - 114: {fileID: 841379622}
-  - 114: {fileID: 841379624}
-  - 114: {fileID: 841379626}
-  - 114: {fileID: 841379628}
-  - 114: {fileID: 841379627}
-  - 114: {fileID: 841379629}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -371,7 +366,8 @@ Transform:
   m_LocalRotation: {x: 0.27781588, y: 0.36497167, z: -0.1150751, w: 0.8811196}
   m_LocalPosition: {x: -5, y: 5, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1609308834}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 35, y: 45, z: 0}
@@ -413,36 +409,6 @@ MonoBehaviour:
   shader: {fileID: 4800000, guid: f996675e0fecfc74d8d4c4ba58f93f38, type: 3}
   textureRamp: {fileID: 2800000, guid: dd5d497a4da127c4da978dd97a481d6f, type: 3}
   offset: {x: 0, y: 0, z: 0, w: 1}
---- !u!114 &841379624
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 841379616}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe8716b9ae00d324cbf42f9908773816, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventName: k1
-  minValue: -0.98
-  maxValue: 0.98
-  obj:
-    type: 0
-    types:
-    - System.Single
-    - System.Int32
-    - UnityEngine.Vector2
-    - UnityEngine.Vector3
-    - UnityEngine.Vector4
-    obj: {fileID: 841379625}
-    varName: fade
-    isMat: 0
-    componentName: 
-    go: {fileID: 0}
-    isVector: 0
-    index: 0
-  round: 0
 --- !u!114 &841379625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -468,93 +434,6 @@ MonoBehaviour:
   anglePerSecond: 0
   center: {fileID: 1410302642}
   invertY: 1
---- !u!114 &841379626
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 841379616}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe8716b9ae00d324cbf42f9908773816, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventName: k9
-  minValue: 0
-  maxValue: 2
-  obj:
-    type: 0
-    types:
-    - System.Single
-    - System.Int32
-    - UnityEngine.Vector2
-    - UnityEngine.Vector3
-    - UnityEngine.Vector4
-    obj: {fileID: 841379625}
-    varName: angle
-    isMat: 0
-    componentName: 
-    go: {fileID: 0}
-    isVector: 0
-    index: 0
-  round: 0
---- !u!114 &841379627
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 841379616}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37b5e9175d2f6e9498e24c6eb64dc11d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventName: b9
-  blendMode: 1
---- !u!114 &841379628
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 841379616}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37b5e9175d2f6e9498e24c6eb64dc11d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventName: b1
-  blendMode: 0
---- !u!114 &841379629
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 841379616}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe8716b9ae00d324cbf42f9908773816, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventName: 
-  minValue: 0
-  maxValue: 1
-  obj:
-    type: 0
-    types:
-    - System.Single
-    - System.Int32
-    - UnityEngine.Vector2
-    - UnityEngine.Vector3
-    - UnityEngine.Vector4
-    obj: {fileID: 841379623}
-    varName: offset-x
-    isMat: 0
-    componentName: CCColorCorrection, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-    go: {fileID: 841379616}
-    isVector: 0
-    index: 0
-  round: 0
 --- !u!1 &917053268
 GameObject:
   m_ObjectHideFlags: 0
@@ -748,6 +627,272 @@ MonoBehaviour:
   output:
     obj: {fileID: 1410302641}
     methodName: VelcoityFuck
+--- !u!1 &1609308833
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1609308834}
+  - 114: {fileID: 1609308841}
+  - 114: {fileID: 1609308840}
+  - 114: {fileID: 1609308839}
+  - 114: {fileID: 1609308838}
+  - 114: {fileID: 1609308837}
+  - 114: {fileID: 1609308836}
+  - 114: {fileID: 1609308835}
+  - 114: {fileID: 1609308843}
+  - 114: {fileID: 1609308842}
+  m_Layer: 0
+  m_Name: Post Effect Controllers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1609308834
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1609308833}
+  m_LocalRotation: {x: -0.27781588, y: -0.36497167, z: 0.1150751, w: 0.8811196}
+  m_LocalPosition: {x: 5.3653803, y: -1.2691855, z: 4.6989846}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 841379621}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1609308835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1609308833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe8716b9ae00d324cbf42f9908773816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: k2
+  minValue: 0
+  maxValue: 1
+  obj:
+    type: 0
+    types:
+    - System.Single
+    - System.Int32
+    - UnityEngine.Vector2
+    - UnityEngine.Vector3
+    - UnityEngine.Vector4
+    obj: {fileID: 841379623}
+    varName: offset-z
+    isMat: 0
+    componentName: CCColorCorrection, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+    go: {fileID: 0}
+    isVector: 0
+    index: 0
+  round: 0
+--- !u!114 &1609308836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1609308833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe8716b9ae00d324cbf42f9908773816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: k2
+  minValue: 0
+  maxValue: 1
+  obj:
+    type: 0
+    types:
+    - System.Single
+    - System.Int32
+    - UnityEngine.Vector2
+    - UnityEngine.Vector3
+    - UnityEngine.Vector4
+    obj: {fileID: 841379623}
+    varName: offset-y
+    isMat: 0
+    componentName: CCColorCorrection, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+    go: {fileID: 0}
+    isVector: 0
+    index: 0
+  round: 0
+--- !u!114 &1609308837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1609308833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe8716b9ae00d324cbf42f9908773816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: k2
+  minValue: 0
+  maxValue: 1
+  obj:
+    type: 0
+    types:
+    - System.Single
+    - System.Int32
+    - UnityEngine.Vector2
+    - UnityEngine.Vector3
+    - UnityEngine.Vector4
+    obj: {fileID: 841379623}
+    varName: offset-x
+    isMat: 0
+    componentName: CCColorCorrection, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+    go: {fileID: 0}
+    isVector: 0
+    index: 0
+  round: 0
+--- !u!114 &1609308838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1609308833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37b5e9175d2f6e9498e24c6eb64dc11d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: b9
+  blendMode: 1
+--- !u!114 &1609308839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1609308833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37b5e9175d2f6e9498e24c6eb64dc11d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: b1
+  blendMode: 0
+--- !u!114 &1609308840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1609308833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe8716b9ae00d324cbf42f9908773816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: k9
+  minValue: 0
+  maxValue: 2
+  obj:
+    type: 0
+    types:
+    - System.Single
+    - System.Int32
+    - UnityEngine.Vector2
+    - UnityEngine.Vector3
+    - UnityEngine.Vector4
+    obj: {fileID: 841379625}
+    varName: angle
+    isMat: 0
+    componentName: 
+    go: {fileID: 0}
+    isVector: 0
+    index: 0
+  round: 0
+--- !u!114 &1609308841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1609308833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe8716b9ae00d324cbf42f9908773816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: k1
+  minValue: -0.98
+  maxValue: 0.98
+  obj:
+    type: 0
+    types:
+    - System.Single
+    - System.Int32
+    - UnityEngine.Vector2
+    - UnityEngine.Vector3
+    - UnityEngine.Vector4
+    obj: {fileID: 841379625}
+    varName: fade
+    isMat: 0
+    componentName: 
+    go: {fileID: 0}
+    isVector: 0
+    index: 0
+  round: 0
+--- !u!114 &1609308842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1609308833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6a429d168a0c7d4b8cf58ded83356de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: b10
+  tex: {fileID: 2800000, guid: c9a8c2e8a4639e44396e4e3b1264ff9b, type: 3}
+  outTexture:
+    type: {fileID: 0}
+    types:
+    - UnityEngine.Texture
+    - UnityEngine.Texture2D
+    - CCTexture
+    - UnityEngine.RenderTexture
+    obj: {fileID: 841379623}
+    varName: textureRamp
+    isMat: 0
+    componentName: 
+    go: {fileID: 0}
+--- !u!114 &1609308843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1609308833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6a429d168a0c7d4b8cf58ded83356de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: b2
+  tex: {fileID: 2800000, guid: 864c3b0242af61b408d50ba8100d221b, type: 3}
+  outTexture:
+    type: {fileID: 0}
+    types:
+    - UnityEngine.Texture
+    - UnityEngine.Texture2D
+    - CCTexture
+    - UnityEngine.RenderTexture
+    obj: {fileID: 841379623}
+    varName: textureRamp
+    isMat: 0
+    componentName: 
+    go: {fileID: 0}
 --- !u!1 &1808488341
 GameObject:
   m_ObjectHideFlags: 0

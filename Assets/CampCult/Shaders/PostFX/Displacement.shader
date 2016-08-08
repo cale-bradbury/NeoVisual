@@ -60,25 +60,25 @@ Shader "Camp Cult/Displacement/Displacement" {
 			return lerp(c, float4(colorDodge(c, s), 1.), _x.w);
 #endif
 #ifdef Divide
-			return lerp(c, float4(divide(c.rgb, s.rgb), 1.), _x.w); return lerp(c, float4(colorDodge(c, s), 1.), _x.w);
+			return lerp(c, float4(divide(c.rgb, s.rgb), 1.), _x.w);  
 #endif
 #ifdef Subtract
-			return lerp(c, float4(subtract(c.rgb, s.rgb), 1.), _x.w); return lerp(c, float4(colorDodge(c, s), 1.), _x.w);
+			return lerp(c, float4(subtract(c.rgb, s.rgb), 1.), _x.w);  
 #endif
 #ifdef Difference
-			return lerp(c, float4(difference(c.rgb, s.rgb), 1.), _x.w); return lerp(c, float4(colorDodge(c, s), 1.), _x.w);
+			return lerp(c, float4(difference(c.rgb, s.rgb), 1.), _x.w);  
 #endif
 #ifdef HardMix
-			return lerp(c, float4(hardMix(c.rgb, s.rgb), 1.), _x.w); return lerp(c, float4(colorDodge(c, s), 1.), _x.w);
+			return lerp(c, float4(hardMix(c.rgb, s.rgb), 1.), _x.w);  
 #endif
 #ifdef VividLight
-			return lerp(c, float4(vividLight(c.rgb, s.rgb), 1.), _x.w); return lerp(c, float4(colorDodge(c, s), 1.), _x.w);
+			return lerp(c, float4(vividLight(c.rgb, s.rgb), 1.), _x.w);  
 #endif
 #ifdef LighterColor
-			return lerp(c, float4(lighterColor(c, s), 1.), _x.w); return lerp(c, float4(colorDodge(c, s), 1.), _x.w);
+			return lerp(c, float4(lighterColor(c, s), 1.), _x.w);  
 #endif
 			#ifdef Add
-				return max(c,s - (1.0 - _x.w));
+				return max(c,max((sign(-_x.w)*.5 + .5)*((-s-(_x.w))),s - (1.0 - _x.w)));
 			#endif
 			#ifdef Mul
 					return lerp(c, s, dot(c, s)*_x.w);

@@ -10,34 +10,59 @@ using System.Reflection;
 [CustomPropertyDrawer(typeof(CCReflectInt))]
 public class CCReflectorEditor : PropertyDrawer{
 	List<string> vars;
-	public override void OnGUI (Rect rect, SerializedProperty prop, GUIContent label){
+    List<string> components;
+    public override void OnGUI (Rect rect, SerializedProperty prop, GUIContent label){
 		label = EditorGUI.BeginProperty (rect, label, prop);
 		Rect r = EditorGUI.PrefixLabel (rect, label);
-		Object o = prop.FindPropertyRelative ("obj").objectReferenceValue;
-		string s = "";
-		if (o != null) {
-			s = o.name;
-			o.name += "(" + o.GetType () + ")";
-		}
+		Object o = prop.FindPropertyRelative("go").objectReferenceValue;
+        if (o == null)
+            o = prop.FindPropertyRelative("obj").objectReferenceValue;
+        
 		Object obj = (Object)EditorGUI.ObjectField (new Rect (r.x, r.y, r.width * .5f, r.height), o, typeof(Object), true);
-		prop.FindPropertyRelative ("obj").objectReferenceValue = obj;
-		if(o!=null)o.name = s;
-		if (obj != null){
-			if(obj.GetType()==typeof(Material)){
-				prop.FindPropertyRelative("isMat").boolValue = true;
+		
+		if (obj != null)
+        {
+            prop.FindPropertyRelative("isMat").boolValue = false;
+            if (obj.GetType()==typeof(Material))
+            {
+                prop.FindPropertyRelative("go").objectReferenceValue = null;
+                prop.FindPropertyRelative("obj").objectReferenceValue = obj;
+                prop.FindPropertyRelative("isMat").boolValue = true;
 				GetMatFields ((Material)obj,GetArray(prop.FindPropertyRelative ("types")));
-			}else{
-				prop.FindPropertyRelative("isMat").boolValue = false;
-				GetFields (obj,GetArray(prop.FindPropertyRelative ("types")));
+                DisplayVarsDropdown(prop, new Rect(r.x + r.width * .5f, r.y, r.width * .5f, r.height));
 			}
-			int j = Mathf.Max (0, vars.IndexOf (prop.FindPropertyRelative ("varName").stringValue));
-			int i = EditorGUI.Popup (new Rect (r.x + r.width * .5f, r.y, r.width * .5f, r.height), j, vars.ToArray ());
-			if (i < vars.Count)
-				prop.FindPropertyRelative ("varName").stringValue = vars [i];
-			else
-				prop.FindPropertyRelative ("varName").stringValue = "";
+            else if(obj is GameObject)
+            {
+                prop.FindPropertyRelative("go").objectReferenceValue = obj;
+                GetComponents((GameObject)obj);
+                int componentIndex = Mathf.Max(0, components.IndexOf(prop.FindPropertyRelative("componentName").stringValue));
+                componentIndex = EditorGUI.Popup(new Rect(r.x + r.width * .5f, r.y, r.width * .25f, r.height), componentIndex, components.ToArray());
+                componentIndex = Mathf.Clamp(componentIndex, 0, components.Count);
+                prop.FindPropertyRelative("componentName").stringValue = components[componentIndex];
+                prop.FindPropertyRelative("obj").objectReferenceValue = ((GameObject)obj).GetComponent(System.Type.GetType(components[componentIndex]));
+
+                GetFields(System.Type.GetType(components[componentIndex]), GetArray(prop.FindPropertyRelative("types")));
+                DisplayVarsDropdown(prop, new Rect(r.x + r.width * .75f, r.y, r.width * .25f, r.height));
+            }
+            else
+            {
+                prop.FindPropertyRelative("go").objectReferenceValue = null;
+                prop.FindPropertyRelative("obj").objectReferenceValue = obj;
+                GetFields(obj.GetType(), GetArray(prop.FindPropertyRelative("types")));
+                DisplayVarsDropdown(prop, new Rect(r.x + r.width * .5f, r.y, r.width * .5f, r.height));
+            }
 		}
 	}
+
+    void DisplayVarsDropdown(SerializedProperty prop, Rect r)
+    {
+        int i = Mathf.Max(0, vars.IndexOf(prop.FindPropertyRelative("varName").stringValue));
+        i = EditorGUI.Popup(r, i, vars.ToArray());
+        if (i < vars.Count)
+            prop.FindPropertyRelative("varName").stringValue = vars[i];
+        else
+            prop.FindPropertyRelative("varName").stringValue = "";
+    }
 
 	System.Type[] GetArray(SerializedProperty field){
 		if (field == null)
@@ -80,11 +105,19 @@ public class CCReflectorEditor : PropertyDrawer{
 		}
 	}
 
-	void GetFields(object o, System.Type[] type){
+    void GetComponents(GameObject g)
+    {
+        components = new List<string>();
+        foreach (Component c in g.GetComponents<Component>())
+        {
+            if (c!= null)
+                components.Add(c.GetType().AssemblyQualifiedName);
+        }
+    }
+    
+    void GetFields(System.Type ty, System.Type[] type){
 		vars = new List<string> ();
-		if (o == null||type==null)
-			return;
-		FieldInfo[] fields = o.GetType ().GetFields ();
+		FieldInfo[] fields = ty.GetFields ();
 		foreach (FieldInfo f in fields) {
 			foreach(System.Type t in type){
 				if(t == f.FieldType){
@@ -108,7 +141,7 @@ public class CCReflectorEditor : PropertyDrawer{
 			}
 		}
 		
-		PropertyInfo[] props = o.GetType ().GetProperties ();
+		PropertyInfo[] props = ty.GetProperties ();
 		foreach (PropertyInfo p in props) {
 			foreach(System.Type t in type){
 				if(t == p.PropertyType){

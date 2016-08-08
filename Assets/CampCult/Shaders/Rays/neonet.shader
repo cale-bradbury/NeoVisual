@@ -6,8 +6,8 @@ Properties {
     _Color3 ("Color 3",Color) = (1,1,1,1)
     _Fog("Fog",Float) = 10
     _Alpha("Alpha",Float) = 0
-    _Camera ("Camera Position",Vector) = (0,0,0,0)
-    _CameraAngle ("Camera Angle",Vector) = (0,0,1,0)
+    _Camera ("Camera Position W-FOV",Vector) = (0,0,0,0)
+    _CameraAngle ("Camera Angle W-fisheye",Vector) = (0,0,1,0)
     _Shape ("Shape",Vector) = (0,0,1,0)
     _Form ("Form",Vector) = (0,0,0,0)
  }
@@ -66,7 +66,8 @@ float2 map( in float3 pos, float t )
    // #ifdef hex
     s =  lerp(s,sdHexPrism(pos.zyx,float2(_Shape.w,.1)),_Form.w);
     //#endif
-    //s = sdTorus(pos,float2(_Shape.w,_Shape.w*.5));
+   // s = sdTorus(pos,float2(_Shape.w,_Shape.w*.5));
+	s = sdCross(pos, _Shape.w, _Shape.w*.5);
     res = opU( res, float2( s, 1. ) );
     return res;
 }

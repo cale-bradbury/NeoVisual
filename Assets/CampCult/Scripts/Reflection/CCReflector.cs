@@ -12,6 +12,8 @@ public class CCReflector<T>{
 	public FieldInfo field;
 	public PropertyInfo prop;
 	public bool isMat = false;
+    public string componentName;
+    public GameObject go;
 
 	public void OnEnable(){
 		ReloadField ();

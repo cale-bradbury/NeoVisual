@@ -4,29 +4,38 @@ using System.Collections.Generic;
 public class Boid : MonoBehaviour {
     [HideInInspector]
     public Boid[] boids;
-    Vector3 vel;
+    [HideInInspector]
+    public Vector3 vel;
     Vector3 accel = Vector3.zero;
+    [HideInInspector]
+    public int index;
     public float maxForce = .0003f;
     public float maxSpeed = .000000f;
     public float neighborDist = 2;
     public float smoothing = .98f;
+    public Vector3 size;
 
 	// Use this for initialization
 	void Start()
     {
         vel = Random.onUnitSphere;
+        index %= ccAudioController.FFT.Length;
     }
-    Vector3 lastVel = Vector3.zero;
+    [HideInInspector]
+    public Vector3 lastVel = Vector3.zero;
     Vector3 lastAccel = Vector3.zero;
     // Update is called once per frame
-    void FixedUpdate () {
+    void Update () {
         Flock();
         lastAccel = Vector3.Lerp(accel, lastAccel, smoothing);
         vel += lastAccel;
-        vel = Vector3.ClampMagnitude(vel, maxSpeed);
+        vel = Vector3.ClampMagnitude(vel, maxSpeed)*Time.deltaTime;
+        vel += vel.normalized*(ccAudioController.FFT[index] );
         lastVel = Vector3.Lerp(vel, lastVel, smoothing);
         transform.position += lastVel ;
+        
         accel = Vector3.zero;
+        transform.localScale = Vector3.one * Mathf.Lerp(.05f, 1f, ccAudioController.FFT[index]);
         
     }
 
@@ -35,10 +44,13 @@ public class Boid : MonoBehaviour {
         Vector3 sep = Seperate();
         Vector3 ali = Align();
         Vector3 coh = Cohesion();
+        Vector3 edge = Edge();
+        edge *= 5;
         sep*=(1.5f);
         ali*=(1.0f);
         coh*=(1.0f);
         // Add the force vectors to acceleration
+        applyForce(edge);
         applyForce(sep);
         applyForce(ali);
         applyForce(coh);
@@ -47,6 +59,17 @@ public class Boid : MonoBehaviour {
     {
         // We could add mass here if we want A = F / M
         accel+=(force);
+    }
+
+    public Vector3 Edge()
+    {
+        Vector3 e = Vector3.zero;
+
+        e.x = Mathf.Max(0, Mathf.Abs(transform.position.x) - size.x * .5f) * Mathf.Sign(-transform.position.x);
+        e.y = Mathf.Max(0, Mathf.Abs(transform.position.y) - size.y * .5f) * Mathf.Sign(-transform.position.y);
+        e.z = Mathf.Max(0, Mathf.Abs(transform.position.z) - size.z * .5f) * Mathf.Sign(-transform.position.z);
+
+        return e;
     }
 
     public Vector3 Seperate()

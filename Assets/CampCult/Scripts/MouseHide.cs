@@ -2,16 +2,28 @@
 using System.Collections;
 
 public class MouseHide : MonoBehaviour {
-	public string buttonName = "Fire1";
-	void Start () {
-		Cursor.visible = false;
-	}
+    public bool mouseHide = true;
+    public bool mouseLock = true;
+    void Start () {
+        if (mouseHide)
+            Cursor.visible = false;
+        if (mouseLock)
+            Cursor.lockState = CursorLockMode.Locked;
+    }
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown (KeyCode.Escape))
-			Cursor.visible = true;
-		else if (Input.GetButtonDown (buttonName))
-			Cursor.visible = false;
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
+        else if (Input.GetMouseButton(0))
+        {
+            if (mouseHide)
+                Cursor.visible = false;
+            if (mouseLock)
+                Cursor.lockState = CursorLockMode.Locked;
+        }
 	}
 }

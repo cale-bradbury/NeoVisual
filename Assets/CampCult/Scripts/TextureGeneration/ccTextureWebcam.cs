@@ -12,7 +12,10 @@ public class ccTextureWebcam: MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		tex = new WebCamTexture();
-		tex.Play();
+        tex.deviceName = WebCamTexture.devices[0].name;
+        tex.Play();
+        output.SetValue(tex);
+        Debug.Log(WebCamTexture.devices.Length);
 	}
 	
 	// Update is called once per frame
@@ -20,6 +23,7 @@ public class ccTextureWebcam: MonoBehaviour {
 		if(Input.GetKeyDown(nextCam)){
 			i++;
 			i%=WebCamTexture.devices.Length;
+            tex.Stop();
 			tex.deviceName = WebCamTexture.devices[i].name;
 			tex.Play();
 			output.SetValue(tex);
@@ -27,10 +31,11 @@ public class ccTextureWebcam: MonoBehaviour {
 		}else if(Input.GetKeyDown(prevCam)){
 			i--;
 			if(i<0)i = WebCamTexture.devices.Length-1;
+            tex.Stop();
 			tex.deviceName = WebCamTexture.devices[i].name;
 			tex.Play();
 			output.SetValue(tex);
-			Debug.Log("prev webcam");
+			Debug.Log("prev webcam"+tex.deviceName);
 		}
 	}
 }

@@ -242,6 +242,7 @@ GameObject:
   - 114: {fileID: 841379625}
   - 114: {fileID: 841379622}
   - 114: {fileID: 841379626}
+  - 114: {fileID: 841379628}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -384,7 +385,7 @@ MonoBehaviour:
   lastFrame: {fileID: 0}
   flow:
     texture: {fileID: 2800000, guid: 898f8897edd2c7c46b05ea4f2142a933, type: 3}
-    scaleTranslate: {x: 1, y: 1, z: 11.9727545, w: 23.845509}
+    scaleTranslate: {x: 1, y: 1, z: 14.455862, w: 28.811724}
     scaleTranslatePerSecond: {x: 0, y: 0, z: 0.1, w: 0.2}
   offset: {x: 0.01, y: 0.01}
   fade: 0.9
@@ -433,6 +434,19 @@ MonoBehaviour:
   intensity: 0
   freq: 10
   phase: 0.6
+--- !u!114 &841379628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 841379616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adf01a347066cbf4eab593772d28ad99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shader: {fileID: 4800000, guid: 36513c87292cd6f429d775f43e7176c1, type: 3}
+  strength: 0.95
 --- !u!1 &917053268
 GameObject:
   m_ObjectHideFlags: 0

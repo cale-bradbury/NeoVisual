@@ -2,8 +2,7 @@
 using System.Collections;
 
 public class BoidStalker : MonoBehaviour {
-
-    Displacement d;
+    
     BoidBoy b;
     public float smoothing = .05f;
     Boid target;
@@ -12,14 +11,13 @@ public class BoidStalker : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         b = FindObjectOfType < BoidBoy> ();
-        d = FindObjectOfType<Displacement>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
         lastMax -= beatSub;
         lastMax = Mathf.Max(beatMin, lastMax);
-        if (ccAudioController.largestValue > lastMax + beatAdd)
+        if (ccAudioController.largestValue > lastMax + beatAdd||target==null)
         {
             target = b.all[ccAudioController.largestIndex % b.all.Length];
             lastMax = ccAudioController.largestValue;

@@ -3,7 +3,9 @@ using System.Collections.Generic;
 
 public class Boid : MonoBehaviour {
     [HideInInspector]
-    public Boid[] boids;
+    public List<Boid> neighbors;
+    [HideInInspector]
+    public List<float> dist;
     [HideInInspector]
     public Vector3 vel;
     Vector3 accel = Vector3.zero;
@@ -76,27 +78,17 @@ public class Boid : MonoBehaviour {
     {
         float desiredseparation = .80f;
         Vector3 steer = new Vector3(0, 0, 0);
-        int count = 0;
-
-        for(int i = 0; i<boids.Length; i++)
+        for(int i = 0; i<neighbors.Count; i++)
         {
-            if (boids[i] == this)
-                continue;
-            float d = Vector3.Distance(transform.position, boids[i].transform.position);
-            // If the distance is greater than 0 and less than an arbitrary amount (0 when you are yourself)
-            if ((d < desiredseparation))
-            {
-                // Calculate vector pointing away from neighbor
-                Vector3 diff = transform.position - boids[i].transform.position;
-                diff.Normalize();
-                diff/=d;        // Weight by distance
-                steer+=(diff);
-                count++;            // Keep track of how many
-            }
+            // Calculate vector pointing away from neighbor
+            Vector3 diff = transform.position - neighbors[i].transform.position;
+            diff.Normalize();
+            diff/=dist[i];        // Weight by distance
+            steer+=(diff);
         }
         // Average -- divide by how many
-        if (count > 0)
-            steer /= (float)count;
+        if (neighbors.Count > 0)
+            steer /= (float)neighbors.Count;
 
         // As long as the vector is greater than 0
         if (steer.magnitude > 0)
@@ -117,19 +109,13 @@ public class Boid : MonoBehaviour {
     public Vector3 Align()
     {
         Vector3 sum = new Vector3(0, 0);
-        int count = 0;
-        for (int i = 0; i < boids.Length; i++)
+        for (int i = 0; i < neighbors.Count; i++)
         {
-            float d = Vector3.Distance(transform.position, boids[i].transform.position);
-            if ((d > 0) && (d < neighborDist))
-            {
-                sum+=(boids[i].vel);
-                count++;
-            }
+                sum+=(neighbors[i].vel);
         }
-        if (count > 0)
+        if (neighbors.Count > 0)
         {
-            sum/=((float)count);
+            sum/=((float)neighbors.Count);
             // First two lines of code below could be condensed with new PVector setMag() method
             // Not using this method until Processing.js catches up
             // sum.setMag(maxspeed);
@@ -149,19 +135,13 @@ public class Boid : MonoBehaviour {
     Vector3 Cohesion()
     {
         Vector3 sum = Vector3.zero;   // Start with empty vector to accumulate all locations
-        int count = 0;
-        for (int i = 0; i < boids.Length; i++)
+        for (int i = 0; i < neighbors.Count; i++)
         {
-            float d = Vector3.Distance(transform.position, boids[i].transform.position);
-            if ((d > 0) && (d < neighborDist))
-            {
-                sum+=(boids[i].transform.position); // Add location
-                count++;
-            }
+            sum+= (neighbors[i].transform.position); // Add location
         }
-        if (count > 0)
+        if (neighbors.Count > 0)
         {
-            sum/=(count);
+            sum/=(float)neighbors.Count;
             return seek(sum);  // Steer towards the location
         }
         else {

@@ -19,7 +19,6 @@ public class BoidBoy : MonoBehaviour {
         {
             Boid g = Instantiate<Boid>(boidPrefab);
             g.transform.parent = transform;
-            g.boids = all;
             g.index = i;
             g.size = size;
             g.transform.localPosition = new Vector3(Random.value*size.x, Random.value * size.y, Random.value * size.z) - size * .5f;
@@ -45,6 +44,24 @@ public class BoidBoy : MonoBehaviour {
     int c = 0;
 	// Update is called once per frame
 	void Update () {
+        float d;
+        for(int i = 0; i<all.Length; i++)
+        {
+            all[i].neighbors.Clear();
+            all[i].dist.Clear();
+            for(int j = i+1; j<all.Length; j++)
+            {
+                d = Vector3.Distance(all[i].transform.position, all[j].transform.position);
+                if (d < neighborDist)
+                {
+                    all[i].neighbors.Add(all[j]);
+                    all[j].neighbors.Add(all[i]);
+                    all[i].dist.Add(d);
+                    all[j].dist.Add(d);
+                }
+            }
+        }
+
         c++;
         c %= count;
         for (int i = 0; i < count; i++)

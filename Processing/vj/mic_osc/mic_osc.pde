@@ -28,8 +28,8 @@ void draw(){
   stroke(0);
   fft.forward(in.mix);
   OscMessage msg = new OscMessage ("/vj");
-  for(int i = 0; i< fft.specSize()/4-4;i++){
-    float f = fft.getBand((i+2)*2);
+  for(int i = 0; i< 128;i++){
+    float f = fft.getBand((i));
    // f+=fft.getBand((i+1)*4);
    // f*=.5;
     //f*=i*.8;

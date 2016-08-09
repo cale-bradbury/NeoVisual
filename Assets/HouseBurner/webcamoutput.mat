@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: SkySphere
-  m_Shader: {fileID: 4800000, guid: 852ec29b312249844bfdfbdaced77054, type: 3}
+  m_Name: webcamoutput
+  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
   m_CustomRenderQueue: 2000
@@ -19,8 +19,8 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: ebb4b47dfe6363c4f8784720f89cc4fc, type: 3}
-          m_Scale: {x: 12, y: 8}
+          m_Texture: {fileID: 8400000, guid: a129362513aa44743a003a8d088ac2fd, type: 2}
+          m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
@@ -93,18 +93,6 @@ Material:
         second: 0.5
       data:
         first:
-          name: _Strength
-        second: 0.03543306
-      data:
-        first:
-          name: _Phase
-        second: 0
-      data:
-        first:
-          name: _Taps
-        second: 6
-      data:
-        first:
           name: _Parallax
         second: 0.02
       data:
@@ -148,15 +136,3 @@ Material:
         first:
           name: _Color
         second: {r: 1, g: 1, b: 1, a: 1}
-      data:
-        first:
-          name: _Color1
-        second: {r: 0.25118947, g: 0.74264705, b: 0.55962145, a: 1}
-      data:
-        first:
-          name: _Color2
-        second: {r: 1, g: 0, b: 0.47586203, a: 1}
-      data:
-        first:
-          name: _ColorData
-        second: {r: 0, g: 31.7, b: 0, a: 0}

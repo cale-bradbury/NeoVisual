@@ -7,5 +7,7 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 0
     path: Assets/Husband&Knife/husband and knife.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Pow x5/pow x5.unity
+  - enabled: 1
+    path: Assets/HouseBurner/burn.unity

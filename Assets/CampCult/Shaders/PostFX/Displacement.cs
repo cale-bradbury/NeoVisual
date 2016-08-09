@@ -48,7 +48,7 @@ public class Displacement : ImageEffectBase {
 		p = GetComponent<Camera> ().WorldToViewportPoint (p);
 		material.SetVector ("_center", new Vector4 (p.x, p.y, p.z, 0.0f));
 
-		material.SetVector ("_x", new Vector4 (offset.x, offset.y, angle, fade));
+		material.SetVector ("_x", new Vector4 (offset.x/Screen.width, offset.y/Screen.height, angle, fade));
 		material.SetTexture ("_Last", lastFrame);
 		material.SetTexture ("_Flow", flow.texture);
 		material.SetVector ("_Flow_ST", flow.scaleTranslate);

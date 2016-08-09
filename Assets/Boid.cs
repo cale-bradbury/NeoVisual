@@ -81,10 +81,13 @@ public class Boid : MonoBehaviour {
         for(int i = 0; i<neighbors.Count; i++)
         {
             // Calculate vector pointing away from neighbor
-            Vector3 diff = transform.position - neighbors[i].transform.position;
-            diff.Normalize();
-            diff/=dist[i];        // Weight by distance
-            steer+=(diff);
+            if (dist[i] < desiredseparation)
+            {
+                Vector3 diff = transform.position - neighbors[i].transform.position;
+                diff.Normalize();
+                diff /= dist[i];        // Weight by distance
+                steer += (diff);
+            }
         }
         // Average -- divide by how many
         if (neighbors.Count > 0)

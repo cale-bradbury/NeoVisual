@@ -132,7 +132,7 @@ public class MidiModule
             GameObject.FindObjectOfType<MidiManager>().LinkStacks();
 
         r.height = editorLastHeight;
-        GUIHelper.DrawRect(r, Color.black);
+        GUIHelper.DrawRect(r, Color.gray);
         r.x += 2;
         r.y += 2;
         r.width -= 4;

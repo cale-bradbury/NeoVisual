@@ -8,6 +8,7 @@ using System.Reflection;
 [CustomPropertyDrawer(typeof(CCReflectFloat))]
 [CustomPropertyDrawer(typeof(CCReflectColor))]
 [CustomPropertyDrawer(typeof(CCReflectInt))]
+[CustomPropertyDrawer(typeof(CCReflectBool))]
 public class CCReflectorEditor : PropertyDrawer{
 	List<string> vars;
     List<string> components;

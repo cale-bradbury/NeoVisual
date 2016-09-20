@@ -26,6 +26,7 @@ public class NeoMidi : EditorWindow
         if(GUILayout.Button("Add Stack"))
         {
             manager.stacks.Add(new MidiStack(manager));
+            manager.stacks[manager.stacks.Count - 1].index = manager.stacks.Count - 1;
         }
 
 

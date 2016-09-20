@@ -17,8 +17,7 @@ public class MidiManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        Messenger.Broadcast<float>("k0", Input.mousePosition.x / Screen.width);
-        Messenger.Broadcast<float>("k1", Input.mousePosition.y / Screen.height);
+       
     }
 
     public void LinkStacks()
@@ -39,6 +38,7 @@ public class MidiStack
     public string eventName = "";
     public List<MidiModule> modules = new List<MidiModule>();
     public float value = 0;
+    public int index;
 
     public MidiStack(MidiManager manager)
     {
@@ -67,27 +67,36 @@ public class MidiStack
         {
             moduleRect.y += modules[i].OnGUI(moduleRect);
         }
-        moduleRect.height = 20;
+        moduleRect.height = 15;
         moduleRect.width *= .5f;
-        if (GUI.Button(moduleRect, "Add Module"))
-        {
-            modules.Add(new MidiModule(MidiModule.MidiModuleType.ReflectFloat, this));
+
+        MidiModule.MidiModuleType moduleType = (MidiModule.MidiModuleType)UnityEditor.EditorGUI.EnumPopup(moduleRect, MidiModule.MidiModuleType.AddModule);
+        if(moduleType!= MidiModule.MidiModuleType.AddModule) { 
+            modules.Add(new MidiModule(moduleType, this));
+            modules[modules.Count - 1].index = modules.Count - 1;
         }
+
         moduleRect.x += moduleRect.width;
         if (GUI.Button(moduleRect, "Remove Stack"))
         {
             if (manager == null)
                 manager = GameObject.FindObjectOfType<MidiManager>();
             manager.stacks.Remove(this);
+            for (int i = 0; i < manager.stacks.Count; i++)
+            {
+                manager.stacks[i].index = i;
+            }
         }
     }
 }
-
 [System.Serializable]
-public class MidiModule
+public class MidiModule 
 {
+
     public enum MidiModuleType {
-        ReflectFloat
+        AddModule,
+        ReflectFloat,
+        ReflectGradient
     }
     public MidiModuleType type;
     [NonSerialized]
@@ -95,11 +104,13 @@ public class MidiModule
     Func<Rect, MidiModule, float> guiAction;
     Action<MidiModule> callAction;
     float editorLastHeight = 10;
-
+    public int index;
 
     public bool hasCurve = true;
     public AnimationCurve curve = new AnimationCurve();
-    public CCReflectFloat output = new CCReflectFloat();
+    public Gradient gradient;
+    public CCReflectFloat floatOutput = new CCReflectFloat();
+    public CCReflectColor colorOutput = new CCReflectColor();
 
     public MidiModule(MidiModuleType type, MidiStack stack) 
     {
@@ -115,10 +126,21 @@ public class MidiModule
             guiAction = ReflectFloatDraw;
             callAction = ReflectFloatCall;
         }
+        else if (type == MidiModuleType.ReflectGradient)
+        {
+            guiAction = ReflectGradientDraw;
+            callAction = ReflectGradientCall;
+        }
+        else if (type == MidiModuleType.AddModule)
+        {
+            guiAction = ReflectFloatDraw;
+            callAction = ReflectFloatCall;
+        }
     }
 
     public void OnEvent()
     {
+        Debug.Log(callAction);
         if (callAction == null)
             GetActions();
         callAction(this);
@@ -141,27 +163,39 @@ public class MidiModule
         return f+10;
     }
 
+    static bool DrawHeader(ref Rect r, MidiModule m, string text)
+    {
+        r.height = 15;
+        GUI.Label(new Rect(r.x, r.y, r.width - 20, 20),text);
+        if (GUI.Button(new Rect(r.x + r.width - 15, r.y, 15, 15), "x"))
+        {
+            m.stack.modules.Remove(m);
+            for (int i = 0; i < m.stack.modules.Count; i++)
+            {
+                m.stack.modules[i].index = i;
+            }
+            return true;
+        }
+        r.y += 20;
+        return false;
+    }
+
     static float ReflectFloatDraw(Rect r, MidiModule m)
     {
         float startHeight = r.y;
-        r.height = 20;
-        GUI.Label(new Rect(r.x, r.y, r.width-20, 20), "Float Reflect");
-        if(GUI.Button(new Rect(r.x+r.width-20, r.y, 20, 20), "x"))
-        {
-            m.stack.modules.Remove(m);
+        if (DrawHeader(ref r, m, "Float Reflect"))
             return 0;
-        }
-        r.y += 20;
-        m.hasCurve = GUI.Toggle(r, m.hasCurve,"hasCurve");
+
+        m.hasCurve = GUI.Toggle(r, m.hasCurve, "hasCurve");
         if (m.hasCurve)
         {
             r.y += 20;
             m.curve = UnityEditor.EditorGUI.CurveField(r, m.curve);
         }
         r.y += 20;
-        m.output.Draw(r);
-        
-        return r.y-startHeight+20;
+        m.floatOutput.Draw(r);
+
+        return r.y - startHeight + 20;
     }
 
     static void ReflectFloatCall(MidiModule m)
@@ -169,6 +203,29 @@ public class MidiModule
         float f = m.stack.value;
         if (m.hasCurve)
             f = m.curve.Evaluate(f);
-        m.output.SetValue(f);
+        m.floatOutput.SetValue(f);
+    }
+    
+    static float ReflectGradientDraw(Rect r, MidiModule m)
+    {
+        float startHeight = r.y;
+        if (DrawHeader(ref r, m, "Gradient Reflect"))
+            return 0;
+        UnityEditor.SerializedObject so = new UnityEditor.SerializedObject(m.stack.manager);
+        UnityEditor.SerializedProperty gradient = so.FindProperty("stacks").GetArrayElementAtIndex(m.stack.index).FindPropertyRelative("modules").GetArrayElementAtIndex(m.index).FindPropertyRelative("gradient");
+        UnityEditor.EditorGUI.BeginChangeCheck();
+        UnityEditor.EditorGUI.PropertyField(r, gradient, true);
+        if (UnityEditor.EditorGUI.EndChangeCheck())
+            so.ApplyModifiedProperties();
+        
+        r.y += 20;
+        m.colorOutput.Draw(r);
+
+        return r.y - startHeight + 20;
+    }
+
+    static void ReflectGradientCall(MidiModule m)
+    {
+        m.colorOutput.SetValue(m.gradient.Evaluate(m.stack.value));
     }
 }

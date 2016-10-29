@@ -5,14 +5,16 @@ using UnityEditor;
 public class NeoMidi : EditorWindow
 {
     MidiInput input;
-    MidiManager manager;
+    NeoMidiManager manager;
 
     [MenuItem("CampCult/NeoMidi %_m")]
     static void Init()
     {
         NeoMidi m = EditorWindow.GetWindow<NeoMidi>();
         m.input = FindObjectOfType<MidiInput>();
-        m.manager = FindObjectOfType<MidiManager>();
+        m.manager = FindObjectOfType<NeoMidiManager>();
+        if (m.manager == null)
+            Debug.LogWarning("NO NeoMidiManager found in scene");
     }
 
     void OnGUI()
@@ -20,7 +22,7 @@ public class NeoMidi : EditorWindow
         if (manager ==null)
         {
             input = FindObjectOfType<MidiInput>();
-            manager = FindObjectOfType<MidiManager>();
+            manager = FindObjectOfType<NeoMidiManager>();
         }
 
         if(GUILayout.Button("Add Stack"))

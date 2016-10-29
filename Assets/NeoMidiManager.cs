@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-public class MidiManager : MonoBehaviour {
+public class NeoMidiManager : MonoBehaviour {
     public List<MidiStack> stacks = new List<MidiStack>();
 
 	// Use this for initialization
@@ -33,14 +33,14 @@ public class MidiManager : MonoBehaviour {
 [System.Serializable]
 public class MidiStack
 {
-    public MidiManager manager;
+    public NeoMidiManager manager;
     public string friendlyName = "";
     public string eventName = "";
     public List<MidiModule> modules = new List<MidiModule>();
     public float value = 0;
     public int index;
 
-    public MidiStack(MidiManager manager)
+    public MidiStack(NeoMidiManager manager)
     {
         this.manager = manager;
     }
@@ -80,7 +80,7 @@ public class MidiStack
         if (GUI.Button(moduleRect, "Remove Stack"))
         {
             if (manager == null)
-                manager = GameObject.FindObjectOfType<MidiManager>();
+                manager = GameObject.FindObjectOfType<NeoMidiManager>();
             manager.stacks.Remove(this);
             for (int i = 0; i < manager.stacks.Count; i++)
             {
@@ -151,7 +151,7 @@ public class MidiModule
         if (guiAction == null)
             GetActions();
         if (stack == null)
-            GameObject.FindObjectOfType<MidiManager>().LinkStacks();
+            GameObject.FindObjectOfType<NeoMidiManager>().LinkStacks();
 
         r.height = editorLastHeight;
         GUIHelper.DrawRect(r, Color.gray);

@@ -60,20 +60,24 @@
 				float d = length(uv);
 				float a = atan2(uv.x,uv.y);
 				a += sin(d*4. + _Time.y)*.001;
-				d *= (sin(uv.x + uv.y + _Time.y*.333)*.000125 + .995);
+				d *= (sin(uv.x + uv.y + _Time.y)*.000125 + .995);
 
+				float m = mic((abs(uv.x)+abs(uv.y))*2., uv.x) * darken.w;
+				d -= m*d;
 				uv.y = cos(a);
 				uv.x = sin(a);
 				uv *= d;
 				uv += off;
 
-
 				float4 c = tex2D(_MainTex,uv + o);
-				float3 t = c.bbb* sin((d*5. + float3(0., .333,.666))*6.28 - fmod(_Time.y*10.5, 6.28))*.5 + .5;
+				float3 t = c.bbb* sin((d*5. + float3(0., .333,.666))*6.28 - fmod(_Time.y, 6.28))*.5 + .5;
 				float freq = shape.y;
-				float phase = _Time.y*1. + sin(_Time.y + d)*.1- mic(a/3.+_Time.x, d-.25)*10;
+				float phase = _Time.y*1. + sin(_Time.y + d)*.1;
+				float e = shape.x+m;
 				for (float amp = .0006; amp>0.; amp -= .0001) {
-					uv += float2(cos(uv.x + uv.y*freq + a + phase), sin(uv.y + uv.x*freq + a + phase))*amp*shape.x;
+					uv -= .5;
+					uv += float2(cos(uv.x + uv.y*freq + a + phase), cos(uv.y + uv.x*freq + a + phase))*amp*e;
+					uv += .5;
 					freq /= shape.z;
 					phase += shape.w;//5707;
 				}

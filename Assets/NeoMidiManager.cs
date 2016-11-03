@@ -108,6 +108,7 @@ public class MidiModule
 
     public bool hasCurve = true;
     public AnimationCurve curve = new AnimationCurve();
+    public Vector2 minmax = new Vector2(0, 1);
     public Gradient gradient;
     public CCReflectFloat floatOutput = new CCReflectFloat();
     public CCReflectColor colorOutput = new CCReflectColor();
@@ -193,6 +194,8 @@ public class MidiModule
             m.curve = UnityEditor.EditorGUI.CurveField(r, m.curve);
         }
         r.y += 20;
+        m.minmax = UnityEditor.EditorGUI.Vector2Field(r, "min/max", m.minmax);
+        r.y += 40;
         m.floatOutput.Draw(r);
 
         return r.y - startHeight + 20;
@@ -203,7 +206,7 @@ public class MidiModule
         float f = m.stack.value;
         if (m.hasCurve)
             f = m.curve.Evaluate(f);
-        m.floatOutput.SetValue(f);
+        m.floatOutput.SetValue(Mathf.Lerp(m.minmax.x, m.minmax.y,f));
     }
     
     static float ReflectGradientDraw(Rect r, MidiModule m)

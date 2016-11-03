@@ -9,6 +9,9 @@ using System.Reflection;
 [CustomPropertyDrawer(typeof(CCReflectColor))]
 [CustomPropertyDrawer(typeof(CCReflectInt))]
 [CustomPropertyDrawer(typeof(CCReflectBool))]
+[CustomPropertyDrawer(typeof(CCReflectVector2))]
+[CustomPropertyDrawer(typeof(CCReflectVector3))]
+[CustomPropertyDrawer(typeof(CCReflectVector4))]
 public class CCReflectorEditor : PropertyDrawer{
 	List<string> vars;
     List<string> components;
@@ -119,10 +122,15 @@ public class CCReflectorEditor : PropertyDrawer{
     void GetFields(System.Type ty, System.Type[] type){
 		vars = new List<string> ();
 		FieldInfo[] fields = ty.GetFields ();
-		foreach (FieldInfo f in fields) {
+        foreach (FieldInfo f in fields) {
 			foreach(System.Type t in type){
 				if(t == f.FieldType){
-					if(t==typeof(Vector4)){
+                    if (type.Length == 1)
+                    {
+                        vars.Add(f.Name);
+                        break;
+                    }
+                    if (t==typeof(Vector4)){
 						vars.Add(f.Name+"-x");
 						vars.Add(f.Name+"-y");
 						vars.Add(f.Name+"-z");
@@ -146,7 +154,12 @@ public class CCReflectorEditor : PropertyDrawer{
 		foreach (PropertyInfo p in props) {
 			foreach(System.Type t in type){
 				if(t == p.PropertyType){
-					if(t==typeof(Vector4)){
+                    if (type.Length == 1)
+                    {
+                        vars.Add(p.Name);
+                        break;
+                    }
+                    if (t==typeof(Vector4)){
 						vars.Add(p.Name+"-x");
 						vars.Add(p.Name+"-y");
 						vars.Add(p.Name+"-z");

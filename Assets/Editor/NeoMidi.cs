@@ -6,6 +6,7 @@ public class NeoMidi : EditorWindow
 {
     MidiInput input;
     NeoMidiManager manager;
+    Vector2 scrollPos = Vector2.zero;
 
     [MenuItem("CampCult/NeoMidi %_m")]
     static void Init()
@@ -30,16 +31,18 @@ public class NeoMidi : EditorWindow
             manager.stacks.Add(new MidiStack(manager));
             manager.stacks[manager.stacks.Count - 1].index = manager.stacks.Count - 1;
         }
-
-
+        
         int stackWidth = 200;
+        Debug.Log(position);
+        scrollPos = GUI.BeginScrollView(new Rect(0,0,position.width, position.height), scrollPos, new Rect(0, 0, manager.stacks.Count * (stackWidth+10), 200));
+
         Rect stackRect = new Rect(0, 25, stackWidth, 300);
         for (int i = 0; i < manager.stacks.Count; i++)
         {
             manager.stacks[i].OnGUI(stackRect);
             stackRect.x += stackWidth+10;
         }
-
+        GUI.EndScrollView();
     }
 
 }

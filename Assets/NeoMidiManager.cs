@@ -28,6 +28,13 @@ public class NeoMidiManager : MonoBehaviour {
                 m.stack = s;
         }
     }
+
+    public void SwapStacks(int i, int j)
+    {
+        MidiStack s = stacks[i];
+        stacks[i] = stacks[j];
+        stacks[j] = s;
+    }
 }
 
 [System.Serializable]
@@ -62,6 +69,13 @@ public class MidiStack
         GUI.Label(new Rect(r.x, r.y, r.width * .5f, 20), "event");
         eventName = GUI.TextField(new Rect(r.x+ r.width * .5f, r.y, r.width * .5f, 20), eventName);
         r.y += 25;
+        index = manager.stacks.IndexOf(this);
+        if (GUI.Button(new Rect(r.x,r.y,r.width*.5f, 20), "<-") && index != 0)
+            manager.SwapStacks(index, index - 1);
+        if (GUI.Button(new Rect(r.x+r.width*.5f, r.y, r.width * .5f, 20), "->") && index != manager.stacks.Count - 1)
+            manager.SwapStacks(index, index + 1);
+
+        r.y += 25;
         Rect moduleRect = new Rect(r.x, r.y, r.width, 20);
         for (int i = 0; i < modules.Count; i++)
         {
@@ -87,6 +101,7 @@ public class MidiStack
                 manager.stacks[i].index = i;
             }
         }
+
     }
 }
 [System.Serializable]

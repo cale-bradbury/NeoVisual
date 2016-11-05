@@ -1,23 +1,44 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 public class NeoMidiManager : MonoBehaviour {
     public List<MidiStack> stacks = new List<MidiStack>();
-
+    
+    string path ;
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
+        path = Application.dataPath + "/neomidi.dat";
+        if (File.Exists(path))
+            Load();
         LinkStacks();
         for (int i = 0; i<stacks.Count; i++)
         {
             Messenger.AddListener<float>(stacks[i].eventName, stacks[i].OnEvent);
+            stacks[i].OnEvent(stacks[i].value);
         }
 	}
-	
-	// Update is called once per frame
-	void Update ()
+
+    void OnDestroy()
     {
-       
+        Save();
+    }
+
+    public void Save()
+    {
+        string save = "";
+        for (int i = 0; i < stacks.Count; i++)
+            save += stacks[i].value + "\n";
+        File.WriteAllText(path, save);
+        Debug.Log("wrote neomidi to " + path);
+    }
+    public void Load()
+    {
+        string[] save = File.ReadAllText(path).Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries );
+        for (int i = 0; i < stacks.Count; i++)
+            stacks[i].value = float.Parse(save[i]);
     }
 
     public void LinkStacks()

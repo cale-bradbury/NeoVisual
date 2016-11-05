@@ -54,9 +54,15 @@
 
 			fixed4 frag (v2f i) : SV_Target
 			{
+
 				float2 o = float2(0., sin(i.uv.x*3. + _Time.y)*.05);
 				float2 off = float2(.5,.5) - o;
-				float2 uv = i.uv - off;
+				float2 uv = i.uv ;
+
+#if UNITY_UV_STARTS_AT_TOP
+				uv.y = 1.0 - uv.y;
+#endif
+				uv -= off;
 				float d = length(uv);
 				float a = atan2(uv.x,uv.y);
 				a += sin(d*4. + _Time.y)*.001;

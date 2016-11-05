@@ -23,8 +23,8 @@ uniform float4 _Center;
 fixed4 frag (v2f_img i) : COLOR
 {
 	float2 uv = i.uv;
-	#if !UNITY_UV_STARTS_AT_TOP
-	//	uv.y = 1.0-uv.y;
+	#if UNITY_UV_STARTS_AT_TOP
+		uv.y = 1.0 - uv.y;
 	#endif
 	uv-=_Center.xy;
 	float a = atan2(uv.y,uv.x);

@@ -105,6 +105,7 @@ public class MidiStack
         moduleRect.height = 15;
         moduleRect.width *= .5f;
 
+#if UNITY_EDITOR
         MidiModule.MidiModuleType moduleType = (MidiModule.MidiModuleType)UnityEditor.EditorGUI.EnumPopup(moduleRect, MidiModule.MidiModuleType.AddModule);
         if(moduleType!= MidiModule.MidiModuleType.AddModule) { 
             modules.Add(new MidiModule(moduleType, this));
@@ -122,7 +123,7 @@ public class MidiStack
                 manager.stacks[i].index = i;
             }
         }
-
+#endif
     }
 }
 [System.Serializable]
@@ -223,6 +224,7 @@ public class MidiModule
         if (DrawHeader(ref r, m, "Float Reflect"))
             return 0;
 
+#if UNITY_EDITOR
         m.hasCurve = GUI.Toggle(r, m.hasCurve, "hasCurve");
         if (m.hasCurve)
         {
@@ -231,6 +233,7 @@ public class MidiModule
         }
         r.y += 20;
         m.minmax = UnityEditor.EditorGUI.Vector2Field(r, "min/max", m.minmax);
+#endif
         r.y += 40;
         m.floatOutput.Draw(r);
 
@@ -250,13 +253,14 @@ public class MidiModule
         float startHeight = r.y;
         if (DrawHeader(ref r, m, "Gradient Reflect"))
             return 0;
+#if UNITY_EDITOR
         UnityEditor.SerializedObject so = new UnityEditor.SerializedObject(m.stack.manager);
         UnityEditor.SerializedProperty gradient = so.FindProperty("stacks").GetArrayElementAtIndex(m.stack.index).FindPropertyRelative("modules").GetArrayElementAtIndex(m.index).FindPropertyRelative("gradient");
         UnityEditor.EditorGUI.BeginChangeCheck();
         UnityEditor.EditorGUI.PropertyField(r, gradient, true);
         if (UnityEditor.EditorGUI.EndChangeCheck())
             so.ApplyModifiedProperties();
-        
+#endif
         r.y += 20;
         m.colorOutput.Draw(r);
 

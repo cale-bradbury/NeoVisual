@@ -2,7 +2,9 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 public class CCReflector<T>{
 	public T type;
@@ -67,9 +69,9 @@ public class CCReflector<T>{
         Object o = go;
         if (o == null)
             o = (Object)this.obj;
-
+#if UNITY_EDITOR
         Object obj = (Object)EditorGUI.ObjectField(new Rect(r.x, r.y, r.width * .5f, r.height), o, typeof(Object), true);
-
+#endif
         if (obj != null)
         {
            isMat = false;
@@ -86,7 +88,9 @@ public class CCReflector<T>{
                 go = (GameObject)obj;
                 GetComponents((GameObject)obj);
                 int componentIndex = Mathf.Max(0, components.IndexOf(componentName));
+#if UNITY_EDITOR
                 componentIndex = EditorGUI.Popup(new Rect(r.x + r.width * .5f, r.y, r.width * .25f, r.height), componentIndex, components.ToArray());
+#endif
                 componentIndex = Mathf.Clamp(componentIndex, 0, components.Count);
                 componentName = components[componentIndex];
                 this.obj = ((GameObject)obj).GetComponent(System.Type.GetType(components[componentIndex]));
@@ -107,7 +111,9 @@ public class CCReflector<T>{
     void DisplayVarsDropdown( Rect r)
     {
         int i = Mathf.Max(0, vars.IndexOf(varName));
+#if UNITY_EDITOR
         i = EditorGUI.Popup(r, i, vars.ToArray());
+#endif
         if (i < vars.Count)
             varName = vars[i];
         else
@@ -126,6 +132,7 @@ public class CCReflector<T>{
 
     void GetMatFields(Material mat, System.Type[] type)
     {
+#if UNITY_EDITOR
         List<ShaderUtil.ShaderPropertyType> shaderTypes = new List<ShaderUtil.ShaderPropertyType>();
         foreach (System.Type t in type)
         {
@@ -164,6 +171,7 @@ public class CCReflector<T>{
                     vars.Add(s);
             }
         }
+#endif
     }
 
     void GetComponents(GameObject g)

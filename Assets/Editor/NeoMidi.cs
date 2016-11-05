@@ -33,7 +33,6 @@ public class NeoMidi : EditorWindow
         }
         
         int stackWidth = 200;
-        Debug.Log(position);
         scrollPos = GUI.BeginScrollView(new Rect(0,0,position.width, position.height), scrollPos, new Rect(0, 0, manager.stacks.Count * (stackWidth+10), 200));
 
         Rect stackRect = new Rect(0, 25, stackWidth, 300);

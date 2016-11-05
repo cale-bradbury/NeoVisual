@@ -6,8 +6,8 @@ import netP5.*;
 FFT fft;
 Minim minim;
 AudioInput in;
-int bands = 256;
-float[] spectrum = new float[bands];
+int bands = 128;
+float[] highest = new float[bands];
 WindowFunction[] win = { FFT.GAUSS, FFT.NONE, FFT.TRIANGULAR, FFT.LANCZOS, FFT.HANN, FFT.HAMMING, FFT.COSINE, FFT.BLACKMAN, FFT.BARTLETTHANN, FFT.BARTLETT};
 int windowIndex = 0;
 
@@ -29,16 +29,19 @@ void setup(){
 void draw(){  
   background(255);
   stroke(0);
-  fft.linAverages(256);
+  fft.linAverages(bands*2);
   fft.forward(in.mix);
   OscMessage msg = new OscMessage ("/vj");
-  for(int i = 0; i< 128;i++){
+  for(int i = 0; i< bands;i++){
     float f = fft.getAvg((i));
+    highest[i] = max(highest[i], f);
+    f = f/highest[i];
+    highest[i]-=.000001;
    // f+=fft.getBand((i+1)*4);
    // f*=.5;
     //f*=i;
     msg.add( f);
-    line( i, 256, i, 256 - f*10 );     
+    line( i, 256, i, 256 - f*100 );     
   }  
   osc.send(msg,net);
 }
@@ -56,5 +59,3 @@ void keyPressed(){
  }
  println(win[windowIndex]);
 }
-
-

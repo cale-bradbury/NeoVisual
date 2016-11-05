@@ -37,7 +37,7 @@ public class NeoMidiManager : MonoBehaviour {
     public void Load()
     {
         string[] save = File.ReadAllText(path).Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries );
-        for (int i = 0; i < stacks.Count; i++)
+        for (int i = 0; i < Mathf.Min(stacks.Count, save.Length); i++)
             stacks[i].value = float.Parse(save[i]);
     }
 

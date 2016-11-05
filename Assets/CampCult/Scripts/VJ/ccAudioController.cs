@@ -68,24 +68,24 @@ public class ccAudioController : MonoBehaviour {
                 temp[i] = 0;
 			}
 		}
-        float f = 0;
-        max = Mathf.Max(10, max-falloffRate);
-        largestIndex = 0;
+       // float f = 0;
+        //max = Mathf.Max(10, max-falloffRate);
+        /*largestIndex = 0;
         largestValue = 0;
         for (int i = 0; i<FFT.Length;i++){
             f = spectrumCurve.Evaluate((float)i / FFT.Length)*(float)msg.Values[i];
-            max = Mathf.Max(f, max);
+            //max = Mathf.Max(f, max);
             temp[i] = f;
             if (f > largestValue)
             {
                 largestValue = f;
                 largestIndex = i;
             }
-        }
+        }*/
 
         for (int i = 0; i < FFT.Length; i++)
         {
-            FFT[i] = Mathf.Lerp(FFT[i], Mathf.Pow((temp[i] / max) * spectrumMul, spectrumPow), lerp);
+            FFT[i] = Mathf.Max(FFT[i]-falloffRate,Mathf.Lerp(FFT[i], Mathf.Pow( (float)msg.Values[i]  * spectrumMul, spectrumPow), lerp));
         }
     }
 

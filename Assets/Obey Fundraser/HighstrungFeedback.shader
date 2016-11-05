@@ -33,9 +33,14 @@
 			sampler2D _MainTex;
 			sampler2D _Audio;
 			sampler2D _Feed;
+			float2 _Center;
 			float4 shape;
 			float4 darken;
 			float4 _MainTex_TexelSize;
+
+			float4 _Freq;
+			float _Amp;
+			uniform float _Step = .0125;
 
 			v2f vert (appdata v)
 			{
@@ -56,49 +61,44 @@
 			{
 
 				float2 o = float2(0., sin(i.uv.x*3. + _Time.y)*.05);
-				float2 off = float2(.5,.5) - o;
 				float2 uv = i.uv ;
 
 #if UNITY_UV_STARTS_AT_TOP
 				uv.y = 1.0 - uv.y;
 #endif
-				uv -= off;
+				uv -= _Center;
 				float d = length(uv);
 				float a = atan2(uv.x,uv.y);
 				a += sin(d*4. + _Time.y)*.001;
-				d *= (sin(uv.x + uv.y + _Time.y)*.000125 + .995);
+				d *= (sin(uv.x + uv.y + _Time.y)*.001 + .999);
 
-				float m = mic((abs(uv.x)+abs(uv.y))*2., uv.x) * darken.w;
-				d -= m*d;
+				float m = mic(abs(a / 1.5707)+_Time.x, d*.5-.05 ) * darken.w;
+				d -= d*_Amp;// m*d;
 				uv.y = cos(a);
 				uv.x = sin(a);
 				uv *= d;
-				uv += off;
+				uv += _Center;
 
-				float4 c = tex2D(_MainTex,uv + o);
+				float4 c = tex2D(_MainTex,uv );
 				float3 t = c.bbb* sin((d*5. + float3(0., .333,.666))*6.28 - fmod(_Time.y, 6.28))*.5 + .5;
-				float freq = shape.y;
-				float phase = _Time.y*1. + sin(_Time.y + d)*.1;
-				float e = shape.x+m;
-				for (float amp = .0006; amp>0.; amp -= .0001) {
-					uv -= .5;
-					uv += float2(cos(uv.x + uv.y*freq + a + phase), cos(uv.y + uv.x*freq + a + phase))*amp*e;
-					uv += .5;
-					freq /= shape.z;
-					phase += shape.w;//5707;
+				for (int j = 0; j < 10; j++) {
+					float2 freq = _Freq.xy + sin(uv + a + _Time.y) * 10;
+					float2 amp = _Freq.zw;
+					float phase = m+shape.x;
+					for (float i = 1.0; i > 0.0; i -= max(_Step, .1)) {
+						uv -= _Center;
+						uv += float2(cos(uv.x*freq.x + uv.y*freq.y  + phase), cos(uv.y*freq.x + uv.x*freq.y + phase))*amp*(1.00 - i);
+						uv += _Center;
+						phase += shape.w;// +sin(_Time.x + a)*.01;//5707;
+					}
 				}
-
 				float4 f = tex2D(_Feed,uv);
 				//f.b = 1.0-f.b;
-				f.rgb -=  float3(
-					cos(d*12. ),
-					cos(d*10.),
-					cos(d*12.)
-					)*darken.xyz+(darken.xyz*2.);
+				f.rgb -= darken.xxx;
 				//f.rgb = 1.0-mod(1.0-f.rgb, 1.);
 				f.rgb = c.bbb + (1.0 - length(c.ggg))*lerp(f.rgb,t,(c.b));
 				//f.rgb = normalize(f.rgb);
-				return f;
+				return  f;// m / darken.w;
 			}
 			ENDCG
 		}

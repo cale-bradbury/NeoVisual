@@ -2,7 +2,7 @@
 using System.Collections;
 using System.IO;
 
-public class shaderSaver : MonoBehaviour {
+public class RenderMaterial : MonoBehaviour {
 	
 	public int width;
 	public int height;

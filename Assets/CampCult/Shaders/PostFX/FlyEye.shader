@@ -8,7 +8,7 @@ Properties {
 Category{
 SubShader {
 	Pass {
-		Cull Off 
+		Cull Off ZWrite Off ZTest Always
 		Blend SrcAlpha OneMinusSrcAlpha
 		Tags {"Queue"="Transparent+1" "RenderType" = "Transparent+1"}
 		
@@ -32,6 +32,9 @@ uniform float _Taps;
 
 fixed4 frag (v2f_img j) : COLOR
 {
+#if UNITY_UV_STARTS_AT_TOP
+	j.uv.y = 1.0 - j.uv.y;
+#endif
 	#ifdef FLYEYE_MIN
 	float4 c = float(1.).xxxx;
 	#else

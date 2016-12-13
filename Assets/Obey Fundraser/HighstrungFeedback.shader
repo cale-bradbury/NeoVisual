@@ -17,16 +17,10 @@
 			
 			#include "UnityCG.cginc"
 
-			struct appdata
-			{
-				float4 vertex : POSITION;
-				float2 uv : TEXCOORD0;
-			};
-
 			struct v2f
 			{
 				float2 uv : TEXCOORD0;
-				float4 vertex : SV_POSITION;
+				float4 pos : SV_POSITION;
 			};
 
 #define pi 3.1415
@@ -41,13 +35,20 @@
 			float4 _Freq;
 			float _Amp;
 			uniform float _Step = .0125;
-
-			v2f vert (appdata v)
-			{
+			
+			v2f vert(appdata_img v) {
 				v2f o;
-				o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
-				o.uv = v.uv-.5;
-				o.uv /= float2(1., 1+ _MainTex_TexelSize.x);
+				o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
+#ifdef UNITY_HALF_TEXEL_OFFSET
+				v.texcoord.y += _MainTex_TexelSize.y;
+#endif
+#if SHADER_API_D3D9
+				if (_MainTex_TexelSize.y < 0)
+					v.texcoord.y = 1.0 - v.texcoord.y;
+#endif
+				o.uv = MultiplyUV(UNITY_MATRIX_TEXTURE0, v.texcoord); 
+				o.uv -= .5;
+				o.uv /= float2(1., 1 + _MainTex_TexelSize.x);
 				o.uv += .5;
 				return o;
 			}
@@ -62,10 +63,6 @@
 
 				float2 o = float2(0., sin(i.uv.x*3. + _Time.y)*.05);
 				float2 uv = i.uv ;
-
-#if UNITY_UV_STARTS_AT_TOP
-				uv.y = 1.0 - uv.y;
-#endif
 				uv -= _Center;
 				float d = length(uv);
 				float a = atan2(uv.x,uv.y);

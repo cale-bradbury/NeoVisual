@@ -178,7 +178,6 @@ public class MidiModule
 
     public void OnEvent()
     {
-        Debug.Log(callAction);
         if (callAction == null)
             GetActions();
         callAction(this);

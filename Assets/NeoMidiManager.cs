@@ -96,6 +96,13 @@ public class MidiStack
             manager.SwapStacks(index, index + 1);
 
         r.y += 25;
+
+	float v = GUI.HorizontalSlider(new Rect(r.x, r.y, r.width, 25), value, 0, 1);
+	if(v!=value){
+	    value = v;
+	    OnEvent(value);
+        }
+        r.y += 25;
         Rect moduleRect = new Rect(r.x, r.y, r.width, 20);
         for (int i = 0; i < modules.Count; i++)
         {

@@ -50,6 +50,7 @@
 				o.uv -= .5;
 				o.uv /= float2(1., 1 + _MainTex_TexelSize.x);
 				o.uv += .5;
+				//o.uv.y = 1.-o.uv.y;
 				return o;
 			}
 
@@ -67,7 +68,7 @@
 				float d = length(uv);
 				float a = atan2(uv.x,uv.y);
 				a += sin(d*4. + _Time.y)*.001;
-				d *= (sin(uv.x + uv.y + _Time.y)*.001 + .999);
+				d *= (sin(uv.x + uv.y )*.001 + .999);
 
 				float m = mic(abs(a / 1.5707)+_Time.x, d*.5-.05 ) * darken.w;
 				d -= d*_Amp;// m*d;
@@ -79,7 +80,7 @@
 				float4 c = tex2D(_MainTex,uv );
 				float3 t = c.bbb* sin((d*5. + float3(0., .333,.666))*6.28 - fmod(_Time.y, 6.28))*.5 + .5;
 				for (int j = 0; j < 10; j++) {
-					float2 freq = _Freq.xy + sin(uv + a + _Time.y) * 10;
+					float2 freq = _Freq.xy;// +sin(uv + a + _Time.y) * 10;
 					float2 amp = _Freq.zw;
 					float phase = m+shape.x;
 					for (float i = 1.0; i > 0.0; i -= max(_Step, .1)) {

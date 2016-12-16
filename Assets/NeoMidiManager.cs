@@ -4,8 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 
 public class NeoMidiManager : MonoBehaviour {
-    public List<MidiStack> stacks = new List<MidiStack>();
-    
+    public List<MidiStack> stacks = new List<MidiStack>();    
     string path ;
 	// Use this for initialization
 	void Start ()

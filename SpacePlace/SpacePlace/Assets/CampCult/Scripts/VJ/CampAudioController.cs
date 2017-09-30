@@ -63,7 +63,7 @@ public class CampAudioController : MonoBehaviour {
 			for(int i = 0; i< FFT.Length;i++){
                 float f = (float)n[i];
                 peak[i] = Mathf.Max(Mathf.Max(peakMin, peak[i] - peakFalloff), f, 0);
-                f /= peak[i];
+                f /= peak[i]+peakMin;
                 FFT[i] = Mathf.Max(FFT[i] - falloffRate, Mathf.Lerp(FFT[i], Mathf.Pow(f * spectrumMul, spectrumPow) * spectrumCurve.Evaluate((float)i / FFT.Length), lerp));
             }
 		}

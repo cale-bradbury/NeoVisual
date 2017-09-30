@@ -37,6 +37,7 @@ public class Displacement : ImageEffectBase {
 	public Transform center;
 	public bool invertY = true;
     public Vector4 flowST;
+    float extraAngle;
 
     void OnEnable()
     {
@@ -45,7 +46,7 @@ public class Displacement : ImageEffectBase {
 
 	// Called by camera to apply image effect
 	void OnRenderImage (RenderTexture source, RenderTexture destination) {
-		angle += anglePerSecond * Time.deltaTime * Mathf.PI * 2;
+		extraAngle += anglePerSecond * Time.deltaTime * Mathf.PI * 2;
 
 		flow.Update ();
 
@@ -53,11 +54,11 @@ public class Displacement : ImageEffectBase {
 		p = GetComponent<Camera> ().WorldToViewportPoint (p);
 		material.SetVector ("_center", new Vector4 (p.x, p.y, p.z, 0.0f));
 
-        material.SetVector("_x", new Vector4(0, 0, angle, fade));
+        material.SetVector("_x", new Vector4(0, 0, angle+extraAngle, fade));
         material.SetVector("_Offset", new Vector4(offsetMinMax.x / Screen.width, offsetMinMax.y / Screen.height, offsetMinMax.z / Screen.width, offsetMinMax.w / Screen.height));
         material.SetTexture ("_Last", lastFrame);
 		material.SetTexture ("_Flow", flow.texture);
-		material.SetVector ("_Flow_ST", flowST);
+		material.SetVector ("_FlowST", flowST);
 		
 		if (radial) {
 			Shader.EnableKeyword ("radial");

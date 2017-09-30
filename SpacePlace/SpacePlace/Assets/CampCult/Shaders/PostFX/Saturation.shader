@@ -14,8 +14,8 @@ CGPROGRAM
 #pragma vertex vert_img
 #pragma fragment frag
 #pragma fragmentoption ARB_precision_hint_fastest 
-#pragma multi_compile wrapUp _wrapUp
-#pragma multi_compile wrapDown _wrapDnown
+#pragma multi_compile _ wrapUp 
+#pragma multi_compile _ wrapDown 
 #include "UnityCG.cginc"
 
 

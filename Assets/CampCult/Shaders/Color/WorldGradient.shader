@@ -1,4 +1,6 @@
-﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
 
 Shader "Camp Cult/Color/Gradient - World Space Radial" {
 	Properties {
@@ -40,7 +42,7 @@ Shader "Camp Cult/Color/Gradient - World Space Radial" {
 				};
 				v2f vert(appdata v) {
 					v2f o;
-					o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
+					o.pos = UnityObjectToClipPos(v.vertex);
 					o.world = mul(unity_ObjectToWorld,v.vertex);
 					o.uv = v.uv;
 					return o;

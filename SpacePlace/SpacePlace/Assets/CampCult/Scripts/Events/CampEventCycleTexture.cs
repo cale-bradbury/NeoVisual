@@ -1,22 +1,33 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CampEventCycleTexture : CampEventBase {
+public class CampEventCycleTexture : MonoBehaviour {
 
+
+    public string eventUp;
+    public string eventDown;
     public CampReflectTexture output;
     public Texture[] textures;
-    int index = -1;
+    int index = 0;
 
-    void Start()
+    void OnEnable()
     {
-        OnEvent();
+        Messenger.AddListener(eventUp, OnUp);
+        Messenger.AddListener(eventDown, OnDown);
+        output.SetValue(textures[0]);
     }
 
-    protected override void OnEvent()
+    protected void OnUp()
     {
-        base.OnEvent();
         index++;
         index %= textures.Length;
+        output.SetValue(textures[index]);
+    }
+    protected void OnDown()
+    {
+        index--;
+        if (index < 0)
+            index = textures.Length - 1;
         output.SetValue(textures[index]);
     }
 

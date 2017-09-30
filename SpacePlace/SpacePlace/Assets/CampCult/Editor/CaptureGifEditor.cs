@@ -32,7 +32,7 @@ public class CaptureGifEditor : EditorWindow {
 				if(captureFrames){
 					string s = ""+(frames-i);
 					while(s.Length<6)s = "0"+s;
-					ScreenCapture.CaptureScreenshot(capturePath+""+s+".png",captureUpscale);
+					//ScreenCapture.CaptureScreenshot(capturePath+""+s+".png",captureUpscale);
 				}
 				i--;
 			}else if(i==-1){

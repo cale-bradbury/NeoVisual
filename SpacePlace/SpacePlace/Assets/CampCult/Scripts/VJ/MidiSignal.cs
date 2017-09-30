@@ -5,7 +5,6 @@ using System.Collections;
 public class MidiSignal {
 
     public System.Action<float> OnChange;
-
     public int channel;
     public int status;
     float value;

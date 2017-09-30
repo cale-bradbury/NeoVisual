@@ -1,4 +1,6 @@
-﻿Shader "Unlit/DankParticle"
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Unlit/DankParticle"
 {
 	Properties
 	{
@@ -49,7 +51,7 @@
 			v2f vert (appdata v)
 			{
 				v2f o;
-				o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
+				o.vertex = UnityObjectToClipPos(v.vertex);
 				o.rUv = v.uv.xy*2.-1.;
 				o.uv = TRANSFORM_TEX(v.uv, _MainTex);
 				o.projPos = ComputeScreenPos(o.vertex);

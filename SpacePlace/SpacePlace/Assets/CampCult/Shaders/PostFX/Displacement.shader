@@ -27,7 +27,7 @@ Shader "Camp Cult/Displacement/Displacement" {
 		uniform sampler2D _MainTex;	//the screen texture
 		uniform sampler2D _Last;	//the last frames texture
 		uniform sampler2D _Flow;	//texture to control distance shited per channel
-		uniform float4 _Flow_ST;
+		uniform float4 _FlowST;
 
 		uniform float4 _x;			//x/y-max flow distance		z-angle when not radial		w-frame/last frame lerp
 		uniform float4 _Offset;
@@ -48,14 +48,14 @@ Shader "Camp Cult/Displacement/Displacement" {
 				float an = abs(fmod(angle / pi-d*q,1.0) - .5);
 				angle += _x.z*pi;
 				float2 u = (float2(an,1.));//d - .5));
-				u = abs(fmod(abs(u*_Flow_ST.xy + _Flow_ST.zw), 2.)-1.);
+				u = abs(fmod(abs(u*_FlowST.xy + _FlowST.zw), 2.)-1.);
 				float4 f = tex2D(_Flow,u);
 				float2 t = uv;
 				t.x = cos(angle);
 				t.y = sin(angle);
 				t *= lerp(_Offset.xy, _Offset.zw, f.r) *saturate(d*3.);
 			#else
-				float4 f = tex2D(_Flow,abs(fmod(uv*_Flow_ST.xy + _Flow_ST.zw, 2.)-1.))*2.-1.;
+				float4 f = tex2D(_Flow,abs(fmod(uv*_FlowST.xy + _FlowST.zw, 2.)-1.))*2.-1.;
 				float2 t = f.rg;
 				t *= f.b;
 				t *= lerp(_Offset.xy, _Offset.zw, f.r);
@@ -96,6 +96,7 @@ Shader "Camp Cult/Displacement/Displacement" {
 			#ifdef Lerp
 				return lerp(c,s,_x.w);
 			#endif
+				c.r = _FlowST.x;
 			return c;
 		}
 		ENDCG

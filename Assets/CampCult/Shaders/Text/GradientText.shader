@@ -1,4 +1,6 @@
-﻿Shader "Text/Gradient" { 
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Text/Gradient" { 
 Properties {
 		_color1 ("Grad 1 Color 1", Color) = (1,.5,.5,1)
 		_color2 ("Grad 1 Color 2", Color) = (.5,1,1,1)
@@ -33,7 +35,7 @@ Properties {
 				};
 				v2f vert(appdata v) {
 					v2f o;
-					o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
+					o.pos = UnityObjectToClipPos(v.vertex);
 					o.uv.xy = v.tex.xy;
 					o.uv.z = v.vertex.y*_range.y+_range.x;
 					return o;

@@ -1,4 +1,6 @@
-﻿Shader "Unlit/Water"
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Unlit/Water"
 {
 	Properties
 	{
@@ -47,7 +49,7 @@
 	v2f vert(appdata v)
 	{
 		v2f o;
-		o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
+		o.vertex = UnityObjectToClipPos(v.vertex);
 
 		o.vertex.y -= (tex2Dlod(_RippleTex, float4(v.uv, 1., 1.)).r-.5)*_Height;
 

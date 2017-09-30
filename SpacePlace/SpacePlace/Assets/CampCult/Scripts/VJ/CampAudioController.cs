@@ -18,7 +18,7 @@ public class CampAudioController : MonoBehaviour {
 	public int channel = 0;
 	public FFTWindow FFTWindow;
 	public float lerp = .5f;
-	public AnimationCurve spectrumCurve;
+	public AnimationCurve spectrumCurve = AnimationCurve.Linear(0,1,1,1);
 	public float spectrumMul = 1;
     public float spectrumPow = 2;
     public float falloffRate = .01f;

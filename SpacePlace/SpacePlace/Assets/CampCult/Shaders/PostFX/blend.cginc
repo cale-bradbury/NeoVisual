@@ -143,7 +143,7 @@ float3 exclusion(float3 s, float3 d)
 
 float3 subtract(float3 s, float3 d)
 {
-	return s - d;
+	return frac(s - d);
 }
 
 float3 divide(float3 s, float3 d)

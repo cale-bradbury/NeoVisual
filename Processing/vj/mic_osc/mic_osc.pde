@@ -34,9 +34,9 @@ void draw(){
   OscMessage msg = new OscMessage ("/vj");
   for(int i = 0; i< bands;i++){
     float f = fft.getAvg((i));
-    highest[i] = max(highest[i], f);
-    f = f/highest[i];
-    highest[i]-=.000001;
+    //highest[i] = max(highest[i], f);
+    //f = f/highest[i];
+    //highest[i]-=0;
    // f+=fft.getBand((i+1)*4);
    // f*=.5;
     //f*=i;

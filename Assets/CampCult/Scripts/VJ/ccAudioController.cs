@@ -23,10 +23,12 @@ public class ccAudioController : MonoBehaviour {
     public float spectrumPow = 2;
     public float falloffRate = .01f;
 
+    public float peakFalloff = .01f;
+
 	UDPPacketIO udp;
 	Osc handler;
     public static float[] FFT = new float[1];
-    static float[] temp = new float[1];
+    static float[] peak = new float[1];
     public static int largestIndex;
     public static float largestValue;
 
@@ -40,7 +42,7 @@ public class ccAudioController : MonoBehaviour {
 			handler.init (udp);
 			handler.SetAddressHandler (address, vjValue);
 			FFT = new float[1];
-            temp = new float[1];
+            peak = new float[1];
 		} else
         {
             FFT = new float[numSamples];
@@ -62,10 +64,10 @@ public class ccAudioController : MonoBehaviour {
 		if (FFT.Length != msg.Values.Count)
         {
             FFT = new float[msg.Values.Count];
-            temp = new float[msg.Values.Count];
+            peak = new float[msg.Values.Count];
             for (int i = 0; i<FFT.Length;i++){
 				FFT[i] = 0;
-                temp[i] = 0;
+                peak[i] = 0;
 			}
 		}
        // float f = 0;
@@ -85,7 +87,10 @@ public class ccAudioController : MonoBehaviour {
 
         for (int i = 0; i < FFT.Length; i++)
         {
-            FFT[i] = Mathf.Max(FFT[i]-falloffRate,Mathf.Lerp(FFT[i], Mathf.Pow( (float)msg.Values[i]  * spectrumMul, spectrumPow), lerp));
+            float f = (float)msg.Values[i];
+            peak[i] = Mathf.Max(peak[i]-peakFalloff, f, 0);
+            f /= peak[i];
+            FFT[i] = Mathf.Max(FFT[i]-falloffRate,Mathf.Lerp(FFT[i], Mathf.Pow(f  * spectrumMul, spectrumPow), lerp));
         }
     }
 

@@ -42,12 +42,13 @@ Shader "Camp Cult/Displacement/Displacement" {
 			#endif
 
 			#ifdef radial
-				float angle = atan2(uv.y - _center.y,uv.x - _center.x) + pi;
-				float an = abs(fmod(angle / pi,1.0) - .5);
-				angle += _x.z*pi;
 				float d = length(uv.xy - _center.xy);
+				float q = cos(_x.z*pi * 2 + pi)*.5 + .5;
+				float angle = atan2(uv.y - _center.y,uv.x - _center.x) + pi*2.;
+				float an = abs(fmod(angle / pi-d*q,1.0) - .5);
+				angle += _x.z*pi;
 				float2 u = (float2(an,1.));//d - .5));
-				u = abs(fmod(u*_Flow_ST.xy + _Flow_ST.zw, 2.)-1.);
+				u = abs(fmod(abs(u*_Flow_ST.xy + _Flow_ST.zw), 2.)-1.);
 				float4 f = tex2D(_Flow,u);
 				float2 t = uv;
 				t.x = cos(angle);

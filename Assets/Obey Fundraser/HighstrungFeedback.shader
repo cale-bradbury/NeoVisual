@@ -47,9 +47,6 @@
 					v.texcoord.y = 1.0 - v.texcoord.y;
 #endif
 				o.uv = MultiplyUV(UNITY_MATRIX_TEXTURE0, v.texcoord); 
-				o.uv -= .5;
-				o.uv /= float2(1., 1 + _MainTex_TexelSize.x);
-				o.uv += .5;
 				//o.uv.y = 1.-o.uv.y;
 				return o;
 			}
@@ -62,32 +59,34 @@
 			fixed4 frag (v2f i) : SV_Target
 			{
 
-				float2 o = float2(0., sin(i.uv.x*3. + _Time.y)*.05);
+				float2 o = float2(0., sin(i.uv.x*3. +_Time.y)*.05);
 				float2 uv = i.uv ;
 				uv -= _Center;
 				float d = length(uv);
-				float a = atan2(uv.x,uv.y);
-				a += sin(d*4. + _Time.y)*.001;
-				d *= (sin(uv.x + uv.y )*.001 + .999);
+				float a = atan2(uv.y,uv.x);
+				//a += sin(d*4. + _Time.y)*.001;
+				//d *= (sin(uv.x + uv.y )*.001 + .999);
 
 				float m = mic(abs(a / 1.5707)+_Time.x, d*.5-.05 ) * darken.w;
-				d -= d*_Amp;// m*d;
-				uv.y = cos(a);
-				uv.x = sin(a);
+				//d -= d*_Amp;// m*d;
+				uv.y = sin(a);
+				uv.x = cos(a);
 				uv *= d;
 				uv += _Center;
 
 				float4 c = tex2D(_MainTex,uv );
 				float3 t = c.bbb* sin((d*5. + float3(0., .333,.666))*6.28 - fmod(_Time.y, 6.28))*.5 + .5;
 				for (int j = 0; j < 10; j++) {
-					float2 freq = _Freq.xy;// +sin(uv + a + _Time.y) * 10;
+					float2 freq = _Freq.xy;
 					float2 amp = _Freq.zw;
-					float phase = m+shape.x;
+					amp.x*=1.+sin(length(uv-.5)*10. - _Time.y) *0.5;
+					float phase = m+shape.x+_Time.x+uv.y;
 					for (float i = 1.0; i > 0.0; i -= max(_Step, .1)) {
 						uv -= _Center;
-						uv += float2(cos(uv.x*freq.x + uv.y*freq.y  + phase), cos(uv.y*freq.x + uv.x*freq.y + phase))*amp*(1.00 - i);
+						float2 p = float2(cos(uv.x*freq.x + abs(uv.y)*freq.y  + phase), sin(abs(uv.y)*freq.x + uv.x*freq.y + phase))*amp*(1.00 - i);
+						uv += p;
 						uv += _Center;
-						phase += shape.w;// +sin(_Time.x + a)*.01;//5707;
+						phase += shape.w ;//+sin(_Time.x + a)*.01;//5707;
 					}
 				}
 				float4 f = tex2D(_Feed,uv);

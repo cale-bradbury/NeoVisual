@@ -36,6 +36,7 @@ public class Displacement : ImageEffectBase {
 	public float anglePerSecond = 0;
 	public Transform center;
 	public bool invertY = true;
+    public Vector4 flowST;
 
     void OnEnable()
     {
@@ -56,7 +57,7 @@ public class Displacement : ImageEffectBase {
         material.SetVector("_Offset", new Vector4(offsetMinMax.x / Screen.width, offsetMinMax.y / Screen.height, offsetMinMax.z / Screen.width, offsetMinMax.w / Screen.height));
         material.SetTexture ("_Last", lastFrame);
 		material.SetTexture ("_Flow", flow.texture);
-		material.SetVector ("_Flow_ST", flow.scaleTranslate);
+		material.SetVector ("_Flow_ST", flowST);
 		
 		if (radial) {
 			Shader.EnableKeyword ("radial");

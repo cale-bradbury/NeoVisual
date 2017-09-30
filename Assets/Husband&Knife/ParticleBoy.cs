@@ -23,6 +23,7 @@ public class ParticleBoy : MonoBehaviour {
         phase += speed * Time.deltaTime;
         mat.SetVector("_Phase", phase);
         mat.SetColor("_Color", color);
+        mat.SetVector("_MainTex_ST", new Vector4(1, 1, phase.w, phase.z));
         float a = Mathf.Atan2(transform.position.x, transform.position.z) + direction;
         transform.localEulerAngles = Vector3.back * Mathf.Rad2Deg*(a);// + (Random.value * 20 - 10));
         //rot += phase.x*.01f;

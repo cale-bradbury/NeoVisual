@@ -15,11 +15,14 @@ public class ccCreateRing : ccCreateGroup {
 	public float radius;
 	private float _radius;
 
-	public float phase;
-	private float _phase;
+    public float phase;
+    private float _phase;
 
-	public override Vector3 place (int i){
-		float a = ((float)i/count+phase/count)*Mathf.PI*2;
+    public float arc;
+    private float _arc;
+
+    public override Vector3 place (int i){
+		float a = (((float)i/(count-1)+phase/(count-1))*arc) *Mathf.PI*2;
 		if(direction==Direction.XY)
 			return new Vector3(Mathf.Cos(a)*radius,Mathf.Sin(a)*radius,0);
 		else if(direction==Direction.XZ)
@@ -33,6 +36,7 @@ public class ccCreateRing : ccCreateGroup {
 		_radius = radius;
 		_phase = phase;
 		_direction = direction;
+        _arc = arc;
 	}
 	
 	// Update is called once per frame
@@ -42,17 +46,20 @@ public class ccCreateRing : ccCreateGroup {
 		if(_radius!=radius){
 			_radius = radius;
 			r = true;
-		}
-		if(_phase!=phase){
+		}else if(_phase!=phase){
 			_phase = phase;
 			r = true;
-		}
-		if(_direction!=direction){
-			_direction = direction;
-			r = true;
-		}
+        }else if (_direction != direction)
+        {
+            _direction = direction;
+            r = true;
+        }else if (_arc != arc)
+        {
+            _arc = arc;
+            r = true;
+        }
 
-		if (r)
+        if (r)
 			refresh ();
 	}
 

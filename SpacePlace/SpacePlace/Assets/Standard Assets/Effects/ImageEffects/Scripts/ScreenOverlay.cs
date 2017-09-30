@@ -19,7 +19,7 @@ namespace UnityStandardAssets.ImageEffects
 
         public OverlayBlendMode blendMode = OverlayBlendMode.Overlay;
         public float intensity = 1.0f;
-        public Texture2D texture = null;
+        public Texture texture = null;
 
         public Shader overlayShader = null;
         private Material overlayMaterial = null;

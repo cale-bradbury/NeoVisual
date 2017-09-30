@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44692558, g: 0.49678743, b: 0.57508624, a: 1}
+  m_IndirectSpecularColor: {r: 0.44692492, g: 0.4967869, b: 0.57508546, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -162,11 +162,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 1718000937}
   - 33: {fileID: 1718000936}
-  - 65: {fileID: 1718000935}
   - 23: {fileID: 1718000934}
   - 114: {fileID: 1718000938}
-  - 114: {fileID: 1718000940}
-  - 114: {fileID: 1718000939}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -203,18 +200,6 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!65 &1718000935
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1718000933}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &1718000936
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -229,8 +214,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1718000933}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalScale: {x: 20, y: 0.03, z: 3}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
@@ -243,109 +228,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1718000933}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00fd88692d04c9142b76512f8ef9f52e, type: 3}
+  m_Script: {fileID: 11500000, guid: 85593f9dd89eeb24eb4e55afbb791929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  curve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - time: 0.5
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 1
-    m_RotationOrder: 0
-  animationTime: 5.5
-  startingPhase: 0
-  minValue: -15
-  maxValue: 15
-  field:
-    type: 0
-    types:
-    - System.Single
-    - System.Int32
-    - UnityEngine.Vector2
-    - UnityEngine.Vector3
-    - UnityEngine.Vector4
-    obj: {fileID: 1718000937}
-    varName: localEulerAngles-z
-    isMat: 0
-    componentName: 
-    go: {fileID: 0}
-    isVector: 0
-    index: 0
---- !u!114 &1718000939
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1718000933}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05dc3219fb5f3c24b849986394a30a0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventName: r0
-  output:
-    type: {x: 0, y: 0, z: 0}
-    types:
-    - UnityEngine.Vector3
-    obj: {fileID: 1718000937}
-    varName: localScale
-    isMat: 0
-    componentName: 
-    go: {fileID: 0}
-  animation:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - time: 0.2
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  min: {x: 3, y: 3, z: 3}
-  max: {x: 4, y: 4, z: 4}
-  time: 0.5
-  toggle: 0
-  firePostAnimation: 
---- !u!114 &1718000940
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1718000933}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c89cc683cb13f34082cf44300f951d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movement: 2
-  smoothing: 0.1
+  materialIndex: 0
+  uvBase: {x: 0, y: 0}
+  uvAnimationRate: {x: -0.5, y: 0}
+  textureName: _MainTex
 --- !u!1 &1719228244
 GameObject:
   m_ObjectHideFlags: 0
@@ -752,7 +641,7 @@ MonoBehaviour:
     modules:
     - type: 1
       index: 0
-      hasCurve: 0
+      hasCurve: 1
       curve:
         serializedVersion: 2
         m_Curve: []
@@ -911,7 +800,7 @@ MonoBehaviour:
         componentName: HighstrungFeedback, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
         go: {fileID: 1858167603}
-        isVector: 0
+        isVector: 1
         index: 0
       colorOutput:
         type: {r: 0, g: 0, b: 0, a: 0}
@@ -1747,7 +1636,7 @@ MonoBehaviour:
   numSamples: 0
   channel: 0
   FFTWindow: 0
-  lerp: 0.7
+  lerp: 0.05
   spectrumCurve:
     serializedVersion: 2
     m_Curve:
@@ -1766,7 +1655,7 @@ MonoBehaviour:
     m_RotationOrder: 0
   spectrumMul: 1
   spectrumPow: 1
-  falloffRate: 0.01
+  falloffRate: 0.001
 --- !u!114 &1719228248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1850,6 +1739,7 @@ GameObject:
   - 92: {fileID: 1858167606}
   - 124: {fileID: 1858167605}
   - 81: {fileID: 1858167604}
+  - 114: {fileID: 1858167615}
   - 114: {fileID: 1858167609}
   - 114: {fileID: 1858167610}
   - 114: {fileID: 1858167611}
@@ -1945,8 +1835,8 @@ MonoBehaviour:
   shader: {fileID: 4800000, guid: dbb2b19ac338c15469ca6077f541232e, type: 3}
   audioTexture: {fileID: 0}
   phase: 0.001
-  _Freq: {x: 200, y: 200, z: 0.01, w: 0.01}
-  phaseIncreasePerLoop: 0
+  _Freq: {x: 0, y: 200, z: 0.01, w: 0.01}
+  phaseIncreasePerLoop: 3.1415
   darken: {x: 0.001, y: 0.001, z: 0.001, w: 0}
   pushFromCenter: 0.01
   center: {x: 0.5, y: 0.5}
@@ -1989,21 +1879,21 @@ MonoBehaviour:
   shader: {fileID: 4800000, guid: 362c15c3a0cbecc4eb0462e707d7176d, type: 3}
   dist: {x: 0, y: 0.1, z: 0.2}
   center: {x: 0, y: 0}
-  intensity: -1
+  intensity: 0
 --- !u!114 &1858167612
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1858167603}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 44540f2d61a1b1f4fa6115e6e519236e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   shader: {fileID: 4800000, guid: fb168e632a70c1f4da307b5c58b6d511, type: 3}
   strength: 0
-  phase: 685.0841
+  phase: 788.3544
   phasePerSecond: 1
   taps: 6
   min: 0
@@ -2026,7 +1916,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1858167603}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c5e6f7ca3985e35438bb7fee3330aaf0, type: 3}
   m_Name: 
@@ -2038,3 +1928,18 @@ MonoBehaviour:
   getSeries: 1
   numFrames: 10
   startFrame: 0
+  frameRate: 30
+--- !u!114 &1858167615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1858167603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b22841afc8626ff4598a4fa391b5e52b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shader: {fileID: 4800000, guid: 981c01680b867a34183a73de87de0eb3, type: 3}
+  _mirrorX: 1
+  _mirrorY: 0

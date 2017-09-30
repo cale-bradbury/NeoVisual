@@ -2,6 +2,7 @@
 Properties {
 	_MainTex ("Base (RGB)", 2D) = "white" {}
 	_Data("X-hue Y-sat Z-val W-null",Vector)=(0,1,1,0)
+	_Wrap("Wrap pixel value points", Vector) = (0.01, .99, 0., 0.)
 }
 
 SubShader {
@@ -13,10 +14,14 @@ CGPROGRAM
 #pragma vertex vert_img
 #pragma fragment frag
 #pragma fragmentoption ARB_precision_hint_fastest 
+#pragma multi_compile wrapUp _wrapUp
+#pragma multi_compile wrapDown _wrapDnown
 #include "UnityCG.cginc"
+
 
 uniform sampler2D _MainTex;
 uniform float4 _Data;
+uniform float4 _Wrap;
 
 fixed3 rgb2hsv(float3 c){
 	float4 K = float4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);
@@ -47,6 +52,12 @@ fixed4 frag (v2f_img i) : COLOR{
 	c.r = fmod(c.r,1.0);
 	c.gb *= _Data.yz;
 	c.rgb = hsv2rgb(c.rgb);
+#ifdef wrapDown
+	c.rgb = lerp(fmod(c.rgb + _Wrap.yyy, 1.), c.rgb, step(c.rgb, _Wrap.yyy));
+#endif
+#ifdef wrapUp
+	c.rgb = lerp(1. - c.rgb, c.rgb, 1. - step(c.rgb, _Wrap.xxx));
+#endif
 	return c;
 }
 ENDCG

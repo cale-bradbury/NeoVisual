@@ -1,4 +1,6 @@
-﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
 
 Shader "Camp Cult/Generators/Shitty Wireframe" {
     Properties {
@@ -41,7 +43,7 @@ Shader "Camp Cult/Generators/Shitty Wireframe" {
 				};
 				v2f vert(appdata v) {
 					v2f o;
-					o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
+					o.pos = UnityObjectToClipPos(v.vertex);
 					o.vert = v.tex;//v.vertex;
 					float4 world = mul(unity_ObjectToWorld, v.vertex);
 					o.fog = world.z/_FogEnd;

@@ -1,0 +1,1925 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!29 &1
+SceneSettings:
+  m_ObjectHideFlags: 0
+  m_PVSData: 
+  m_PVSObjectsArray: []
+  m_PVSPortalsArray: []
+  m_OcclusionBakeSettings:
+    smallestOccluder: 5
+    smallestHole: 0.25
+    backfaceThreshold: 100
+--- !u!104 &2
+RenderSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 7
+  m_Fog: 0
+  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_FogMode: 3
+  m_FogDensity: 0.01
+  m_LinearFogStart: 0
+  m_LinearFogEnd: 300
+  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
+  m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
+  m_AmbientIntensity: 1
+  m_AmbientMode: 0
+  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_HaloStrength: 0.5
+  m_FlareStrength: 1
+  m_FlareFadeSpeed: 3
+  m_HaloTexture: {fileID: 0}
+  m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
+  m_DefaultReflectionMode: 0
+  m_DefaultReflectionResolution: 128
+  m_ReflectionBounces: 1
+  m_ReflectionIntensity: 1
+  m_CustomReflection: {fileID: 0}
+  m_Sun: {fileID: 0}
+  m_IndirectSpecularColor: {r: 0.44692492, g: 0.4967869, b: 0.57508546, a: 1}
+--- !u!157 &3
+LightmapSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 7
+  m_GIWorkflowMode: 0
+  m_GISettings:
+    serializedVersion: 2
+    m_BounceScale: 1
+    m_IndirectOutputScale: 1
+    m_AlbedoBoost: 1
+    m_TemporalCoherenceThreshold: 1
+    m_EnvironmentLightingMode: 0
+    m_EnableBakedLightmaps: 1
+    m_EnableRealtimeLightmaps: 1
+  m_LightmapEditorSettings:
+    serializedVersion: 4
+    m_Resolution: 2
+    m_BakeResolution: 40
+    m_TextureWidth: 1024
+    m_TextureHeight: 1024
+    m_AO: 0
+    m_AOMaxDistance: 1
+    m_CompAOExponent: 1
+    m_CompAOExponentDirect: 0
+    m_Padding: 2
+    m_LightmapParameters: {fileID: 0}
+    m_LightmapsBakeMode: 1
+    m_TextureCompression: 1
+    m_DirectLightInLightProbes: 1
+    m_FinalGather: 0
+    m_FinalGatherFiltering: 1
+    m_FinalGatherRayCount: 256
+    m_ReflectionCompression: 2
+  m_LightingDataAsset: {fileID: 0}
+  m_RuntimeCPUUsage: 25
+--- !u!196 &4
+NavMeshSettings:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_BuildSettings:
+    serializedVersion: 2
+    agentRadius: 0.5
+    agentHeight: 2
+    agentSlope: 45
+    agentClimb: 0.4
+    ledgeDropHeight: 0
+    maxJumpAcrossDistance: 0
+    accuratePlacement: 0
+    minRegionArea: 2
+    cellSize: 0.16666667
+    manualCellSize: 0
+  m_NavMeshData: {fileID: 0}
+--- !u!1 &1713909077
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1713909079}
+  - 108: {fileID: 1713909078}
+  m_Layer: 0
+  m_Name: Directional Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!108 &1713909078
+Light:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1713909077}
+  m_Enabled: 1
+  serializedVersion: 7
+  m_Type: 1
+  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Intensity: 1
+  m_Range: 10
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 2
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+--- !u!4 &1713909079
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1713909077}
+  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+--- !u!1 &1718000933
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1718000937}
+  - 33: {fileID: 1718000936}
+  - 23: {fileID: 1718000934}
+  - 114: {fileID: 1718000938}
+  m_Layer: 0
+  m_Name: Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!23 &1718000934
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1718000933}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: b29b95f7555e6e541bf7a6fb3fc8c126, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedWireframeHidden: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!33 &1718000936
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1718000933}
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1718000937
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1718000933}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalScale: {x: 20, y: 0.03, z: 3}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+--- !u!114 &1718000938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1718000933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85593f9dd89eeb24eb4e55afbb791929, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materialIndex: 0
+  uvBase: {x: 0, y: 0}
+  uvAnimationRate: {x: -0.5, y: 0}
+  textureName: _MainTex
+--- !u!1 &1719228244
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1719228246}
+  - 114: {fileID: 1719228245}
+  - 114: {fileID: 1719228248}
+  - 114: {fileID: 1719228247}
+  - 114: {fileID: 1719228249}
+  - 114: {fileID: 1719228250}
+  - 114: {fileID: 1719228251}
+  - 114: {fileID: 1719228252}
+  m_Layer: 0
+  m_Name: Midi
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1719228245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1719228244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbbcddcccc6f0344485a57dc9c15970c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stacks:
+  - manager: {fileID: 1719228245}
+    friendlyName: spectrum lerp
+    eventName: k0
+    modules:
+    - type: 1
+      index: 0
+      hasCurve: 1
+      curve:
+        serializedVersion: 2
+        m_Curve:
+        - time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+        - time: 1
+          value: 1
+          inSlope: 2
+          outSlope: 2
+          tangentMode: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      minmax: {x: 0.05, y: 1}
+      gradient:
+        key0:
+          serializedVersion: 2
+          rgba: 4294967295
+        key1:
+          serializedVersion: 2
+          rgba: 4294967295
+        key2:
+          serializedVersion: 2
+          rgba: 0
+        key3:
+          serializedVersion: 2
+          rgba: 0
+        key4:
+          serializedVersion: 2
+          rgba: 0
+        key5:
+          serializedVersion: 2
+          rgba: 0
+        key6:
+          serializedVersion: 2
+          rgba: 0
+        key7:
+          serializedVersion: 2
+          rgba: 0
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 65535
+        atime2: 0
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 2
+      floatOutput:
+        type: 0
+        types:
+        - System.Single
+        - System.Int32
+        - UnityEngine.Vector2
+        - UnityEngine.Vector3
+        - UnityEngine.Vector4
+        obj: {fileID: 1719228247}
+        varName: lerp
+        isMat: 0
+        componentName: ccAudioController, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        go: {fileID: 1719228244}
+        isVector: 0
+        index: 0
+      colorOutput:
+        type: {r: 0, g: 0, b: 0, a: 0}
+        types:
+        - UnityEngine.Color
+        obj: {fileID: 0}
+        varName: 
+        isMat: 0
+        componentName: 
+        go: {fileID: 0}
+    value: 0
+    index: 0
+  - manager: {fileID: 1719228245}
+    friendlyName: spectrum mul
+    eventName: k8
+    modules:
+    - type: 1
+      index: 0
+      hasCurve: 1
+      curve:
+        serializedVersion: 2
+        m_Curve:
+        - time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+        - time: 1
+          value: 1
+          inSlope: 2
+          outSlope: 2
+          tangentMode: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      minmax: {x: 0.001, y: 1}
+      gradient:
+        key0:
+          serializedVersion: 2
+          rgba: 4294967295
+        key1:
+          serializedVersion: 2
+          rgba: 4294967295
+        key2:
+          serializedVersion: 2
+          rgba: 0
+        key3:
+          serializedVersion: 2
+          rgba: 0
+        key4:
+          serializedVersion: 2
+          rgba: 0
+        key5:
+          serializedVersion: 2
+          rgba: 0
+        key6:
+          serializedVersion: 2
+          rgba: 0
+        key7:
+          serializedVersion: 2
+          rgba: 0
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 65535
+        atime2: 0
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 2
+      floatOutput:
+        type: 0
+        types:
+        - System.Single
+        - System.Int32
+        - UnityEngine.Vector2
+        - UnityEngine.Vector3
+        - UnityEngine.Vector4
+        obj: {fileID: 1719228247}
+        varName: falloffRate
+        isMat: 0
+        componentName: ccAudioController, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        go: {fileID: 1719228244}
+        isVector: 0
+        index: 0
+      colorOutput:
+        type: {r: 0, g: 0, b: 0, a: 0}
+        types:
+        - UnityEngine.Color
+        obj: {fileID: 0}
+        varName: 
+        isMat: 0
+        componentName: 
+        go: {fileID: 0}
+    value: 0
+    index: 1
+  - manager: {fileID: 1719228245}
+    friendlyName: shader mic
+    eventName: k6
+    modules:
+    - type: 1
+      index: 0
+      hasCurve: 1
+      curve:
+        serializedVersion: 2
+        m_Curve:
+        - time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+        - time: 1
+          value: 1
+          inSlope: 2
+          outSlope: 2
+          tangentMode: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      minmax: {x: 0, y: 50}
+      gradient:
+        key0:
+          serializedVersion: 2
+          rgba: 4294967295
+        key1:
+          serializedVersion: 2
+          rgba: 4294967295
+        key2:
+          serializedVersion: 2
+          rgba: 0
+        key3:
+          serializedVersion: 2
+          rgba: 0
+        key4:
+          serializedVersion: 2
+          rgba: 0
+        key5:
+          serializedVersion: 2
+          rgba: 0
+        key6:
+          serializedVersion: 2
+          rgba: 0
+        key7:
+          serializedVersion: 2
+          rgba: 0
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 65535
+        atime2: 0
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 2
+      floatOutput:
+        type: 0
+        types:
+        - System.Single
+        - System.Int32
+        - UnityEngine.Vector2
+        - UnityEngine.Vector3
+        - UnityEngine.Vector4
+        obj: {fileID: 1858167609}
+        varName: darken-w
+        isMat: 0
+        componentName: HighstrungFeedback, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        go: {fileID: 1858167603}
+        isVector: 0
+        index: 0
+      colorOutput:
+        type: {r: 0, g: 0, b: 0, a: 0}
+        types:
+        - UnityEngine.Color
+        obj: {fileID: 0}
+        varName: 
+        isMat: 0
+        componentName: 
+        go: {fileID: 0}
+    value: 0
+    index: 2
+  - manager: {fileID: 1719228245}
+    friendlyName: phase
+    eventName: k15
+    modules:
+    - type: 1
+      index: 0
+      hasCurve: 0
+      curve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      minmax: {x: 0, y: 7}
+      gradient:
+        key0:
+          serializedVersion: 2
+          rgba: 4294967295
+        key1:
+          serializedVersion: 2
+          rgba: 4294967295
+        key2:
+          serializedVersion: 2
+          rgba: 0
+        key3:
+          serializedVersion: 2
+          rgba: 0
+        key4:
+          serializedVersion: 2
+          rgba: 0
+        key5:
+          serializedVersion: 2
+          rgba: 0
+        key6:
+          serializedVersion: 2
+          rgba: 0
+        key7:
+          serializedVersion: 2
+          rgba: 0
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 65535
+        atime2: 0
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 2
+      floatOutput:
+        type: 0
+        types:
+        - System.Single
+        - System.Int32
+        - UnityEngine.Vector2
+        - UnityEngine.Vector3
+        - UnityEngine.Vector4
+        obj: {fileID: 1858167609}
+        varName: phase
+        isMat: 0
+        componentName: HighstrungFeedback, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        go: {fileID: 0}
+        isVector: 0
+        index: 0
+      colorOutput:
+        type: {r: 0, g: 0, b: 0, a: 0}
+        types:
+        - UnityEngine.Color
+        obj: {fileID: 0}
+        varName: 
+        isMat: 0
+        componentName: 
+        go: {fileID: 0}
+    value: 0
+    index: 3
+  - manager: {fileID: 1719228245}
+    friendlyName: phasePerLoop
+    eventName: k14
+    modules:
+    - type: 1
+      index: 0
+      hasCurve: 1
+      curve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      minmax: {x: 3.1415, y: 3.5}
+      gradient:
+        key0:
+          serializedVersion: 2
+          rgba: 4294967295
+        key1:
+          serializedVersion: 2
+          rgba: 4294967295
+        key2:
+          serializedVersion: 2
+          rgba: 0
+        key3:
+          serializedVersion: 2
+          rgba: 0
+        key4:
+          serializedVersion: 2
+          rgba: 0
+        key5:
+          serializedVersion: 2
+          rgba: 0
+        key6:
+          serializedVersion: 2
+          rgba: 0
+        key7:
+          serializedVersion: 2
+          rgba: 0
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 65535
+        atime2: 0
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 2
+      floatOutput:
+        type: 0
+        types:
+        - System.Single
+        - System.Int32
+        - UnityEngine.Vector2
+        - UnityEngine.Vector3
+        - UnityEngine.Vector4
+        obj: {fileID: 1858167609}
+        varName: phaseIncreasePerLoop
+        isMat: 0
+        componentName: HighstrungFeedback, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        go: {fileID: 1858167603}
+        isVector: 0
+        index: 0
+      colorOutput:
+        type: {r: 0, g: 0, b: 0, a: 0}
+        types:
+        - UnityEngine.Color
+        obj: {fileID: 0}
+        varName: 
+        isMat: 0
+        componentName: 
+        go: {fileID: 0}
+    value: 0
+    index: 4
+  - manager: {fileID: 1719228245}
+    friendlyName: freq x
+    eventName: k4
+    modules:
+    - type: 1
+      index: 0
+      hasCurve: 1
+      curve:
+        serializedVersion: 2
+        m_Curve:
+        - time: 0
+          value: 0
+          inSlope: 1
+          outSlope: 1
+          tangentMode: 34
+        - time: 1
+          value: 1
+          inSlope: 1
+          outSlope: 1
+          tangentMode: 34
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      minmax: {x: 0, y: 50}
+      gradient:
+        key0:
+          serializedVersion: 2
+          rgba: 4294967295
+        key1:
+          serializedVersion: 2
+          rgba: 4294967295
+        key2:
+          serializedVersion: 2
+          rgba: 0
+        key3:
+          serializedVersion: 2
+          rgba: 0
+        key4:
+          serializedVersion: 2
+          rgba: 0
+        key5:
+          serializedVersion: 2
+          rgba: 0
+        key6:
+          serializedVersion: 2
+          rgba: 0
+        key7:
+          serializedVersion: 2
+          rgba: 0
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 65535
+        atime2: 0
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 2
+      floatOutput:
+        type: 0
+        types:
+        - System.Single
+        - System.Int32
+        - UnityEngine.Vector2
+        - UnityEngine.Vector3
+        - UnityEngine.Vector4
+        obj: {fileID: 1858167609}
+        varName: _Freq-x
+        isMat: 0
+        componentName: HighstrungFeedback, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        go: {fileID: 1858167603}
+        isVector: 1
+        index: 0
+      colorOutput:
+        type: {r: 0, g: 0, b: 0, a: 0}
+        types:
+        - UnityEngine.Color
+        obj: {fileID: 0}
+        varName: 
+        isMat: 0
+        componentName: 
+        go: {fileID: 0}
+    value: 0
+    index: 5
+  - manager: {fileID: 1719228245}
+    friendlyName: freq y
+    eventName: k5
+    modules:
+    - type: 1
+      index: 0
+      hasCurve: 1
+      curve:
+        serializedVersion: 2
+        m_Curve:
+        - time: 0
+          value: 0
+          inSlope: 1
+          outSlope: 1
+          tangentMode: 34
+        - time: 1
+          value: 1
+          inSlope: 1
+          outSlope: 1
+          tangentMode: 34
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      minmax: {x: 0, y: 200}
+      gradient:
+        key0:
+          serializedVersion: 2
+          rgba: 4294967295
+        key1:
+          serializedVersion: 2
+          rgba: 4294967295
+        key2:
+          serializedVersion: 2
+          rgba: 0
+        key3:
+          serializedVersion: 2
+          rgba: 0
+        key4:
+          serializedVersion: 2
+          rgba: 0
+        key5:
+          serializedVersion: 2
+          rgba: 0
+        key6:
+          serializedVersion: 2
+          rgba: 0
+        key7:
+          serializedVersion: 2
+          rgba: 0
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 65535
+        atime2: 0
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 2
+      floatOutput:
+        type: 0
+        types:
+        - System.Single
+        - System.Int32
+        - UnityEngine.Vector2
+        - UnityEngine.Vector3
+        - UnityEngine.Vector4
+        obj: {fileID: 1858167609}
+        varName: _Freq-y
+        isMat: 0
+        componentName: HighstrungFeedback, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        go: {fileID: 1858167603}
+        isVector: 0
+        index: 0
+      colorOutput:
+        type: {r: 0, g: 0, b: 0, a: 0}
+        types:
+        - UnityEngine.Color
+        obj: {fileID: 0}
+        varName: 
+        isMat: 0
+        componentName: 
+        go: {fileID: 0}
+    value: 0
+    index: 6
+  - manager: {fileID: 1719228245}
+    friendlyName: chrome arb
+    eventName: k2
+    modules:
+    - type: 1
+      index: 0
+      hasCurve: 0
+      curve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      minmax: {x: 0, y: -1}
+      gradient:
+        key0:
+          serializedVersion: 2
+          rgba: 4294967295
+        key1:
+          serializedVersion: 2
+          rgba: 4294967295
+        key2:
+          serializedVersion: 2
+          rgba: 0
+        key3:
+          serializedVersion: 2
+          rgba: 0
+        key4:
+          serializedVersion: 2
+          rgba: 0
+        key5:
+          serializedVersion: 2
+          rgba: 0
+        key6:
+          serializedVersion: 2
+          rgba: 0
+        key7:
+          serializedVersion: 2
+          rgba: 0
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 65535
+        atime2: 0
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 2
+      floatOutput:
+        type: 0
+        types:
+        - System.Single
+        - System.Int32
+        - UnityEngine.Vector2
+        - UnityEngine.Vector3
+        - UnityEngine.Vector4
+        obj: {fileID: 1858167611}
+        varName: intensity
+        isMat: 0
+        componentName: 
+        go: {fileID: 0}
+        isVector: 0
+        index: 0
+      colorOutput:
+        type: {r: 0, g: 0, b: 0, a: 0}
+        types:
+        - UnityEngine.Color
+        obj: {fileID: 0}
+        varName: 
+        isMat: 0
+        componentName: 
+        go: {fileID: 0}
+    value: 0
+    index: 7
+  - manager: {fileID: 1719228245}
+    friendlyName: fly strength
+    eventName: k3
+    modules:
+    - type: 1
+      index: 0
+      hasCurve: 1
+      curve:
+        serializedVersion: 2
+        m_Curve:
+        - time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+        - time: 1
+          value: 1
+          inSlope: 2
+          outSlope: 2
+          tangentMode: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      minmax: {x: 0, y: 0.2}
+      gradient:
+        key0:
+          serializedVersion: 2
+          rgba: 4294967295
+        key1:
+          serializedVersion: 2
+          rgba: 4294967295
+        key2:
+          serializedVersion: 2
+          rgba: 0
+        key3:
+          serializedVersion: 2
+          rgba: 0
+        key4:
+          serializedVersion: 2
+          rgba: 0
+        key5:
+          serializedVersion: 2
+          rgba: 0
+        key6:
+          serializedVersion: 2
+          rgba: 0
+        key7:
+          serializedVersion: 2
+          rgba: 0
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 65535
+        atime2: 0
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 2
+      floatOutput:
+        type: 0
+        types:
+        - System.Single
+        - System.Int32
+        - UnityEngine.Vector2
+        - UnityEngine.Vector3
+        - UnityEngine.Vector4
+        obj: {fileID: 1858167612}
+        varName: strength
+        isMat: 0
+        componentName: 
+        go: {fileID: 0}
+        isVector: 0
+        index: 0
+      colorOutput:
+        type: {r: 0, g: 0, b: 0, a: 0}
+        types:
+        - UnityEngine.Color
+        obj: {fileID: 0}
+        varName: 
+        isMat: 0
+        componentName: 
+        go: {fileID: 0}
+    value: 0
+    index: 8
+  - manager: {fileID: 1719228245}
+    friendlyName: fly phase per second
+    eventName: k11
+    modules:
+    - type: 1
+      index: 0
+      hasCurve: 0
+      curve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      minmax: {x: -3.1415, y: 3.1415}
+      gradient:
+        key0:
+          serializedVersion: 2
+          rgba: 4294967295
+        key1:
+          serializedVersion: 2
+          rgba: 4294967295
+        key2:
+          serializedVersion: 2
+          rgba: 0
+        key3:
+          serializedVersion: 2
+          rgba: 0
+        key4:
+          serializedVersion: 2
+          rgba: 0
+        key5:
+          serializedVersion: 2
+          rgba: 0
+        key6:
+          serializedVersion: 2
+          rgba: 0
+        key7:
+          serializedVersion: 2
+          rgba: 0
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 65535
+        atime2: 0
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 2
+      floatOutput:
+        type: 0
+        types:
+        - System.Single
+        - System.Int32
+        - UnityEngine.Vector2
+        - UnityEngine.Vector3
+        - UnityEngine.Vector4
+        obj: {fileID: 1858167612}
+        varName: phasePerSecond
+        isMat: 0
+        componentName: 
+        go: {fileID: 0}
+        isVector: 0
+        index: 0
+      colorOutput:
+        type: {r: 0, g: 0, b: 0, a: 0}
+        types:
+        - UnityEngine.Color
+        obj: {fileID: 0}
+        varName: 
+        isMat: 0
+        componentName: 
+        go: {fileID: 0}
+    value: 0
+    index: 9
+  - manager: {fileID: 1719228245}
+    friendlyName: amp x
+    eventName: k12
+    modules:
+    - type: 1
+      index: 0
+      hasCurve: 0
+      curve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      minmax: {x: -0.001, y: 0.001}
+      gradient:
+        key0:
+          serializedVersion: 2
+          rgba: 4294967295
+        key1:
+          serializedVersion: 2
+          rgba: 4294967295
+        key2:
+          serializedVersion: 2
+          rgba: 0
+        key3:
+          serializedVersion: 2
+          rgba: 0
+        key4:
+          serializedVersion: 2
+          rgba: 0
+        key5:
+          serializedVersion: 2
+          rgba: 0
+        key6:
+          serializedVersion: 2
+          rgba: 0
+        key7:
+          serializedVersion: 2
+          rgba: 0
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 65535
+        atime2: 0
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 2
+      floatOutput:
+        type: 0
+        types:
+        - System.Single
+        - System.Int32
+        - UnityEngine.Vector2
+        - UnityEngine.Vector3
+        - UnityEngine.Vector4
+        obj: {fileID: 1858167609}
+        varName: _Freq-z
+        isMat: 0
+        componentName: HighstrungFeedback, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        go: {fileID: 1858167603}
+        isVector: 0
+        index: 0
+      colorOutput:
+        type: {r: 0, g: 0, b: 0, a: 0}
+        types:
+        - UnityEngine.Color
+        obj: {fileID: 0}
+        varName: 
+        isMat: 0
+        componentName: 
+        go: {fileID: 0}
+    value: 0
+    index: 10
+  - manager: {fileID: 1719228245}
+    friendlyName: amp y
+    eventName: k13
+    modules:
+    - type: 1
+      index: 0
+      hasCurve: 0
+      curve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      minmax: {x: -0.001, y: 0.001}
+      gradient:
+        key0:
+          serializedVersion: 2
+          rgba: 4294967295
+        key1:
+          serializedVersion: 2
+          rgba: 4294967295
+        key2:
+          serializedVersion: 2
+          rgba: 0
+        key3:
+          serializedVersion: 2
+          rgba: 0
+        key4:
+          serializedVersion: 2
+          rgba: 0
+        key5:
+          serializedVersion: 2
+          rgba: 0
+        key6:
+          serializedVersion: 2
+          rgba: 0
+        key7:
+          serializedVersion: 2
+          rgba: 0
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 65535
+        atime2: 0
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 2
+      floatOutput:
+        type: 0
+        types:
+        - System.Single
+        - System.Int32
+        - UnityEngine.Vector2
+        - UnityEngine.Vector3
+        - UnityEngine.Vector4
+        obj: {fileID: 1858167609}
+        varName: _Freq-w
+        isMat: 0
+        componentName: HighstrungFeedback, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        go: {fileID: 1858167603}
+        isVector: 0
+        index: 0
+      colorOutput:
+        type: {r: 0, g: 0, b: 0, a: 0}
+        types:
+        - UnityEngine.Color
+        obj: {fileID: 0}
+        varName: 
+        isMat: 0
+        componentName: 
+        go: {fileID: 0}
+    value: 0
+    index: 11
+  - manager: {fileID: 1719228245}
+    friendlyName: brightness
+    eventName: k10
+    modules:
+    - type: 1
+      index: 0
+      hasCurve: 1
+      curve:
+        serializedVersion: 2
+        m_Curve:
+        - time: 0
+          value: 0
+          inSlope: 2
+          outSlope: 2
+          tangentMode: 0
+        - time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      minmax: {x: 0.01, y: 0}
+      gradient:
+        key0:
+          serializedVersion: 2
+          rgba: 4294967295
+        key1:
+          serializedVersion: 2
+          rgba: 4294967295
+        key2:
+          serializedVersion: 2
+          rgba: 0
+        key3:
+          serializedVersion: 2
+          rgba: 0
+        key4:
+          serializedVersion: 2
+          rgba: 0
+        key5:
+          serializedVersion: 2
+          rgba: 0
+        key6:
+          serializedVersion: 2
+          rgba: 0
+        key7:
+          serializedVersion: 2
+          rgba: 0
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 65535
+        atime2: 0
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 2
+      floatOutput:
+        type: 0
+        types:
+        - System.Single
+        - System.Int32
+        - UnityEngine.Vector2
+        - UnityEngine.Vector3
+        - UnityEngine.Vector4
+        obj: {fileID: 1858167609}
+        varName: darken-x
+        isMat: 0
+        componentName: 
+        go: {fileID: 0}
+        isVector: 0
+        index: 0
+      colorOutput:
+        type: {r: 0, g: 0, b: 0, a: 0}
+        types:
+        - UnityEngine.Color
+        obj: {fileID: 0}
+        varName: 
+        isMat: 0
+        componentName: 
+        go: {fileID: 0}
+    value: 0
+    index: 12
+  - manager: {fileID: 1719228245}
+    friendlyName: push from center
+    eventName: k1
+    modules:
+    - type: 1
+      index: 0
+      hasCurve: 1
+      curve:
+        serializedVersion: 2
+        m_Curve:
+        - time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+        - time: 1
+          value: 1
+          inSlope: 2
+          outSlope: 2
+          tangentMode: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      minmax: {x: 0, y: 0.01}
+      gradient:
+        key0:
+          serializedVersion: 2
+          rgba: 4294967295
+        key1:
+          serializedVersion: 2
+          rgba: 4294967295
+        key2:
+          serializedVersion: 2
+          rgba: 0
+        key3:
+          serializedVersion: 2
+          rgba: 0
+        key4:
+          serializedVersion: 2
+          rgba: 0
+        key5:
+          serializedVersion: 2
+          rgba: 0
+        key6:
+          serializedVersion: 2
+          rgba: 0
+        key7:
+          serializedVersion: 2
+          rgba: 0
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 65535
+        atime2: 0
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 2
+      floatOutput:
+        type: 0
+        types:
+        - System.Single
+        - System.Int32
+        - UnityEngine.Vector2
+        - UnityEngine.Vector3
+        - UnityEngine.Vector4
+        obj: {fileID: 1858167609}
+        varName: pushFromCenter
+        isMat: 0
+        componentName: 
+        go: {fileID: 0}
+        isVector: 0
+        index: 0
+      colorOutput:
+        type: {r: 0, g: 0, b: 0, a: 0}
+        types:
+        - UnityEngine.Color
+        obj: {fileID: 0}
+        varName: 
+        isMat: 0
+        componentName: 
+        go: {fileID: 0}
+    value: 0
+    index: 13
+  - manager: {fileID: 1719228245}
+    friendlyName: volume
+    eventName: k9
+    modules:
+    - type: 1
+      index: 0
+      hasCurve: 0
+      curve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      minmax: {x: 0, y: 1}
+      gradient:
+        key0:
+          serializedVersion: 2
+          rgba: 4294967295
+        key1:
+          serializedVersion: 2
+          rgba: 4294967295
+        key2:
+          serializedVersion: 2
+          rgba: 0
+        key3:
+          serializedVersion: 2
+          rgba: 0
+        key4:
+          serializedVersion: 2
+          rgba: 0
+        key5:
+          serializedVersion: 2
+          rgba: 0
+        key6:
+          serializedVersion: 2
+          rgba: 0
+        key7:
+          serializedVersion: 2
+          rgba: 0
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 65535
+        atime2: 0
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 2
+      floatOutput:
+        type: 0
+        types:
+        - System.Single
+        - System.Int32
+        - UnityEngine.Vector2
+        - UnityEngine.Vector3
+        - UnityEngine.Vector4
+        obj: {fileID: 1719228247}
+        varName: spectrumMul
+        isMat: 0
+        componentName: 
+        go: {fileID: 0}
+        isVector: 0
+        index: 0
+      colorOutput:
+        type: {r: 0, g: 0, b: 0, a: 0}
+        types:
+        - UnityEngine.Color
+        obj: {fileID: 0}
+        varName: 
+        isMat: 0
+        componentName: 
+        go: {fileID: 0}
+    value: 0
+    index: 14
+--- !u!4 &1719228246
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1719228244}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.41, y: 1.2651176, z: -6.586869}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+--- !u!114 &1719228247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1719228244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a33b3ddf0f3d7bf42a58481f6828d792, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  oscMode: 1
+  oscHost: 127.0.0.1
+  SendToPort: 12000
+  ListenerPort: 32000
+  address: /vj
+  source: {fileID: 0}
+  numSamples: 0
+  channel: 0
+  FFTWindow: 0
+  lerp: 0.05
+  spectrumCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spectrumMul: 1
+  spectrumPow: 1
+  falloffRate: 0.001
+--- !u!114 &1719228248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1719228244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 974cb74bf3f89294fb446dcb902287fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sensibilityFast: 20
+  sensibilitySlow: 8
+--- !u!114 &1719228249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1719228244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96cb0ef42e587044f910589a713a9fee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knobCount: 16
+  knobStartingIndex: 0
+  knobEventPrefix: k
+  knobEventStartingIndex: 0
+--- !u!114 &1719228250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1719228244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e67024702cd68bf44a5912e074c8e49c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonCount: 24
+  buttonStartingIndex: 0
+  buttonEventPrefix: b
+  buttonEventStartingIndex: 0
+--- !u!114 &1719228251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1719228244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a20ca156eee8e724f8531a1dedf51c8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventToListen: b0
+  eventToSend: r0
+  eventToStop: b8
+--- !u!114 &1719228252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1719228244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a20ca156eee8e724f8531a1dedf51c8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventToListen: b6
+  eventToSend: r6
+  eventToStop: b14
+--- !u!1 &1858167603
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1858167608}
+  - 20: {fileID: 1858167607}
+  - 92: {fileID: 1858167606}
+  - 124: {fileID: 1858167605}
+  - 81: {fileID: 1858167604}
+  - 114: {fileID: 1858167615}
+  - 114: {fileID: 1858167609}
+  - 114: {fileID: 1858167610}
+  - 114: {fileID: 1858167611}
+  - 114: {fileID: 1858167612}
+  - 114: {fileID: 1858167613}
+  m_Layer: 0
+  m_Name: Main Camera
+  m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!81 &1858167604
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1858167603}
+  m_Enabled: 1
+--- !u!124 &1858167605
+Behaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1858167603}
+  m_Enabled: 1
+--- !u!92 &1858167606
+Behaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1858167603}
+  m_Enabled: 1
+--- !u!20 &1858167607
+Camera:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1858167603}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: -1
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+  m_StereoMirrorMode: 0
+--- !u!4 &1858167608
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1858167603}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &1858167609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1858167603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d3d4a9b2ace4a2418150243a8dcd10f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shader: {fileID: 4800000, guid: dbb2b19ac338c15469ca6077f541232e, type: 3}
+  audioTexture: {fileID: 0}
+  phase: 0.001
+  _Freq: {x: 0, y: 200, z: 0.01, w: 0.01}
+  phaseIncreasePerLoop: 3.1415
+  darken: {x: 0.001, y: 0.001, z: 0.001, w: 0}
+  pushFromCenter: 0.01
+  center: {x: 0.5, y: 0.5}
+--- !u!114 &1858167610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1858167603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f632eba4bffe9b4aa08ae0f457f91dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  output:
+    type: {fileID: 0}
+    types:
+    - UnityEngine.Texture
+    - UnityEngine.Texture2D
+    - CCTexture
+    - UnityEngine.RenderTexture
+    obj: {fileID: 1858167609}
+    varName: audioTexture
+    isMat: 0
+    componentName: 
+    go: {fileID: 0}
+  height: 128
+  minimumValue: 0
+--- !u!114 &1858167611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1858167603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 673974feb0e661d49a10b8234065fe21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shader: {fileID: 4800000, guid: 362c15c3a0cbecc4eb0462e707d7176d, type: 3}
+  dist: {x: 0, y: 0.1, z: 0.2}
+  center: {x: 0, y: 0}
+  intensity: 0
+--- !u!114 &1858167612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1858167603}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44540f2d61a1b1f4fa6115e6e519236e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shader: {fileID: 4800000, guid: fb168e632a70c1f4da307b5c58b6d511, type: 3}
+  strength: 0
+  phase: 788.3544
+  phasePerSecond: 1
+  taps: 12
+  min: 0
+--- !u!114 &1858167613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1858167603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c84f9021f1cb1345b68f7cd7956e5f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseHide: 1
+  mouseLock: 0
+--- !u!114 &1858167615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1858167603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b22841afc8626ff4598a4fa391b5e52b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shader: {fileID: 4800000, guid: 981c01680b867a34183a73de87de0eb3, type: 3}
+  _mirrorX: 1
+  _mirrorY: 0

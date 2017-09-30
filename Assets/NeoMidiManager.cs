@@ -15,10 +15,19 @@ public class NeoMidiManager : MonoBehaviour {
         LinkStacks();
         for (int i = 0; i<stacks.Count; i++)
         {
-            Messenger.AddListener<float>(stacks[i].eventName, stacks[i].OnEvent);
-            stacks[i].OnEvent(stacks[i].value);
+            stacks[i].signal.OnChange += stacks[i].OnChange;
+            stacks[i].OnChange(stacks[i].value);
         }
 	}
+
+    void Update()
+    {
+        for (int i = 0; i < stacks.Count; i++)
+        {
+            stacks[i].signal.OnChange = stacks[i].OnChange;
+            stacks[i].signal.Check();
+        }
+    }
 
     void OnDestroy()
     {
@@ -62,7 +71,7 @@ public class MidiStack
 {
     public NeoMidiManager manager;
     public string friendlyName = "";
-    public string eventName = "";
+    public MidiSignal signal;
     public List<MidiModule> modules = new List<MidiModule>();
     public float value = 0;
     public int index;
@@ -70,9 +79,12 @@ public class MidiStack
     public MidiStack(NeoMidiManager manager)
     {
         this.manager = manager;
+        if (signal == null)
+            signal = new MidiSignal(176, 0);
+        signal.OnChange += OnChange;
     }
 
-    public void OnEvent(float f)
+    public void OnChange(float f)
     {
         value = f;
         for (int i = 0; i < modules.Count; i++)
@@ -80,14 +92,36 @@ public class MidiStack
             modules[i].OnEvent();
         }
     }
-
-    public void OnGUI(Rect r)
+    public bool open = true;
+    public float OnGUI(Rect r)
     {
-        GUI.Label(new Rect(r.x, r.y, r.width * .5f, 20), "name");
+        if (open)
+        {
+            if (GUI.Button(new Rect(r.x, r.y, 20, 20), ">"))
+            {
+                open = !open;
+            }
+        }else
+        {
+            if (GUI.Button(new Rect(r.x, r.y, 20, 20), "v"))
+            {
+                open = !open;
+            }
+        }
+        if (!open)
+        {
+            GUI.Label(new Rect(r.x, r.y + 20, 20, 200), Utils.VerticalText(friendlyName));
+            return 20;
+        }
+        GUI.Label(new Rect(r.x+20, r.y, r.width * .5f-20, 20), "name");
         friendlyName = GUI.TextField(new Rect(r.x+ r.width * .5f, r.y, r.width*.5f, 20), friendlyName);
         r.y += 25;
         GUI.Label(new Rect(r.x, r.y, r.width * .5f, 20), "event");
-        eventName = GUI.TextField(new Rect(r.x+ r.width * .5f, r.y, r.width * .5f, 20), eventName);
+        int.TryParse( GUI.TextField(new Rect(r.x+ r.width * .5f, r.y, r.width * .25f, 20), signal.channel+""), out signal.channel);
+        if(GUI.Button(new Rect(r.x + r.width * .75f, r.y, r.width * .25f, 20), "last"))
+        {
+            signal.SetToLastPressed();
+        }
         r.y += 25;
         index = manager.stacks.IndexOf(this);
         if (GUI.Button(new Rect(r.x,r.y,r.width*.5f, 20), "<-") && index != 0)
@@ -100,7 +134,7 @@ public class MidiStack
 	float v = GUI.HorizontalSlider(new Rect(r.x, r.y, r.width, 25), value, 0, 1);
 	if(v!=value){
 	    value = v;
-	    OnEvent(value);
+	    OnChange(value);
         }
         r.y += 25;
         Rect moduleRect = new Rect(r.x, r.y, r.width, 20);
@@ -130,6 +164,7 @@ public class MidiStack
             }
         }
 #endif
+        return 200;
     }
 }
 [System.Serializable]
@@ -139,6 +174,7 @@ public class MidiModule
     public enum MidiModuleType {
         AddModule,
         ReflectFloat,
+        ReflectVector3,
         ReflectGradient
     }
     public MidiModuleType type;
@@ -154,6 +190,7 @@ public class MidiModule
     public Vector2 minmax = new Vector2(0, 1);
     public Gradient gradient;
     public CCReflectFloat floatOutput = new CCReflectFloat();
+    public CCReflectVector3 vec3Output = new CCReflectVector3();
     public CCReflectColor colorOutput = new CCReflectColor();
 
     public MidiModule(MidiModuleType type, MidiStack stack) 
@@ -169,6 +206,11 @@ public class MidiModule
         {
             guiAction = ReflectFloatDraw;
             callAction = ReflectFloatCall;
+        }
+        else if (type == MidiModuleType.ReflectVector3)
+        {
+            guiAction = ReflectVec3Draw;
+            callAction = ReflectVec3Call;
         }
         else if (type == MidiModuleType.ReflectGradient)
         {
@@ -250,9 +292,40 @@ public class MidiModule
         float f = m.stack.value;
         if (m.hasCurve)
             f = m.curve.Evaluate(f);
-        m.floatOutput.SetValue(Mathf.Lerp(m.minmax.x, m.minmax.y,f));
+        m.floatOutput.SetValue(Mathf.Lerp(m.minmax.x, m.minmax.y, f));
     }
-    
+
+
+    static float ReflectVec3Draw(Rect r, MidiModule m)
+    {
+        float startHeight = r.y;
+        if (DrawHeader(ref r, m, "Vec3 Reflect"))
+            return 0;
+
+#if UNITY_EDITOR
+        m.hasCurve = GUI.Toggle(r, m.hasCurve, "hasCurve");
+        if (m.hasCurve)
+        {
+            r.y += 20;
+            m.curve = UnityEditor.EditorGUI.CurveField(r, m.curve);
+        }
+        r.y += 20;
+        m.minmax = UnityEditor.EditorGUI.Vector2Field(r, "min/max", m.minmax);
+#endif
+        r.y += 40;
+        m.vec3Output.Draw(r);
+
+        return r.y - startHeight + 20;
+    }
+
+    static void ReflectVec3Call(MidiModule m)
+    {
+        float f = m.stack.value;
+        if (m.hasCurve)
+            f = m.curve.Evaluate(f);
+        m.vec3Output.SetValue(Vector3.one*Mathf.Lerp(m.minmax.x, m.minmax.y, f));
+    }
+
     static float ReflectGradientDraw(Rect r, MidiModule m)
     {
         float startHeight = r.y;

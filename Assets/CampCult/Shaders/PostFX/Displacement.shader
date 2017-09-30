@@ -46,15 +46,17 @@ Shader "Camp Cult/Displacement/Displacement" {
 				float d = length(uv.xy - _center.xy);
 				float2 u = (float2(an,1.));//d - .5));
 				float4 f = tex2D(_Flow,fmod(u, float2(1.0,1.0))*_Flow_ST.xy + _Flow_ST.zw);
+				float2 t = uv;
+				t.x = cos(angle)*f.r*_x.x;
+				t.y = sin(angle)*f.r*_x.y;
 			#else
-				float4 f = tex2D(_Flow,uv*_Flow_ST.xy + _Flow_ST.zw);
-				float angle = _x.z;
+				float4 f = tex2D(_Flow,uv*_Flow_ST.xy + _Flow_ST.zw)*2.-1.;
+				float2 t = f.rg;
+				t *= f.b;
+				t *= _x.xy;
 			#endif
 
-			float2 t = uv;
-			t.x = cos(angle)*f.r*_x.x;
-			t.y = sin(angle)*f.r*_x.y;
-			float4 s = tex2D(_Last,uv - t);
+				float4 s = tex2D(_Last, uv - t);
 
 #ifdef ColorDodge
 			return lerp(c, float4(colorDodge(c, s), 1.), _x.w);

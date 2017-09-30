@@ -21,7 +21,8 @@ public class MidiButtonBankToEvent : MonoBehaviour {
 		for (int i = 0; i< buttonCount; i++) {
 			if(MidiInput.GetKeyDown(i + buttonStartingIndex))
             {
-				Messenger.Broadcast((string)(buttonEventPrefix+""+(i+buttonEventStartingIndex)));
+                Debug.Log("b" + (i + buttonStartingIndex));
+                Messenger.Broadcast((string)(buttonEventPrefix+""+(i+buttonEventStartingIndex)));
 			}
 		}
 	}

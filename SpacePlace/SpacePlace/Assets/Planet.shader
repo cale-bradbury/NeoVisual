@@ -2,7 +2,8 @@
 	Properties {
 		_Color("Color", Color) = (1,1,1,1)
 		_Color2("Color2", Color) = (1,1,1,1)
-		_MainTex ("Albedo (RGB)", 2D) = "white" {}
+		_MainTex("Albedo (RGB)", 2D) = "white" {}
+		_Height("Height", 2D) = "white" {}
 		_Glossiness ("Smoothness", Range(0,1)) = 0.5
 		_Metallic ("Metallic", Range(0,1)) = 0.0
 		_Shape("Shape", Vector) = (0,0,0,0)
@@ -30,25 +31,29 @@
 		fixed4 _Color2;
 		float4 _Shape;
 		sampler2D _AudioTex;
+		sampler2D _Height;
 
 		void vert(inout appdata_full v) {
+			float height = tex2Dlod(_Height, float4(v.texcoord.xy, 1., 1.)).r;
 			float3 p = v.vertex.xyz;
 			float f = sin(v.texcoord.x*5. + cos(v.texcoord.y*15.+v.texcoord.x*10.+_Time.y*1.5707)*3.)*.5 + .5;
 			f = lerp(f, sin(v.texcoord.x*20.+sin(v.texcoord.y*5.)*2. + _Time.y*1.5707)*.5 + .5, .5);
-			float g = tex2Dlod(_AudioTex, float4(f, 0., 1., 1.)).r;
+			float g = tex2Dlod(_AudioTex, float4(height, 0., 1., 1.)).r;
 			p *= 1.+ max(0,-v.normal.z)*_Shape.x*g;
+			p *= (1.+height*_Shape.z);
 			v.vertex.xyz = p;
-			v.texcoord.xy += float2(sin(_Time.y*1.5707), cos(_Time.y*1.5707))*g*_Shape.y;
+			//v.texcoord.xy += float2(sin(_Time.y*1.5707), cos(_Time.y*1.5707))*g*_Shape.y;
 		}
 
 		void surf (Input IN, inout SurfaceOutputStandard o) {
 			// Albedo comes from a texture tinted by color
+			float height = tex2D(_Height, IN.uv_MainTex).r;
 
-			float f = sin(IN.uv_MainTex.x*5. + cos(IN.uv_MainTex.y*15. + IN.uv_MainTex.x*10. + _Time.y*1.5707)*3.)*.5 + .5;
-			f = lerp(f, sin(IN.uv_MainTex.x*20. + sin(IN.uv_MainTex.y*5.)*2. + _Time.y*1.5707)*.5 + .5, .5);
-			f = tex2D(_AudioTex, float2(f, 0.)).r;
+			//float f = sin(IN.uv_MainTex.x*5. + cos(IN.uv_MainTex.y*15. + IN.uv_MainTex.x*10. + _Time.y*1.5707)*3.)*.5 + .5;
+			//f = lerp(f, sin(IN.uv_MainTex.x*20. + sin(IN.uv_MainTex.y*5.)*2. + _Time.y*1.5707)*.5 + .5, .5);
+			float f = tex2D(_AudioTex, float2(1.0-height, 0.)).r;
 			f = pow(f, _Shape.w);
-			fixed4 c = tex2D(_MainTex, IN.uv_MainTex) * lerp(_Color, _Color2, f);
+			fixed4 c = 1.0-(1.0-pow(tex2D(_MainTex, IN.uv_MainTex).r, 2.) )* lerp(_Color, _Color2, f);
 			o.Albedo = c.rgb;
 			// Metallic and smoothness come from slider variables
 			o.Metallic = _Metallic;

@@ -17,6 +17,7 @@ Shader "Hidden/BlendModesOverlay" {
 	sampler2D _MainTex;
 	
 	half _Intensity;
+	half4 _Overlay_ST;
 	half4 _MainTex_TexelSize;
 	half4 _UV_Transform = half4(1, 0, 0, 1);
 		
@@ -54,8 +55,14 @@ Shader "Hidden/BlendModesOverlay" {
 	}
 
 	half4 fragOverlay (v2f i) : SV_Target {
-		half4 m = (tex2D(_Overlay, i.uv[0]));// * 255.0;
+		float ang = abs(i.uv[0].x - .5)*.3;
+	//_Overlay_ST.w += ang*.2;
+	//_Overlay_ST.y -= ang;
+		half4 m = (tex2D(_Overlay, i.uv[0]* _Overlay_ST.xy + _Overlay_ST.zw));// * 255.0;
 		half4 color = (tex2D(_MainTex, i.uv[1]));//* 255.0;
+
+		color.rgb = lerp(color.rgb, 1. - color.rgb, m.rgb);
+		return color;
 
 		// overlay blend mode
 		//color.rgb = (color.rgb/255.0) * (color.rgb + ((2*m.rgb)/( 255.0 )) * (255.0-color.rgb));

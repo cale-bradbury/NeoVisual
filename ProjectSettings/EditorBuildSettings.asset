@@ -11,5 +11,9 @@ EditorBuildSettings:
     path: Assets/Pow x5/pow x5.unity
   - enabled: 0
     path: Assets/HouseBurner/burn.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Obey Fundraser/obey fundraser.unity
+  - enabled: 0
+    path: Assets/BrainDrain/braindrain.unity
+  - enabled: 1
+    path: Assets/Sonorus/sonorus.unity

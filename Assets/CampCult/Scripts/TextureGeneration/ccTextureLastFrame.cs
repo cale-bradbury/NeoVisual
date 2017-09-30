@@ -5,7 +5,7 @@ using UnityStandardAssets.ImageEffects;
 [ExecuteInEditMode]
 [AddComponentMenu("Image Effects/Camp Cult/Feedback/LastFrame")]
 public class ccTextureLastFrame : MonoBehaviour {
-
+    public bool extraFrame = false;
 	[HideInInspector]
 	public RenderTexture  lastTexture;
 	public CCReflectTexture textureOut;
@@ -17,8 +17,20 @@ public class ccTextureLastFrame : MonoBehaviour {
 			lastTexture.hideFlags = HideFlags.HideAndDontSave;
 		}
 		lastTexture.MarkRestoreExpected();
-		Graphics.Blit(source,destination);
-		Graphics.Blit(source, lastTexture);
-		textureOut.SetValue (lastTexture);
-	}
+        if (extraFrame)
+        {
+            textureOut.SetValue(lastTexture);
+            Graphics.Blit(source, lastTexture);
+            Graphics.Blit(source, destination);
+        }
+        else
+        {
+            Graphics.Blit(source, lastTexture);
+            Graphics.Blit(source, destination);
+            textureOut.SetValue(lastTexture);
+        }
+        RenderTexture.active = destination;
+        lastTexture.Release();
+        source.Release();
+    }
 }

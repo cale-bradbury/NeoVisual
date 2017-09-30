@@ -20,6 +20,7 @@ namespace UnityStandardAssets.ImageEffects
         public OverlayBlendMode blendMode = OverlayBlendMode.Overlay;
         public float intensity = 1.0f;
         public Texture texture = null;
+        public Vector4 overlayST;
 
         public Shader overlayShader = null;
         private Material overlayMaterial = null;
@@ -62,7 +63,8 @@ namespace UnityStandardAssets.ImageEffects
 
             overlayMaterial.SetVector("_UV_Transform", UV_Transform);
             overlayMaterial.SetFloat ("_Intensity", intensity);
-            overlayMaterial.SetTexture ("_Overlay", texture);
+            overlayMaterial.SetTexture("_Overlay", texture);
+            overlayMaterial.SetVector("_Overlay_ST", overlayST);
             Graphics.Blit (source, destination, overlayMaterial, (int) blendMode);
         }
     }

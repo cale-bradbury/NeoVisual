@@ -26,20 +26,19 @@ public class NeoMidi : EditorWindow
             manager = FindObjectOfType<NeoMidiManager>();
         }
 
-        if(GUILayout.Button("Add Stack"))
+        if (GUILayout.Button("Add Stack"))
         {
             manager.stacks.Add(new MidiStack(manager));
             manager.stacks[manager.stacks.Count - 1].index = manager.stacks.Count - 1;
         }
-        
+
         int stackWidth = 200;
         scrollPos = GUI.BeginScrollView(new Rect(0,0,position.width, position.height), scrollPos, new Rect(0, 0, manager.stacks.Count * (stackWidth+10), 200));
 
         Rect stackRect = new Rect(0, 25, stackWidth, 300);
         for (int i = 0; i < manager.stacks.Count; i++)
         {
-            manager.stacks[i].OnGUI(stackRect);
-            stackRect.x += stackWidth+10;
+            stackRect.x+=manager.stacks[i].OnGUI(stackRect) + 10;
         }
         GUI.EndScrollView();
     }

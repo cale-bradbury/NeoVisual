@@ -32,7 +32,9 @@ float4 frag (v2f_img i) : COLOR
 	float4 c = tex2D(_MainTex,uv);
 	#if UNITY_UV_STARTS_AT_TOP
 		uv.y = 1.0-uv.y;
+
 	#endif
+		uv.y = 1.0 - uv.y;
 	/*
 	#ifdef light
 		float4 s = v(uv.x+_x.x,uv.y+_x.x);

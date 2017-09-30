@@ -23,13 +23,18 @@ uniform float4 _Off;
 
 float4 frag (v2f_img i) : COLOR
 {
+	float2 uv = i.uv;
+#if UNITY_UV_STARTS_AT_TOP
+	uv.y = 1.0 - uv.y;
+#endif
+	uv.y = 1.0 - uv.y;
 #ifdef mirrorX
-	i.uv.x = abs(fmod(i.uv.x+.5,1.) - .5);
+	uv.x = abs(fmod(uv.x+.5,1.) - .5);
 #endif
 #ifdef mirrorY
-	i.uv.y =1.0- abs(fmod(i.uv.y+.5,1.)-.5 );
+	uv.y =1.0- abs(fmod(uv.y+.5,1.)-.5 );
 #endif
-	return tex2D(_MainTex,i.uv);
+	return tex2D(_MainTex,uv);
 }
 ENDCG
 

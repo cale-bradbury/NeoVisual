@@ -11,6 +11,7 @@ public class TreeRinger : MonoBehaviour {
     public float phase;
     public float freq;
     public float amp;
+    public float arc = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -24,6 +25,7 @@ public class TreeRinger : MonoBehaviour {
             r.obj = new GameObject[]{ treefab};
             r.count = ringCounts[i];
             r.radius = distancePerRing*i+minTreeDistance;
+            r.arc = arc;
             r.direction = ccCreateRing.Direction.XZ;
             trees[i] = r;
         }

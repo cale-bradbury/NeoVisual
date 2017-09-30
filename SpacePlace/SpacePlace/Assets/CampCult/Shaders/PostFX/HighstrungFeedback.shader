@@ -1,4 +1,6 @@
-﻿Shader "Hidden/HighstrungFeedback"
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Hidden/HighstrungFeedback"
 {
 	Properties
 	{
@@ -38,7 +40,7 @@
 			
 			v2f vert(appdata_img v) {
 				v2f o;
-				o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
+				o.pos = UnityObjectToClipPos(v.vertex);
 #ifdef UNITY_HALF_TEXEL_OFFSET
 				v.texcoord.y += _MainTex_TexelSize.y;
 #endif

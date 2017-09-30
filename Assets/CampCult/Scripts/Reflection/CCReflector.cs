@@ -12,7 +12,8 @@ public class CCReflector<T>{
 	public Object obj;
 	protected string _varName;
 	public string varName;
-	public FieldInfo field;
+    public int componentIndex;
+    public FieldInfo field;
 	public PropertyInfo prop;
 	public bool isMat = false;
     public string componentName;
@@ -87,11 +88,14 @@ public class CCReflector<T>{
             {
                 go = (GameObject)obj;
                 GetComponents((GameObject)obj);
-                int componentIndex = Mathf.Max(0, components.IndexOf(componentName));
+
 #if UNITY_EDITOR
-                componentIndex = EditorGUI.Popup(new Rect(r.x + r.width * .5f, r.y, r.width * .25f, r.height), componentIndex, components.ToArray());
+                string[] c = new string[components.Count];
+                for (int j = 0; j < components.Count; j++)
+                    c[j] =components[j]+ " - " + j;
+                componentIndex = EditorGUI.Popup(new Rect(r.x + r.width * .5f, r.y, r.width * .25f, r.height), componentIndex, c);
 #endif
-                componentIndex = Mathf.Clamp(componentIndex, 0, components.Count);
+                componentIndex = Mathf.Clamp(componentIndex, 0, components.Count-1);
                 componentName = components[componentIndex];
                 this.obj = ((GameObject)obj).GetComponent(System.Type.GetType(components[componentIndex]));
 
@@ -188,34 +192,49 @@ public class CCReflector<T>{
     {
         vars = new List<string>();
         FieldInfo[] fields = ty.GetFields();
+        bool isfloat = false;
+        for (int i = 0; i < type.Length; i++)
+        {
+            if (type[i] == typeof(float))
+            {
+                isfloat = true;
+                break;
+            }
+        }
         foreach (FieldInfo f in fields)
         {
             foreach (System.Type t in type)
             {
                 if (t == f.FieldType)
                 {
-                    if (t == typeof(Vector4))
+                    if (isfloat)
                     {
-                        vars.Add(f.Name + "-x");
-                        vars.Add(f.Name + "-y");
-                        vars.Add(f.Name + "-z");
-                        vars.Add(f.Name + "-w");
-                    }
-                    else if (t == typeof(Vector3))
+                        if (t == typeof(Vector4))
+                        {
+                            vars.Add(f.Name + "-x");
+                            vars.Add(f.Name + "-y");
+                            vars.Add(f.Name + "-z");
+                            vars.Add(f.Name + "-w");
+                        }
+                        else if (t == typeof(Vector3))
+                        {
+                            vars.Add(f.Name + "-x");
+                            vars.Add(f.Name + "-y");
+                            vars.Add(f.Name + "-z");
+                        }
+                        else if (t == typeof(Vector2))
+                        {
+                            vars.Add(f.Name + "-x");
+                            vars.Add(f.Name + "-y");
+                        }
+                        else
+                        {
+                            vars.Add(f.Name);
+                        }
+                    }else
                     {
-                        vars.Add(f.Name + "-x");
-                        vars.Add(f.Name + "-y");
-                        vars.Add(f.Name + "-z");
-                    }
-                    else if (t == typeof(Vector2))
-                    {
-                        vars.Add(f.Name + "-x");
-                        vars.Add(f.Name + "-y");
-                    }
-                    else {
                         vars.Add(f.Name);
                     }
-                    break;
                 }
             }
         }
@@ -227,28 +246,35 @@ public class CCReflector<T>{
             {
                 if (t == p.PropertyType)
                 {
-                    if (t == typeof(Vector4))
+                    if (isfloat)
                     {
-                        vars.Add(p.Name + "-x");
-                        vars.Add(p.Name + "-y");
-                        vars.Add(p.Name + "-z");
-                        vars.Add(p.Name + "-w");
-                    }
-                    else if (t == typeof(Vector3))
+                        if (t == typeof(Vector4))
+                        {
+                            vars.Add(p.Name + "-x");
+                            vars.Add(p.Name + "-y");
+                            vars.Add(p.Name + "-z");
+                            vars.Add(p.Name + "-w");
+                        }
+                        else if (t == typeof(Vector3))
+                        {
+                            vars.Add(p.Name + "-x");
+                            vars.Add(p.Name + "-y");
+                            vars.Add(p.Name + "-z");
+                        }
+                        else if (t == typeof(Vector2))
+                        {
+                            vars.Add(p.Name + "-x");
+                            vars.Add(p.Name + "-y");
+                        }
+                        else
+                        {
+                            vars.Add(p.Name);
+                        }
+                    }else
                     {
-                        vars.Add(p.Name + "-x");
-                        vars.Add(p.Name + "-y");
-                        vars.Add(p.Name + "-z");
-                    }
-                    else if (t == typeof(Vector2))
-                    {
-                        vars.Add(p.Name + "-x");
-                        vars.Add(p.Name + "-y");
-                    }
-                    else {
                         vars.Add(p.Name);
                     }
-                    break;
+                    //break;
                 }
             }
         }
